@@ -1,4 +1,4 @@
-/* QENREC FAQ — one answer open at a time */
+/* QENREC FAQ - one answer open at a time */
 document.addEventListener("DOMContentLoaded", () => {
   const items = document.querySelectorAll(".faq-item");
 

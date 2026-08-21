@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Qenrec Brief Builder - create structured client questions."
+    />
+
+    <title>Brief Builder - Qenrec</title>
+
+    <!-- FAVICON -->
+
+    <link rel="icon" type="image/png" href="media/favicon/Qenrec fav.png" />
+
+    <!-- FONT -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- BOOTSTRAP -->
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- PHOSPHOR -->
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/brief-builder.css" />
+    
+  </head>
+
+  <body class="qenrec-builder-page">
+    <!-- ======================================================
+       BACKGROUND
+       ====================================================== -->
+
+    <div class="builder-background"></div>
+
+    <!-- ======================================================
+       SIDEBAR
+       ====================================================== -->
+
+    <aside class="builder-sidebar" id="builderSidebar">
+      <div class="builder-sidebar__brand">
+        <a href="dashboard.html">
+          <img src="assets/qenrec-logo.png" alt="Qenrec" />
+        </a>
+
+        <button
+          type="button"
+          class="builder-sidebar__close"
+          id="builderSidebarClose"
+          aria-label="Close navigation"
+        >
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+
+      <button type="button" class="builder-workspace">
+        <span class="builder-workspace__avatar"> AS </span>
+
+        <span class="builder-workspace__info">
+          <strong> Acme Studio </strong>
+
+          <small> Agency workspace </small>
+        </span>
+
+        <i class="ph ph-caret-up-down"></i>
+      </button>
+
+      <nav class="builder-navigation">
+        <span class="builder-navigation__label"> Workspace </span>
+
+        <a href="dashboard.html" class="builder-navigation__link">
+          <i class="ph ph-squares-four"></i>
+
+          Dashboard
+        </a>
+
+        <a href="projects.html" class="builder-navigation__link is-active">
+          <i class="ph ph-folder-simple"></i>
+
+          Projects
+
+          <em> 18 </em>
+        </a>
+
+        <button type="button" class="builder-navigation__link" disabled>
+          <i class="ph ph-users-three"></i>
+
+          Clients
+        </button>
+
+        <button type="button" class="builder-navigation__link" disabled>
+          <i class="ph ph-stack"></i>
+
+          Templates
+        </button>
+
+        <button type="button" class="builder-navigation__link" disabled>
+          <i class="ph ph-files"></i>
+
+          Files
+        </button>
+
+        <span
+          class="builder-navigation__label builder-navigation__label--spaced"
+        >
+          Manage
+        </span>
+
+        <button type="button" class="builder-navigation__link" disabled>
+          <i class="ph ph-users-four"></i>
+
+          Team
+        </button>
+
+        <button type="button" class="builder-navigation__link" disabled>
+          <i class="ph ph-gear-six"></i>
+
+          Settings
+        </button>
+      </nav>
+
+      <div class="builder-sidebar__bottom">
+        <a href="#" class="builder-help">
+          <i class="ph ph-lifebuoy"></i>
+
+          Help center
+        </a>
+
+        <div class="builder-user">
+          <span> DW </span>
+
+          <div>
+            <strong> Daniel Wright </strong>
+
+            <small> Agency Admin </small>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="builder-overlay" id="builderOverlay"></div>
+
+    <!-- ======================================================
+       APPLICATION
+       ====================================================== -->
+
+    <div class="builder-app">
+      <!-- TOPBAR -->
+
+      <header class="builder-topbar">
+        <button
+          type="button"
+          class="builder-mobile-menu"
+          id="builderMobileMenu"
+        >
+          <i class="ph ph-list"></i>
+        </button>
+
+        <div class="builder-breadcrumb">
+          <a href="projects.html"> Projects </a>
+
+          <i class="ph ph-caret-right"></i>
+
+          <a href="project.html"> Website Redesign </a>
+
+          <i class="ph ph-caret-right"></i>
+
+          <strong> Brief Builder </strong>
+        </div>
+
+        <div class="builder-topbar__actions">
+          <button type="button" class="builder-topbar-button">
+            Save draft
+          </button>
+
+          <button type="button" class="builder-preview-button">Preview</button>
+        </div>
+      </header>
+
+      <!-- ====================================================
+         MAIN
+         ==================================================== -->
+
+      <main class="builder-content">
+        <!-- HEADER -->
+
+        <section class="builder-heading">
+          <div>
+            <span class="builder-eyebrow"> Client intake </span>
+
+            <h1>Build the right brief.</h1>
+
+            <p>
+              Create the questions your client needs to answer before your team
+              begins the real work.
+            </p>
+          </div>
+
+          <div class="builder-heading__status">
+            <span class="builder-draft-status"> Draft </span>
+
+            <span> 0 of 6 sections complete </span>
+          </div>
+        </section>
+
+        <!-- ==================================================
+           BUILDER LAYOUT
+           ================================================== -->
+
+        <div class="builder-layout">
+          <!-- ================================================
+             SECTION NAVIGATION
+             ================================================ -->
+
+          <aside class="builder-sections-panel">
+            <div class="builder-sections-panel__heading">
+              <span> Brief sections </span>
+
+              <button type="button" aria-label="Add section">
+                <i class="ph ph-plus"></i>
+              </button>
+            </div>
+
+            <div class="builder-section-list">
+              <button type="button" class="builder-section-item is-active">
+                <span class="builder-section-item__number"> 01 </span>
+
+                <span>
+                  <strong> Business </strong>
+
+                  <small> 0 questions </small>
+                </span>
+
+                <i class="ph ph-caret-right"></i>
+              </button>
+
+              <button type="button" class="builder-section-item">
+                <span class="builder-section-item__number"> 02 </span>
+
+                <span>
+                  <strong> Brand </strong>
+
+                  <small> 0 questions </small>
+                </span>
+
+                <i class="ph ph-caret-right"></i>
+              </button>
+
+              <button type="button" class="builder-section-item">
+                <span class="builder-section-item__number"> 03 </span>
+
+                <span>
+                  <strong> Audience </strong>
+
+                  <small> 0 questions </small>
+                </span>
+
+                <i class="ph ph-caret-right"></i>
+              </button>
+
+              <button type="button" class="builder-section-item">
+                <span class="builder-section-item__number"> 04 </span>
+
+                <span>
+                  <strong> Project goals </strong>
+
+                  <small> 0 questions </small>
+                </span>
+
+                <i class="ph ph-caret-right"></i>
+              </button>
+
+              <button type="button" class="builder-section-item">
+                <span class="builder-section-item__number"> 05 </span>
+
+                <span>
+                  <strong> Requirements </strong>
+
+                  <small> 0 questions </small>
+                </span>
+
+                <i class="ph ph-caret-right"></i>
+              </button>
+
+              <button type="button" class="builder-section-item">
+                <span class="builder-section-item__number"> 06 </span>
+
+                <span>
+                  <strong> Files & assets </strong>
+
+                  <small> 0 questions </small>
+                </span>
+
+                <i class="ph ph-caret-right"></i>
+              </button>
+            </div>
+
+            <div class="builder-sections-tip">
+              <i class="ph ph-lightbulb"></i>
+
+              <div>
+                <strong> Build intentionally </strong>
+
+                <p>
+                  Only ask for information your team genuinely needs to do the
+                  work.
+                </p>
+              </div>
+            </div>
+          </aside>
+
+          <!-- ================================================
+             MAIN BUILDER
+             ================================================ -->
+
+          <section class="builder-main-panel">
+            <div class="builder-main-panel__header">
+              <div>
+                <span> SECTION 01 </span>
+
+                <h2>Business information</h2>
+
+                <p>
+                  Start by understanding what the client's business does and
+                  where the project fits.
+                </p>
+              </div>
+
+              <button type="button" class="builder-add-question">
+                <i class="ph ph-plus"></i>
+
+                Add question
+              </button>
+            </div>
+
+            <!-- EMPTY / STARTER -->
+
+            <div class="builder-question-intro">
+              <span class="builder-question-intro__icon">
+                <i class="ph ph-list-plus"></i>
+              </span>
+
+              <div>
+                <h3>Start with the information you need.</h3>
+
+                <p>
+                  Build a focused set of questions instead of sending your
+                  client another long static form.
+                </p>
+              </div>
+            </div>
+
+            <!-- QUESTION CARD 1 -->
+
+            <article class="builder-question-card">
+              <div class="builder-question-card__top">
+                <span> Question 01 </span>
+
+                <button type="button" aria-label="Question options">
+                  <i class="ph ph-dots-three"></i>
+                </button>
+              </div>
+
+              <div class="builder-question-card__body">
+                <label> What does your business do? </label>
+
+                <div class="builder-question-preview">
+                  <span> Short answer </span>
+
+                  <i class="ph ph-text-align-left"></i>
+                </div>
+              </div>
+            </article>
+
+            <!-- QUESTION CARD 2 -->
+
+            <article class="builder-question-card">
+              <div class="builder-question-card__top">
+                <span> Question 02 </span>
+
+                <button type="button" aria-label="Question options">
+                  <i class="ph ph-dots-three"></i>
+                </button>
+              </div>
+
+              <div class="builder-question-card__body">
+                <label>
+                  What should this project help your business achieve?
+                </label>
+
+                <div class="builder-question-preview">
+                  <span> Multiple choice </span>
+
+                  <div class="builder-choice-preview">
+                    <span> Generate more leads </span>
+
+                    <span> Increase sales </span>
+
+                    <span> Improve credibility </span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- ADD QUESTION -->
+
+            <button type="button" class="builder-empty-add">
+              <span>
+                <i class="ph ph-plus"></i>
+              </span>
+
+              <div>
+                <strong> Add another question </strong>
+
+                <small> Ask only for information your team will use. </small>
+              </div>
+            </button>
+          </section>
+
+          <!-- ================================================
+             RIGHT PREVIEW
+             ================================================ -->
+
+          <aside class="builder-preview-panel">
+            <div class="builder-preview-panel__top">
+              <div>
+                <span> CLIENT PREVIEW </span>
+
+                <h2>What they'll see</h2>
+              </div>
+
+              <span class="builder-preview-live"> Live </span>
+            </div>
+
+            <div class="builder-client-preview">
+              <div class="builder-client-preview__top">
+                <span> ACME COFFEE </span>
+
+                <small> 01 / 06 </small>
+              </div>
+
+              <h3>Tell us about your business.</h3>
+
+              <p>
+                Help us understand your business before we start shaping the
+                project.
+              </p>
+
+              <div class="builder-client-progress">
+                <span>
+                  <i style="width: 16%"></i>
+                </span>
+
+                <small> 16% complete </small>
+              </div>
+
+              <div class="builder-client-question">
+                <label> What does your business do? </label>
+
+                <div>Your answer</div>
+              </div>
+
+              <div class="builder-client-question">
+                <label>
+                  What should this project help your business achieve?
+                </label>
+
+                <div class="builder-client-options">
+                  <span> Generate more leads </span>
+
+                  <span> Increase sales </span>
+
+                  <span> Improve credibility </span>
+                </div>
+              </div>
+
+              <button type="button" class="builder-client-next">
+                Continue
+              </button>
+            </div>
+
+            <div class="builder-preview-note">
+              <i class="ph ph-info"></i>
+
+              Changes you make here appear in the client experience.
+            </div>
+          </aside>
+        </div>
+      </main>
+    </div>
+
+    <script src="js/brief-builder.js"></script>
+  </body>
+</html>

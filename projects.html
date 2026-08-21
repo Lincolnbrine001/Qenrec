@@ -1,0 +1,936 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Qenrec Projects - manage client projects from brief to project-ready."
+    />
+
+    <title>Projects - Qenrec</title>
+
+    <!-- ======================================================
+       FAVICON
+       ====================================================== -->
+
+    <link rel="icon" type="image/png" href="media/favicon/Qenrec fav.png" />
+
+    <!-- ======================================================
+       FONT
+       ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ======================================================
+       BOOTSTRAP
+       ====================================================== -->
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- ======================================================
+       PHOSPHOR ICONS
+       ====================================================== -->
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+
+    <!-- ======================================================
+       PROJECT STYLES
+       ====================================================== -->
+
+    <link rel="stylesheet" href="css/projects.css" />
+  </head>
+
+  <body class="qenrec-projects-page">
+    <!-- ======================================================
+       BACKGROUND
+       ====================================================== -->
+
+    <div class="projects-background">
+      <span
+        class="projects-background__orb projects-background__orb--one"
+      ></span>
+
+      <span
+        class="projects-background__orb projects-background__orb--two"
+      ></span>
+
+      <span
+        class="projects-background__orb projects-background__orb--three"
+      ></span>
+    </div>
+
+    <!-- ======================================================
+       SIDEBAR OVERLAY
+       ====================================================== -->
+
+    <div class="projects-sidebar-overlay" id="projectsSidebarOverlay"></div>
+
+    <!-- ======================================================
+       SIDEBAR
+       ====================================================== -->
+
+    <aside class="projects-sidebar" id="projectsSidebar">
+      <!-- Brand -->
+
+      <div class="projects-sidebar__brand">
+        <a href="dashboard.html" aria-label="Qenrec dashboard">
+          <img src="assets/qenrec-logo.png" alt="Qenrec" />
+        </a>
+
+        <button
+          type="button"
+          class="projects-sidebar__close"
+          id="projectsSidebarClose"
+          aria-label="Close navigation"
+        >
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+
+      <!-- Workspace -->
+
+      <button type="button" class="projects-workspace">
+        <span class="projects-workspace__avatar"> AS </span>
+
+        <span class="projects-workspace__details">
+          <strong> Acme Studio </strong>
+
+          <small> Agency workspace </small>
+        </span>
+
+        <i class="ph ph-caret-up-down"></i>
+      </button>
+
+      <!-- Navigation -->
+
+      <nav class="projects-navigation" aria-label="Main navigation">
+        <span class="projects-navigation__label"> Workspace </span>
+
+        <a href="dashboard.html" class="projects-navigation__link">
+          <span class="projects-navigation__icon">
+            <i class="ph ph-squares-four"></i>
+          </span>
+
+          <span> Dashboard </span>
+        </a>
+
+        <a href="projects.html" class="projects-navigation__link is-active">
+          <span class="projects-navigation__icon">
+            <i class="ph ph-folder-simple"></i>
+          </span>
+
+          <span> Projects </span>
+
+          <em> 18 </em>
+        </a>
+
+        <button
+          type="button"
+          class="projects-navigation__link is-disabled"
+          disabled
+        >
+          <span class="projects-navigation__icon">
+            <i class="ph ph-users-three"></i>
+          </span>
+
+          <span> Clients </span>
+
+          <small> Soon </small>
+        </button>
+
+        <button
+          type="button"
+          class="projects-navigation__link is-disabled"
+          disabled
+        >
+          <span class="projects-navigation__icon">
+            <i class="ph ph-stack"></i>
+          </span>
+
+          <span> Templates </span>
+
+          <small> Soon </small>
+        </button>
+
+        <button
+          type="button"
+          class="projects-navigation__link is-disabled"
+          disabled
+        >
+          <span class="projects-navigation__icon">
+            <i class="ph ph-files"></i>
+          </span>
+
+          <span> Files </span>
+
+          <small> Soon </small>
+        </button>
+
+        <span
+          class="projects-navigation__label projects-navigation__label--spaced"
+        >
+          Manage
+        </span>
+
+        <button
+          type="button"
+          class="projects-navigation__link is-disabled"
+          disabled
+        >
+          <span class="projects-navigation__icon">
+            <i class="ph ph-users-four"></i>
+          </span>
+
+          <span> Team </span>
+        </button>
+
+        <button
+          type="button"
+          class="projects-navigation__link is-disabled"
+          disabled
+        >
+          <span class="projects-navigation__icon">
+            <i class="ph ph-gear-six"></i>
+          </span>
+
+          <span> Settings </span>
+        </button>
+      </nav>
+
+      <!-- Bottom -->
+
+      <div class="projects-sidebar__bottom">
+        <a href="#" class="projects-help">
+          <span class="projects-help__icon">
+            <i class="ph ph-lifebuoy"></i>
+          </span>
+
+          <span>
+            <strong> Need a hand? </strong>
+
+            <small> Visit the help center </small>
+          </span>
+
+          <i class="ph ph-arrow-up-right"></i>
+        </a>
+
+        <button type="button" class="projects-user">
+          <span class="projects-user__avatar"> DW </span>
+
+          <span class="projects-user__info">
+            <strong> Daniel Wright </strong>
+
+            <small> Agency Admin </small>
+          </span>
+
+          <i class="ph ph-dots-three"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ======================================================
+       APP
+       ====================================================== -->
+
+    <div class="projects-app">
+      <!-- ====================================================
+         TOPBAR
+         ==================================================== -->
+
+      <header class="projects-topbar">
+        <button
+          type="button"
+          class="projects-mobile-menu"
+          id="projectsMobileMenu"
+          aria-label="Open navigation"
+        >
+          <i class="ph ph-list"></i>
+        </button>
+
+        <div class="projects-topbar__search">
+          <i class="ph ph-magnifying-glass"></i>
+
+          <input
+            type="search"
+            id="globalProjectSearch"
+            placeholder="Search projects, clients..."
+          />
+
+          <kbd> ⌘ K </kbd>
+        </div>
+
+        <div class="projects-topbar__actions">
+          <button
+            type="button"
+            class="projects-topbar__icon"
+            aria-label="Notifications"
+          >
+            <i class="ph ph-bell"></i>
+
+            <span></span>
+          </button>
+
+          <button type="button" class="projects-topbar__icon" aria-label="Help">
+            <i class="ph ph-question"></i>
+          </button>
+
+          <button type="button" class="projects-topbar__profile">
+            <span> DW </span>
+
+            <strong> Daniel Wright </strong>
+
+            <i class="ph ph-caret-down"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- ====================================================
+         MAIN
+         ==================================================== -->
+
+      <main class="projects-content">
+        <!-- ==================================================
+           INTRO
+           ================================================== -->
+
+        <section class="projects-intro">
+          <div>
+            <span class="projects-intro__eyebrow"> Workspace </span>
+
+            <h1>Projects</h1>
+
+            <p>
+              Everything your team is preparing, reviewing, and moving toward
+              project-ready.
+            </p>
+          </div>
+
+          <a href="project-create.html" class="projects-new-button">
+            <i class="ph ph-plus"></i>
+
+            New project
+
+            <i class="ph ph-arrow-up-right"></i>
+          </a>
+        </section>
+
+        <!-- ==================================================
+           PROJECT METRICS
+           ================================================== -->
+
+        <section class="projects-metrics">
+          <article class="project-metric">
+            <div class="project-metric__top">
+              <span> All projects </span>
+
+              <span class="project-metric__icon">
+                <i class="ph ph-folder-simple"></i>
+              </span>
+            </div>
+
+            <strong> 18 </strong>
+
+            <small> across your workspace </small>
+          </article>
+
+          <article class="project-metric">
+            <div class="project-metric__top">
+              <span> In progress </span>
+
+              <span class="project-metric__icon project-metric__icon--warm">
+                <i class="ph ph-spinner-gap"></i>
+              </span>
+            </div>
+
+            <strong> 9 </strong>
+
+            <small> currently active </small>
+          </article>
+
+          <article class="project-metric">
+            <div class="project-metric__top">
+              <span> Need review </span>
+
+              <span class="project-metric__icon project-metric__icon--amber">
+                <i class="ph ph-clock"></i>
+              </span>
+            </div>
+
+            <strong> 5 </strong>
+
+            <small> waiting on action </small>
+          </article>
+
+          <article class="project-metric project-metric--brand">
+            <div class="project-metric__top">
+              <span> Project-ready </span>
+
+              <span class="project-metric__icon project-metric__icon--light">
+                <i class="ph ph-check-circle"></i>
+              </span>
+            </div>
+
+            <strong> 4 </strong>
+
+            <small> ready to move forward </small>
+          </article>
+        </section>
+
+        <!-- ==================================================
+           TOOLBAR
+           ================================================== -->
+
+        <section class="projects-toolbar">
+          <div class="projects-search">
+            <i class="ph ph-magnifying-glass"></i>
+
+            <input
+              type="search"
+              id="projectSearch"
+              placeholder="Search projects or clients..."
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="projects-toolbar__right">
+            <div class="projects-filter">
+              <button
+                type="button"
+                class="projects-toolbar-button"
+                id="projectFilterButton"
+              >
+                <i class="ph ph-funnel"></i>
+
+                <span> All statuses </span>
+
+                <i class="ph ph-caret-down"></i>
+              </button>
+
+              <div class="projects-filter__menu" id="projectFilterMenu">
+                <button type="button" data-filter="all">All statuses</button>
+
+                <button type="button" data-filter="progress">
+                  In progress
+                </button>
+
+                <button type="button" data-filter="review">
+                  Awaiting review
+                </button>
+
+                <button type="button" data-filter="draft">Draft</button>
+
+                <button type="button" data-filter="complete">Completed</button>
+              </div>
+            </div>
+
+            <button type="button" class="projects-toolbar-button">
+              <i class="ph ph-sort-ascending"></i>
+
+              Sort
+
+              <i class="ph ph-caret-down"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- ==================================================
+           PROJECT LIST
+           ================================================== -->
+
+        <section class="projects-list-panel">
+          <div class="projects-list-panel__header">
+            <div>
+              <span> Active workspace </span>
+
+              <h2>Your projects</h2>
+            </div>
+
+            <span class="projects-list-count"> 18 total </span>
+          </div>
+
+          <!-- =================================================
+             TABLE
+             ================================================= -->
+
+          <div class="projects-table-wrap">
+            <table class="projects-table">
+              <thead>
+                <tr>
+                  <th>Project</th>
+
+                  <th>Client</th>
+
+                  <th>Status</th>
+
+                  <th>Readiness</th>
+
+                  <th>Due</th>
+
+                  <th>Updated</th>
+
+                  <th></th>
+                </tr>
+              </thead>
+
+              <tbody id="projectsTableBody">
+                <!-- =================================================
+                   PROJECT 01
+                   ================================================= -->
+
+                <tr
+                  class="project-row"
+                  data-project="Website Redesign"
+                  data-client="Acme Coffee"
+                  data-status="progress"
+                >
+                  <td>
+                    <a href="#" class="project-name">
+                      <span class="project-name__icon">
+                        <i class="ph ph-browser"></i>
+                      </span>
+
+                      <span>
+                        <strong> Website Redesign </strong>
+
+                        <small> Website project </small>
+                      </span>
+                    </a>
+                  </td>
+
+                  <td>Acme Coffee</td>
+
+                  <td>
+                    <span class="project-status project-status--progress">
+                      <i></i>
+
+                      In progress
+                    </span>
+                  </td>
+
+                  <td>
+                    <div class="project-readiness">
+                      <div>
+                        <span>
+                          <i style="width: 86%"></i>
+                        </span>
+                      </div>
+
+                      <strong> 86% </strong>
+                    </div>
+                  </td>
+
+                  <td>Aug 20</td>
+
+                  <td>2h ago</td>
+
+                  <td>
+                    <a
+                      href="#"
+                      class="project-open"
+                      aria-label="Open Website Redesign"
+                    >
+                      <i class="ph ph-arrow-up-right"></i>
+                    </a>
+                  </td>
+                </tr>
+
+                <!-- =================================================
+                   PROJECT 02
+                   ================================================= -->
+
+                <tr
+                  class="project-row"
+                  data-project="Brand Identity"
+                  data-client="Bright Labs"
+                  data-status="review"
+                >
+                  <td>
+                    <a href="#" class="project-name">
+                      <span
+                        class="project-name__icon project-name__icon--purple"
+                      >
+                        <i class="ph ph-paint-brush"></i>
+                      </span>
+
+                      <span>
+                        <strong> Brand Identity </strong>
+
+                        <small> Brand project </small>
+                      </span>
+                    </a>
+                  </td>
+
+                  <td>Bright Labs</td>
+
+                  <td>
+                    <span class="project-status project-status--review">
+                      <i></i>
+
+                      Awaiting review
+                    </span>
+                  </td>
+
+                  <td>
+                    <div class="project-readiness">
+                      <div>
+                        <span>
+                          <i style="width: 72%"></i>
+                        </span>
+                      </div>
+
+                      <strong> 72% </strong>
+                    </div>
+                  </td>
+
+                  <td>Aug 18</td>
+
+                  <td>5h ago</td>
+
+                  <td>
+                    <a
+                      href="#"
+                      class="project-open"
+                      aria-label="Open Brand Identity"
+                    >
+                      <i class="ph ph-arrow-up-right"></i>
+                    </a>
+                  </td>
+                </tr>
+
+                <!-- =================================================
+                   PROJECT 03
+                   ================================================= -->
+
+                <tr
+                  class="project-row"
+                  data-project="Mobile App Design"
+                  data-client="NextWave"
+                  data-status="progress"
+                >
+                  <td>
+                    <a href="#" class="project-name">
+                      <span class="project-name__icon project-name__icon--blue">
+                        <i class="ph ph-device-mobile"></i>
+                      </span>
+
+                      <span>
+                        <strong> Mobile App Design </strong>
+
+                        <small> Product design </small>
+                      </span>
+                    </a>
+                  </td>
+
+                  <td>NextWave</td>
+
+                  <td>
+                    <span class="project-status project-status--progress">
+                      <i></i>
+
+                      In progress
+                    </span>
+                  </td>
+
+                  <td>
+                    <div class="project-readiness">
+                      <div>
+                        <span>
+                          <i style="width: 70%"></i>
+                        </span>
+                      </div>
+
+                      <strong> 70% </strong>
+                    </div>
+                  </td>
+
+                  <td>Aug 25</td>
+
+                  <td>1d ago</td>
+
+                  <td>
+                    <a
+                      href="#"
+                      class="project-open"
+                      aria-label="Open Mobile App Design"
+                    >
+                      <i class="ph ph-arrow-up-right"></i>
+                    </a>
+                  </td>
+                </tr>
+
+                <!-- =================================================
+                   PROJECT 04
+                   ================================================= -->
+
+                <tr
+                  class="project-row"
+                  data-project="Marketing Campaign"
+                  data-client="Acme Inc."
+                  data-status="review"
+                >
+                  <td>
+                    <a href="#" class="project-name">
+                      <span
+                        class="project-name__icon project-name__icon--amber"
+                      >
+                        <i class="ph ph-megaphone"></i>
+                      </span>
+
+                      <span>
+                        <strong> Marketing Campaign </strong>
+
+                        <small> Campaign project </small>
+                      </span>
+                    </a>
+                  </td>
+
+                  <td>Acme Inc.</td>
+
+                  <td>
+                    <span class="project-status project-status--review">
+                      <i></i>
+
+                      In review
+                    </span>
+                  </td>
+
+                  <td>
+                    <div class="project-readiness">
+                      <div>
+                        <span>
+                          <i style="width: 90%"></i>
+                        </span>
+                      </div>
+
+                      <strong> 90% </strong>
+                    </div>
+                  </td>
+
+                  <td>Aug 15</td>
+
+                  <td>2d ago</td>
+
+                  <td>
+                    <a
+                      href="#"
+                      class="project-open"
+                      aria-label="Open Marketing Campaign"
+                    >
+                      <i class="ph ph-arrow-up-right"></i>
+                    </a>
+                  </td>
+                </tr>
+
+                <!-- =================================================
+                   PROJECT 05
+                   ================================================= -->
+
+                <tr
+                  class="project-row"
+                  data-project="E-commerce Setup"
+                  data-client="ShopBase"
+                  data-status="draft"
+                >
+                  <td>
+                    <a href="#" class="project-name">
+                      <span
+                        class="project-name__icon project-name__icon--green"
+                      >
+                        <i class="ph ph-shopping-bag"></i>
+                      </span>
+
+                      <span>
+                        <strong> E-commerce Setup </strong>
+
+                        <small> Commerce project </small>
+                      </span>
+                    </a>
+                  </td>
+
+                  <td>ShopBase</td>
+
+                  <td>
+                    <span class="project-status project-status--draft">
+                      <i></i>
+
+                      Draft
+                    </span>
+                  </td>
+
+                  <td>
+                    <div class="project-readiness">
+                      <div>
+                        <span>
+                          <i style="width: 21%"></i>
+                        </span>
+                      </div>
+
+                      <strong> 21% </strong>
+                    </div>
+                  </td>
+
+                  <td>Aug 30</td>
+
+                  <td>3d ago</td>
+
+                  <td>
+                    <a
+                      href="#"
+                      class="project-open"
+                      aria-label="Open E-commerce Setup"
+                    >
+                      <i class="ph ph-arrow-up-right"></i>
+                    </a>
+                  </td>
+                </tr>
+
+                <!-- =================================================
+                   PROJECT 06
+                   ================================================= -->
+
+                <tr
+                  class="project-row"
+                  data-project="Launch Campaign"
+                  data-client="Northstar"
+                  data-status="complete"
+                >
+                  <td>
+                    <a href="#" class="project-name">
+                      <span
+                        class="project-name__icon project-name__icon--complete"
+                      >
+                        <i class="ph ph-rocket-launch"></i>
+                      </span>
+
+                      <span>
+                        <strong> Launch Campaign </strong>
+
+                        <small> Marketing project </small>
+                      </span>
+                    </a>
+                  </td>
+
+                  <td>Northstar</td>
+
+                  <td>
+                    <span class="project-status project-status--complete">
+                      <i></i>
+
+                      Completed
+                    </span>
+                  </td>
+
+                  <td>
+                    <div class="project-readiness">
+                      <div>
+                        <span>
+                          <i style="width: 100%; background: #397052"></i>
+                        </span>
+                      </div>
+
+                      <strong> 100% </strong>
+                    </div>
+                  </td>
+
+                  <td>Aug 08</td>
+
+                  <td>4d ago</td>
+
+                  <td>
+                    <a
+                      href="#"
+                      class="project-open"
+                      aria-label="Open Launch Campaign"
+                    >
+                      <i class="ph ph-arrow-up-right"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Empty state -->
+
+            <div class="projects-empty" id="projectsEmpty" hidden>
+              <div class="projects-empty__icon">
+                <i class="ph ph-folder-dashed"></i>
+              </div>
+
+              <h3>No projects found</h3>
+
+              <p>Try a different search or status filter.</p>
+            </div>
+          </div>
+
+          <!-- =================================================
+             FOOTER
+             ================================================= -->
+
+          <div class="projects-list-panel__footer">
+            <span>
+              Showing <strong>6</strong> of <strong>18</strong> projects
+            </span>
+
+            <div class="projects-pagination">
+              <button type="button" disabled aria-label="Previous page">
+                <i class="ph ph-caret-left"></i>
+              </button>
+
+              <button type="button" class="is-current">1</button>
+
+              <button type="button">2</button>
+
+              <button type="button">3</button>
+
+              <button type="button" aria-label="Next page">
+                <i class="ph ph-caret-right"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================
+           EMPTY / NEW PROJECT PROMPT
+           ================================================== -->
+
+        <section class="projects-bottom-cta">
+          <div class="projects-bottom-cta__icon">
+            <i class="ph ph-sparkle"></i>
+          </div>
+
+          <div>
+            <span> Ready to start something new? </span>
+
+            <strong>
+              Turn your next client project into a structured workspace.
+            </strong>
+          </div>
+
+          <a href="project-create.html">
+            Start a project
+
+            <i class="ph ph-arrow-up-right"></i>
+          </a>
+        </section>
+      </main>
+    </div>
+
+    <script src="projects.js"></script>
+  </body>
+</html>

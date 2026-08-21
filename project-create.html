@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description" content="Create a new Qenrec project." />
+
+    <title>New Project - Qenrec</title>
+
+    <!-- FAVICON -->
+
+    <link rel="icon" type="image/png" href="media/favicon/Qenrec fav.png" />
+
+    <!-- FONT -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- BOOTSTRAP -->
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- PHOSPHOR -->
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+
+    <!-- PAGE CSS -->
+
+    <link rel="stylesheet" href="css/project-create.css" />
+  </head>
+
+  <body class="qenrec-create-page">
+    <!-- ======================================================
+       BACKGROUND
+       ====================================================== -->
+
+    <div class="create-background">
+      <span class="create-background__orb create-background__orb--one"></span>
+
+      <span class="create-background__orb create-background__orb--two"></span>
+    </div>
+
+    <!-- ======================================================
+       SIDEBAR
+       ====================================================== -->
+
+    <aside class="create-sidebar" id="createSidebar">
+      <div class="create-sidebar__brand">
+        <a href="dashboard.html" aria-label="Qenrec dashboard">
+          <img src="assets/qenrec-logo.png" alt="Qenrec" />
+        </a>
+
+        <button
+          type="button"
+          class="create-sidebar__close"
+          id="createSidebarClose"
+          aria-label="Close navigation"
+        >
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+
+      <!-- Workspace -->
+
+      <button type="button" class="create-workspace-switcher">
+        <span class="create-workspace-avatar"> AS </span>
+
+        <span class="create-workspace-details">
+          <strong> Acme Studio </strong>
+
+          <small> Agency workspace </small>
+        </span>
+
+        <i class="ph ph-caret-up-down"></i>
+      </button>
+
+      <!-- Navigation -->
+
+      <nav class="create-navigation" aria-label="Application navigation">
+        <span class="create-navigation__label"> Workspace </span>
+
+        <a href="dashboard.html" class="create-navigation__link">
+          <span>
+            <i class="ph ph-squares-four"></i>
+          </span>
+
+          Dashboard
+        </a>
+
+        <a href="projects.html" class="create-navigation__link is-active">
+          <span>
+            <i class="ph ph-folder-simple"></i>
+          </span>
+
+          Projects
+
+          <em> 18 </em>
+        </a>
+
+        <button type="button" class="create-navigation__link" disabled>
+          <span>
+            <i class="ph ph-users-three"></i>
+          </span>
+
+          Clients
+
+          <small> Soon </small>
+        </button>
+
+        <button type="button" class="create-navigation__link" disabled>
+          <span>
+            <i class="ph ph-stack"></i>
+          </span>
+
+          Templates
+
+          <small> Soon </small>
+        </button>
+
+        <button type="button" class="create-navigation__link" disabled>
+          <span>
+            <i class="ph ph-files"></i>
+          </span>
+
+          Files
+
+          <small> Soon </small>
+        </button>
+
+        <span class="create-navigation__label create-navigation__label--spaced">
+          Manage
+        </span>
+
+        <button type="button" class="create-navigation__link" disabled>
+          <span>
+            <i class="ph ph-users-four"></i>
+          </span>
+
+          Team
+        </button>
+
+        <button type="button" class="create-navigation__link" disabled>
+          <span>
+            <i class="ph ph-gear-six"></i>
+          </span>
+
+          Settings
+        </button>
+      </nav>
+
+      <!-- Bottom -->
+
+      <div class="create-sidebar__bottom">
+        <a href="#" class="create-help">
+          <span class="create-help__icon">
+            <i class="ph ph-lifebuoy"></i>
+          </span>
+
+          <span>
+            <strong> Need a hand? </strong>
+
+            <small> Visit the help center </small>
+          </span>
+
+          <i class="ph ph-arrow-up-right"></i>
+        </a>
+
+        <button type="button" class="create-user">
+          <span class="create-user__avatar"> DW </span>
+
+          <span class="create-user__details">
+            <strong> Daniel Wright </strong>
+
+            <small> Agency Admin </small>
+          </span>
+
+          <i class="ph ph-dots-three"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ======================================================
+       MOBILE OVERLAY
+       ====================================================== -->
+
+    <div class="create-overlay" id="createOverlay"></div>
+
+    <!-- ======================================================
+       APPLICATION
+       ====================================================== -->
+
+    <div class="create-app">
+      <!-- ====================================================
+         TOPBAR
+         ==================================================== -->
+
+      <header class="create-topbar">
+        <button
+          type="button"
+          class="create-mobile-menu"
+          id="createMobileMenu"
+          aria-label="Open navigation"
+        >
+          <i class="ph ph-list"></i>
+        </button>
+
+        <div class="create-breadcrumb">
+          <a href="projects.html"> Projects </a>
+
+          <i class="ph ph-caret-right"></i>
+
+          <strong> New project </strong>
+        </div>
+
+        <div class="create-topbar__right">
+          <button
+            type="button"
+            class="create-topbar-icon"
+            aria-label="Notifications"
+          >
+            <i class="ph ph-bell"></i>
+
+            <span></span>
+          </button>
+
+          <button type="button" class="create-topbar-icon" aria-label="Help">
+            <i class="ph ph-question"></i>
+          </button>
+
+          <div class="create-topbar-user">
+            <span> DW </span>
+
+            <strong> Daniel Wright </strong>
+
+            <i class="ph ph-caret-down"></i>
+          </div>
+        </div>
+      </header>
+
+      <!-- ====================================================
+         MAIN
+         ==================================================== -->
+
+      <main class="create-content">
+        <!-- Page intro -->
+
+        <section class="create-intro">
+          <span class="create-intro__eyebrow"> Project management </span>
+
+          <h1>Create a new project</h1>
+
+          <p>
+            Set up the project first. You’ll build the client brief and
+            requirements after this step.
+          </p>
+        </section>
+
+        <!-- ==================================================
+           FORM LAYOUT
+           ================================================== -->
+
+        <div class="create-layout">
+          <!-- =================================================
+             FORM
+             ================================================= -->
+
+          <section class="create-panel">
+            <div class="create-panel__header">
+              <div class="create-step">
+                <span> 01 </span>
+
+                Project details
+              </div>
+
+              <small> Required </small>
+            </div>
+
+            <form class="create-form" id="projectCreateForm">
+              <!-- Project name -->
+
+              <div class="create-field create-field--wide">
+                <label for="projectName"> Project name </label>
+
+                <input
+                  id="projectName"
+                  name="project_name"
+                  type="text"
+                  placeholder="e.g. Website Redesign"
+                  required
+                />
+
+                <small>
+                  Give the project a name your team will recognize.
+                </small>
+              </div>
+
+              <!-- Client -->
+
+              <div class="create-field">
+                <label for="projectClient"> Client </label>
+
+                <div class="create-select-wrap">
+                  <select id="projectClient" name="client" required>
+                    <option value="">Select a client</option>
+
+                    <option value="acme-coffee">Acme Coffee</option>
+
+                    <option value="bright-labs">Bright Labs</option>
+
+                    <option value="nextwave">NextWave</option>
+
+                    <option value="northstar">Northstar</option>
+                  </select>
+
+                  <i class="ph ph-caret-down"></i>
+                </div>
+
+                <small> Choose an existing client workspace. </small>
+              </div>
+
+              <!-- Project type -->
+
+              <div class="create-field">
+                <label for="projectType"> Project type </label>
+
+                <div class="create-select-wrap">
+                  <select id="projectType" name="project_type" required>
+                    <option value="">Select project type</option>
+
+                    <option value="website">Website</option>
+
+                    <option value="brand">Brand identity</option>
+
+                    <option value="marketing">Marketing</option>
+
+                    <option value="product">Product / app</option>
+
+                    <option value="other">Other</option>
+                  </select>
+
+                  <i class="ph ph-caret-down"></i>
+                </div>
+
+                <small>
+                  This helps Qenrec organize the project workflow.
+                </small>
+              </div>
+
+              <!-- Template -->
+
+              <div class="create-field">
+                <label for="projectTemplate"> Starting template </label>
+
+                <div class="create-select-wrap">
+                  <select id="projectTemplate" name="template">
+                    <option value="">Start from scratch</option>
+
+                    <option value="website-discovery">Website Discovery</option>
+
+                    <option value="brand-identity">Brand Identity</option>
+
+                    <option value="marketing-campaign">
+                      Marketing Campaign
+                    </option>
+                  </select>
+
+                  <i class="ph ph-caret-down"></i>
+                </div>
+
+                <small>
+                  You can edit the brief after creating the project.
+                </small>
+              </div>
+
+              <!-- Due date -->
+
+              <div class="create-field">
+                <label for="projectDate"> Target date </label>
+
+                <input id="projectDate" name="target_date" type="date" />
+
+                <small> Optional - you can change this later. </small>
+              </div>
+
+              <!-- Description -->
+
+              <div class="create-field create-field--wide">
+                <label for="projectDescription">
+                  Project description
+                  <span> Optional </span>
+                </label>
+
+                <textarea
+                  id="projectDescription"
+                  name="description"
+                  rows="4"
+                  placeholder="Briefly describe what this project is about..."
+                ></textarea>
+              </div>
+
+              <!-- Form actions -->
+
+              <div class="create-form__actions">
+                <a href="projects.html" class="create-cancel"> Cancel </a>
+
+                <button type="submit" class="create-submit">
+                  Create project
+
+                  <i class="ph ph-arrow-right"></i>
+                </button>
+              </div>
+            </form>
+          </section>
+
+          <!-- =================================================
+             RIGHT SIDEBAR
+             ================================================= -->
+
+          <aside class="create-side-panel">
+            <!-- What happens next -->
+
+            <div class="create-next-card">
+              <div class="create-next-card__top">
+                <span class="create-next-card__icon">
+                  <i class="ph ph-sparkle"></i>
+                </span>
+
+                <span> What happens next </span>
+              </div>
+
+              <h2>Build the project around the client.</h2>
+
+              <p>
+                Once the project is created, you’ll be able to choose a brief,
+                build questions, collect client responses, and track what is
+                still missing.
+              </p>
+
+              <div class="create-flow">
+                <div class="create-flow__item is-current">
+                  <span> 01 </span>
+
+                  <div>
+                    <strong> Create project </strong>
+
+                    <small> Name and organize the work </small>
+                  </div>
+                </div>
+
+                <div class="create-flow__line"></div>
+
+                <div class="create-flow__item">
+                  <span> 02 </span>
+
+                  <div>
+                    <strong> Build brief </strong>
+
+                    <small> Define what the client needs to answer </small>
+                  </div>
+                </div>
+
+                <div class="create-flow__line"></div>
+
+                <div class="create-flow__item">
+                  <span> 03 </span>
+
+                  <div>
+                    <strong> Send to client </strong>
+
+                    <small> Collect information and files </small>
+                  </div>
+                </div>
+
+                <div class="create-flow__line"></div>
+
+                <div class="create-flow__item">
+                  <span> 04 </span>
+
+                  <div>
+                    <strong> Project ready </strong>
+
+                    <small> Review, clarify, and start </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tip -->
+
+            <div class="create-tip-card">
+              <span>
+                <i class="ph ph-lightbulb"></i>
+              </span>
+
+              <div>
+                <strong> Keep it simple </strong>
+
+                <p>
+                  You don't need every project detail right now. Qenrec will
+                  collect the deeper requirements through the brief.
+                </p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </main>
+    </div>
+
+    <script src="js/project-create.js"></script>
+  </body>
+</html>

@@ -1,0 +1,753 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description" content="Qenrec agency workspace dashboard." />
+
+    <title>Dashboard - Qenrec</title>
+
+    <!-- ======================================================
+       FONT
+       ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ======================================================
+       BOOTSTRAP
+       ====================================================== -->
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- ======================================================
+       PHOSPHOR ICONS
+       ====================================================== -->
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+
+    <link rel="icon" type="image/png" href="media/favicon/Qenrec fav.png" />
+
+    <!-- ======================================================
+       DASHBOARD STYLES
+       ====================================================== -->
+
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+
+  <body class="qenrec-dashboard-page">
+    <!-- ========================================================
+       APP BACKGROUND
+       ======================================================== -->
+
+    <div class="dashboard-background">
+      <span class="dashboard-orb dashboard-orb--one"></span>
+
+      <span class="dashboard-orb dashboard-orb--two"></span>
+
+      <span class="dashboard-orb dashboard-orb--three"></span>
+    </div>
+
+    <!-- ========================================================
+       MOBILE OVERLAY
+       ======================================================== -->
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ========================================================
+       SIDEBAR
+       ======================================================== -->
+
+    <aside class="qenrec-sidebar" id="qenrecSidebar">
+      <!-- Logo -->
+
+      <div class="sidebar-brand">
+        <a
+          href="dashboard.html"
+          class="sidebar-brand__link"
+          aria-label="Qenrec Dashboard"
+        >
+          <img src="assets/qenrec-logo.png" alt="Qenrec" />
+        </a>
+
+        <button
+          type="button"
+          class="sidebar-close"
+          id="sidebarClose"
+          aria-label="Close navigation"
+        >
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+
+      <!-- Workspace -->
+
+      <button type="button" class="workspace-card">
+        <span class="workspace-avatar"> AS </span>
+
+        <span class="workspace-info">
+          <strong> Acme Studio </strong>
+
+          <small> Agency workspace </small>
+        </span>
+
+        <i class="ph ph-caret-up-down"></i>
+      </button>
+
+      <!-- Navigation -->
+
+      <nav class="sidebar-navigation" aria-label="Main navigation">
+        <span class="sidebar-section-label"> Workspace </span>
+
+        <a href="dashboard.html" class="sidebar-nav-link is-active">
+          <span class="sidebar-nav-link__icon">
+            <i class="ph ph-squares-four"></i>
+          </span>
+
+          <span> Dashboard </span>
+        </a>
+
+        <a href="projects.html" class="sidebar-nav-link">
+          <span class="sidebar-nav-link__icon">
+            <i class="ph ph-folder-simple"></i>
+          </span>
+
+          <span> Projects </span>
+
+          <em> 18 </em>
+        </a>
+
+        <a href="#" class="sidebar-nav-link">
+          <span class="sidebar-nav-link__icon">
+            <i class="ph ph-users-three"></i>
+          </span>
+
+          <span> Clients </span>
+        </a>
+
+        <a href="#" class="sidebar-nav-link">
+          <span class="sidebar-nav-link__icon">
+            <i class="ph ph-stack"></i>
+          </span>
+
+          <span> Templates </span>
+        </a>
+
+        <a href="#" class="sidebar-nav-link">
+          <span class="sidebar-nav-link__icon">
+            <i class="ph ph-files"></i>
+          </span>
+
+          <span> Files </span>
+        </a>
+
+        <span class="sidebar-section-label sidebar-section-label--spaced">
+          Manage
+        </span>
+
+        <a href="#" class="sidebar-nav-link">
+          <span class="sidebar-nav-link__icon">
+            <i class="ph ph-users-four"></i>
+          </span>
+
+          <span> Team </span>
+        </a>
+
+        <a href="#" class="sidebar-nav-link">
+          <span class="sidebar-nav-link__icon">
+            <i class="ph ph-gear-six"></i>
+          </span>
+
+          <span> Settings </span>
+        </a>
+      </nav>
+
+      <!-- Sidebar bottom -->
+
+      <div class="sidebar-bottom">
+        <!-- Help -->
+
+        <a href="#" class="sidebar-help">
+          <span class="sidebar-help__icon">
+            <i class="ph ph-lifebuoy"></i>
+          </span>
+
+          <span>
+            <strong> Need a hand? </strong>
+
+            <small> Visit the help center </small>
+          </span>
+
+          <i class="ph ph-arrow-up-right"></i>
+        </a>
+
+        <!-- User -->
+
+        <button type="button" class="sidebar-user">
+          <span class="sidebar-user__avatar"> DW </span>
+
+          <span class="sidebar-user__info">
+            <strong> Daniel Wright </strong>
+
+            <small> Agency Admin </small>
+          </span>
+
+          <i class="ph ph-dots-three"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ========================================================
+       MAIN APPLICATION
+       ======================================================== -->
+
+    <div class="dashboard-app">
+      <!-- ======================================================
+         TOPBAR
+         ====================================================== -->
+
+      <header class="dashboard-topbar">
+        <button
+          type="button"
+          class="mobile-menu-button"
+          id="mobileMenuButton"
+          aria-label="Open navigation"
+        >
+          <i class="ph ph-list"></i>
+        </button>
+
+        <!-- Search -->
+
+        <div class="dashboard-search">
+          <i class="ph ph-magnifying-glass"></i>
+
+          <input type="search" placeholder="Search projects, clients..." />
+
+          <kbd> ⌘ K </kbd>
+        </div>
+
+        <!-- Header actions -->
+
+        <div class="dashboard-topbar__actions">
+          <button type="button" class="topbar-icon" aria-label="Notifications">
+            <i class="ph ph-bell"></i>
+
+            <span class="topbar-notification"></span>
+          </button>
+
+          <button type="button" class="topbar-icon" aria-label="Help">
+            <i class="ph ph-question"></i>
+          </button>
+
+          <button type="button" class="topbar-profile">
+            <span class="topbar-profile__avatar"> DW </span>
+
+            <span class="topbar-profile__text">
+              <strong> Daniel Wright </strong>
+
+              <small> Agency Admin </small>
+            </span>
+
+            <i class="ph ph-caret-down"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- ======================================================
+         DASHBOARD CONTENT
+         ====================================================== -->
+
+      <main class="dashboard-content">
+        <!-- ====================================================
+           PAGE INTRO
+           ==================================================== -->
+
+        <section class="dashboard-intro">
+          <div>
+            <span class="dashboard-eyebrow"> Workspace overview </span>
+
+            <h1>Good morning, Daniel.</h1>
+
+            <p>Here's what needs your attention across your projects.</p>
+          </div>
+
+          <a href="projects.html" class="dashboard-primary-button">
+            <i class="ph ph-plus"></i>
+
+            Start a new project
+
+            <i class="ph ph-arrow-up-right"></i>
+          </a>
+        </section>
+
+        <!-- ====================================================
+           SNAPSHOT
+           ==================================================== -->
+
+        <section class="dashboard-snapshot">
+          <article class="snapshot-card">
+            <div class="snapshot-card__top">
+              <span> Active projects </span>
+
+              <span class="snapshot-card__icon">
+                <i class="ph ph-folder-simple"></i>
+              </span>
+            </div>
+
+            <strong> 18 </strong>
+
+            <p>
+              <span class="positive"> +12% </span>
+
+              from last month
+            </p>
+          </article>
+
+          <article class="snapshot-card">
+            <div class="snapshot-card__top">
+              <span> Need review </span>
+
+              <span class="snapshot-card__icon snapshot-card__icon--amber">
+                <i class="ph ph-clock"></i>
+              </span>
+            </div>
+
+            <strong> 7 </strong>
+
+            <p>
+              <span class="attention"> 3 need action </span>
+            </p>
+          </article>
+
+          <article class="snapshot-card">
+            <div class="snapshot-card__top">
+              <span> Project-ready </span>
+
+              <span class="snapshot-card__icon snapshot-card__icon--green">
+                <i class="ph ph-check-circle"></i>
+              </span>
+            </div>
+
+            <strong> 86% </strong>
+
+            <p>average readiness</p>
+          </article>
+
+          <article class="snapshot-card snapshot-card--dark">
+            <div class="snapshot-card__top">
+              <span> Completed </span>
+
+              <span class="snapshot-card__icon snapshot-card__icon--white">
+                <i class="ph ph-check"></i>
+              </span>
+            </div>
+
+            <strong> 32 </strong>
+
+            <p>projects completed</p>
+          </article>
+        </section>
+
+        <!-- ====================================================
+           MAIN WORK AREA
+           ==================================================== -->
+
+        <section class="dashboard-work-grid">
+          <!-- --------------------------------------------------
+             PROJECTS REQUIRING ATTENTION
+             -------------------------------------------------- -->
+
+          <article class="glass-panel attention-panel">
+            <div class="panel-heading">
+              <div>
+                <span class="panel-kicker"> Priority </span>
+
+                <h2>Needs your attention</h2>
+              </div>
+
+              <a href="projects.html" class="panel-link">
+                View projects
+                <i class="ph ph-arrow-up-right"></i>
+              </a>
+            </div>
+
+            <div class="attention-list">
+              <a href="projects.html" class="attention-item">
+                <span class="attention-item__icon">
+                  <i class="ph ph-chat-centered-text"></i>
+                </span>
+
+                <span class="attention-item__content">
+                  <strong> Bright Labs needs clarification </strong>
+
+                  <small> Brand Identity · Client response required </small>
+                </span>
+
+                <span class="attention-item__time"> 2h </span>
+
+                <i class="ph ph-arrow-up-right attention-item__arrow"></i>
+              </a>
+
+              <a href="projects.html" class="attention-item">
+                <span class="attention-item__icon attention-item__icon--amber">
+                  <i class="ph ph-paperclip"></i>
+                </span>
+
+                <span class="attention-item__content">
+                  <strong> Website Redesign is missing assets </strong>
+
+                  <small> Acme Coffee · 3 items still needed </small>
+                </span>
+
+                <span class="attention-item__time"> 5h </span>
+
+                <i class="ph ph-arrow-up-right attention-item__arrow"></i>
+              </a>
+
+              <a href="projects.html" class="attention-item">
+                <span class="attention-item__icon attention-item__icon--muted">
+                  <i class="ph ph-calendar"></i>
+                </span>
+
+                <span class="attention-item__content">
+                  <strong> Marketing Campaign is due tomorrow </strong>
+
+                  <small> Acme Inc. · 90% project readiness </small>
+                </span>
+
+                <span class="attention-item__time"> 1d </span>
+
+                <i class="ph ph-arrow-up-right attention-item__arrow"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- --------------------------------------------------
+             READINESS
+             -------------------------------------------------- -->
+
+          <article class="glass-panel readiness-panel">
+            <div class="panel-heading">
+              <div>
+                <span class="panel-kicker"> Project readiness </span>
+
+                <h2>Ready to start</h2>
+              </div>
+            </div>
+
+            <div class="readiness-score">
+              <div class="readiness-score__value">86<span>%</span></div>
+
+              <div class="readiness-score__label">
+                average across active projects
+              </div>
+            </div>
+
+            <div class="readiness-bar-large">
+              <span style="width: 86%"></span>
+            </div>
+
+            <div class="readiness-breakdown">
+              <div>
+                <span class="readiness-dot readiness-dot--complete"></span>
+
+                <span> Information </span>
+
+                <strong> Complete </strong>
+              </div>
+
+              <div>
+                <span class="readiness-dot readiness-dot--complete"></span>
+
+                <span> Requirements </span>
+
+                <strong> Complete </strong>
+              </div>
+
+              <div>
+                <span class="readiness-dot readiness-dot--attention"></span>
+
+                <span> Assets </span>
+
+                <strong> Needs attention </strong>
+              </div>
+
+              <div>
+                <span class="readiness-dot readiness-dot--missing"></span>
+
+                <span> Launch date </span>
+
+                <strong> Missing </strong>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <!-- ====================================================
+           LOWER WORKSPACE
+           ==================================================== -->
+
+        <section class="dashboard-lower-grid">
+          <!-- --------------------------------------------------
+             RECENT PROJECTS
+             -------------------------------------------------- -->
+
+          <article class="glass-panel recent-projects-panel">
+            <div class="panel-heading">
+              <div>
+                <span class="panel-kicker"> Workspace </span>
+
+                <h2>Recent projects</h2>
+              </div>
+
+              <a href="projects.html" class="panel-link">
+                View all
+
+                <i class="ph ph-arrow-up-right"></i>
+              </a>
+            </div>
+
+            <div class="recent-project-table">
+              <!-- Header -->
+
+              <div class="recent-project-row recent-project-row--header">
+                <span> Project </span>
+
+                <span> Client </span>
+
+                <span> Status </span>
+
+                <span> Readiness </span>
+              </div>
+
+              <!-- Project 1 -->
+
+              <a href="projects.html" class="recent-project-row">
+                <span class="recent-project-name">
+                  <span class="project-mini-icon">
+                    <i class="ph ph-browser"></i>
+                  </span>
+
+                  Website Redesign
+                </span>
+
+                <span> Acme Coffee </span>
+
+                <span class="status-pill status-pill--progress">
+                  <i></i>
+                  In progress
+                </span>
+
+                <span class="mini-progress">
+                  <span>
+                    <i style="width: 86%"></i>
+                  </span>
+
+                  <strong> 86% </strong>
+                </span>
+              </a>
+
+              <!-- Project 2 -->
+
+              <a href="projects.html" class="recent-project-row">
+                <span class="recent-project-name">
+                  <span class="project-mini-icon project-mini-icon--purple">
+                    <i class="ph ph-paint-brush"></i>
+                  </span>
+
+                  Brand Identity
+                </span>
+
+                <span> Bright Labs </span>
+
+                <span class="status-pill status-pill--review">
+                  <i></i>
+                  Awaiting review
+                </span>
+
+                <span class="mini-progress">
+                  <span>
+                    <i style="width: 72%"></i>
+                  </span>
+
+                  <strong> 72% </strong>
+                </span>
+              </a>
+
+              <!-- Project 3 -->
+
+              <a href="projects.html" class="recent-project-row">
+                <span class="recent-project-name">
+                  <span class="project-mini-icon project-mini-icon--green">
+                    <i class="ph ph-rocket-launch"></i>
+                  </span>
+
+                  Launch Campaign
+                </span>
+
+                <span> Northstar </span>
+
+                <span class="status-pill status-pill--complete">
+                  <i></i>
+                  Completed
+                </span>
+
+                <span class="mini-progress">
+                  <span>
+                    <i style="width: 100%; background: #397052"></i>
+                  </span>
+
+                  <strong> 100% </strong>
+                </span>
+              </a>
+            </div>
+          </article>
+
+          <!-- --------------------------------------------------
+             ACTIVITY
+             -------------------------------------------------- -->
+
+          <article class="glass-panel activity-panel">
+            <div class="panel-heading">
+              <div>
+                <span class="panel-kicker"> Activity </span>
+
+                <h2>Recent activity</h2>
+              </div>
+
+              <button
+                type="button"
+                class="activity-menu"
+                aria-label="Activity options"
+              >
+                <i class="ph ph-dots-three"></i>
+              </button>
+            </div>
+
+            <div class="activity-feed">
+              <div class="activity-feed__item">
+                <span class="activity-feed__icon activity-feed__icon--red">
+                  <i class="ph ph-file-text"></i>
+                </span>
+
+                <span class="activity-feed__content">
+                  <strong> Brief submitted </strong>
+
+                  <small> Acme Coffee · Website Redesign </small>
+                </span>
+
+                <time> 2h </time>
+              </div>
+
+              <div class="activity-feed__item">
+                <span class="activity-feed__icon activity-feed__icon--amber">
+                  <i class="ph ph-chat-centered-text"></i>
+                </span>
+
+                <span class="activity-feed__content">
+                  <strong> Clarification requested </strong>
+
+                  <small> Bright Labs · Brand Identity </small>
+                </span>
+
+                <time> 5h </time>
+              </div>
+
+              <div class="activity-feed__item">
+                <span class="activity-feed__icon activity-feed__icon--green">
+                  <i class="ph ph-upload-simple"></i>
+                </span>
+
+                <span class="activity-feed__content">
+                  <strong> New project assets </strong>
+
+                  <small> Acme Coffee · 4 files added </small>
+                </span>
+
+                <time> 1d </time>
+              </div>
+
+              <div class="activity-feed__item">
+                <span class="activity-feed__icon activity-feed__icon--neutral">
+                  <i class="ph ph-check-circle"></i>
+                </span>
+
+                <span class="activity-feed__content">
+                  <strong> Project completed </strong>
+
+                  <small> Northstar · Launch Campaign </small>
+                </span>
+
+                <time> 2d </time>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <!-- ====================================================
+           QUICK ACTIONS
+           ==================================================== -->
+
+        <section class="quick-actions">
+          <a href="projects.html" class="quick-action">
+            <span class="quick-action__icon">
+              <i class="ph ph-plus"></i>
+            </span>
+
+            <span>
+              <strong> Start a project </strong>
+
+              <small> Create a new client workspace </small>
+            </span>
+
+            <i class="ph ph-arrow-up-right"></i>
+          </a>
+
+          <a href="#" class="quick-action">
+            <span class="quick-action__icon">
+              <i class="ph ph-stack"></i>
+            </span>
+
+            <span>
+              <strong> Browse templates </strong>
+
+              <small> Start from a proven brief </small>
+            </span>
+
+            <i class="ph ph-arrow-up-right"></i>
+          </a>
+
+          <a href="#" class="quick-action">
+            <span class="quick-action__icon">
+              <i class="ph ph-users-three"></i>
+            </span>
+
+            <span>
+              <strong> Add a client </strong>
+
+              <small> Build your client directory </small>
+            </span>
+
+            <i class="ph ph-arrow-up-right"></i>
+          </a>
+        </section>
+      </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+  </body>
+</html>

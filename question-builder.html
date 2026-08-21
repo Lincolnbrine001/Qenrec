@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Qenrec Question Builder - create client questions for structured project briefs."
+    />
+
+    <title>Question Builder - Qenrec</title>
+
+    <!-- FAVICON -->
+
+    <link rel="icon" type="image/png" href="media/favicon/Qenrec fav.png" />
+
+    <!-- FONT -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- BOOTSTRAP -->
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- PHOSPHOR -->
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="css/question-builder.css" />
+  </head>
+
+  <body class="qenrec-question-builder-page">
+    <div class="qb-background"></div>
+
+    <!-- ======================================================
+       SIDEBAR
+       ====================================================== -->
+
+    <aside class="qb-sidebar" id="qbSidebar">
+      <div class="qb-sidebar__brand">
+        <a href="dashboard.html">
+          <img src="assets/qenrec-logo.png" alt="Qenrec" />
+        </a>
+
+        <button
+          type="button"
+          class="qb-sidebar__close"
+          id="qbSidebarClose"
+          aria-label="Close navigation"
+        >
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+
+      <button type="button" class="qb-workspace">
+        <span class="qb-workspace__avatar"> AS </span>
+
+        <span class="qb-workspace__info">
+          <strong> Acme Studio </strong>
+
+          <small> Agency workspace </small>
+        </span>
+
+        <i class="ph ph-caret-up-down"></i>
+      </button>
+
+      <nav class="qb-navigation">
+        <span class="qb-navigation__label"> Workspace </span>
+
+        <a href="dashboard.html" class="qb-navigation__link">
+          <i class="ph ph-squares-four"></i>
+          Dashboard
+        </a>
+
+        <a href="projects.html" class="qb-navigation__link is-active">
+          <i class="ph ph-folder-simple"></i>
+
+          Projects
+
+          <em> 18 </em>
+        </a>
+
+        <button type="button" class="qb-navigation__link" disabled>
+          <i class="ph ph-users-three"></i>
+          Clients
+        </button>
+
+        <button type="button" class="qb-navigation__link" disabled>
+          <i class="ph ph-stack"></i>
+          Templates
+        </button>
+
+        <button type="button" class="qb-navigation__link" disabled>
+          <i class="ph ph-files"></i>
+          Files
+        </button>
+
+        <span class="qb-navigation__label qb-navigation__label--spaced">
+          Manage
+        </span>
+
+        <button type="button" class="qb-navigation__link" disabled>
+          <i class="ph ph-users-four"></i>
+          Team
+        </button>
+
+        <button type="button" class="qb-navigation__link" disabled>
+          <i class="ph ph-gear-six"></i>
+          Settings
+        </button>
+      </nav>
+
+      <div class="qb-sidebar__bottom">
+        <a href="#" class="qb-help">
+          <i class="ph ph-lifebuoy"></i>
+          Help center
+        </a>
+
+        <div class="qb-user">
+          <span> DW </span>
+
+          <div>
+            <strong> Daniel Wright </strong>
+
+            <small> Agency Admin </small>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="qb-overlay" id="qbOverlay"></div>
+
+    <!-- ======================================================
+       APP
+       ====================================================== -->
+
+    <div class="qb-app">
+      <!-- TOPBAR -->
+
+      <header class="qb-topbar">
+        <button
+          type="button"
+          class="qb-mobile-menu"
+          id="qbMobileMenu"
+          aria-label="Open navigation"
+        >
+          <i class="ph ph-list"></i>
+        </button>
+
+        <div class="qb-breadcrumb">
+          <a href="projects.html"> Projects </a>
+
+          <i class="ph ph-caret-right"></i>
+
+          <a href="project.html"> Website Redesign </a>
+
+          <i class="ph ph-caret-right"></i>
+
+          <a href="brief-builder.html"> Brief Builder </a>
+
+          <i class="ph ph-caret-right"></i>
+
+          <strong> New question </strong>
+        </div>
+
+        <div class="qb-topbar__actions">
+          <a href="brief-builder.html" class="qb-back-button">
+            Back to brief
+          </a>
+
+          <button type="button" class="qb-save-button" id="saveQuestionButton">
+            Save question
+          </button>
+        </div>
+      </header>
+
+      <!-- ======================================================
+         MAIN
+         ====================================================== -->
+
+      <main class="qb-content">
+        <section class="qb-heading">
+          <div>
+            <span class="qb-eyebrow"> Question builder </span>
+
+            <h1>Ask what matters.</h1>
+
+            <p>
+              Create one focused client question and decide exactly how Qenrec
+              should collect the answer.
+            </p>
+          </div>
+        </section>
+
+        <div class="qb-layout">
+          <!-- ==================================================
+             QUESTION CONFIGURATION
+             ================================================== -->
+
+          <section class="qb-form-panel">
+            <div class="qb-panel-header">
+              <div>
+                <span> QUESTION 01 </span>
+
+                <h2>Question details</h2>
+              </div>
+
+              <span class="qb-section-badge"> Business </span>
+            </div>
+
+            <form id="questionForm">
+              <!-- Question -->
+
+              <div class="qb-field">
+                <label for="questionText"> Question </label>
+
+                <textarea
+                  id="questionText"
+                  placeholder="e.g. What does your business do?"
+                  rows="3"
+                  required
+                ></textarea>
+
+                <small> Ask one clear question at a time. </small>
+              </div>
+
+              <!-- Description -->
+
+              <div class="qb-field">
+                <label for="questionDescription">
+                  Description
+                  <span> Optional </span>
+                </label>
+
+                <textarea
+                  id="questionDescription"
+                  placeholder="Add context to help the client answer..."
+                  rows="2"
+                ></textarea>
+              </div>
+
+              <!-- Type -->
+
+              <div class="qb-field">
+                <label for="questionType"> Answer type </label>
+
+                <div class="qb-select">
+                  <select id="questionType">
+                    <option value="short">Short answer</option>
+
+                    <option value="long">Long answer</option>
+
+                    <option value="single">Single choice</option>
+
+                    <option value="multiple">Multiple choice</option>
+
+                    <option value="yesno">Yes / No</option>
+
+                    <option value="date">Date</option>
+
+                    <option value="file">File upload</option>
+                  </select>
+
+                  <i class="ph ph-caret-down"></i>
+                </div>
+              </div>
+
+              <!-- Options -->
+
+              <div class="qb-options-field" id="optionsField">
+                <div class="qb-field__top">
+                  <label> Answer options </label>
+
+                  <button
+                    type="button"
+                    id="addOptionButton"
+                    class="qb-small-action"
+                  >
+                    Add option
+                  </button>
+                </div>
+
+                <div class="qb-options-list" id="optionsList">
+                  <div class="qb-option">
+                    <span> 01 </span>
+
+                    <input type="text" value="Generate more leads" />
+
+                    <button
+                      type="button"
+                      class="qb-option-remove"
+                      aria-label="Remove option"
+                    >
+                      <i class="ph ph-x"></i>
+                    </button>
+                  </div>
+
+                  <div class="qb-option">
+                    <span> 02 </span>
+
+                    <input type="text" value="Increase sales" />
+
+                    <button
+                      type="button"
+                      class="qb-option-remove"
+                      aria-label="Remove option"
+                    >
+                      <i class="ph ph-x"></i>
+                    </button>
+                  </div>
+
+                  <div class="qb-option">
+                    <span> 03 </span>
+
+                    <input type="text" value="Improve credibility" />
+
+                    <button
+                      type="button"
+                      class="qb-option-remove"
+                      aria-label="Remove option"
+                    >
+                      <i class="ph ph-x"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Required -->
+
+              <div class="qb-setting-row">
+                <div>
+                  <strong> Required question </strong>
+
+                  <small> The client must answer this question. </small>
+                </div>
+
+                <label class="qb-switch">
+                  <input type="checkbox" checked />
+
+                  <span></span>
+                </label>
+              </div>
+
+              <!-- Help -->
+
+              <div class="qb-field">
+                <label for="questionHelp">
+                  Internal note
+                  <span> Optional </span>
+                </label>
+
+                <input
+                  type="text"
+                  id="questionHelp"
+                  placeholder="Only your team can see this note..."
+                />
+              </div>
+
+              <!-- Actions -->
+
+              <div class="qb-form-actions">
+                <a href="brief-builder.html" class="qb-cancel-button">
+                  Cancel
+                </a>
+
+                <button type="submit" class="qb-primary-button">
+                  Save question
+                </button>
+              </div>
+            </form>
+          </section>
+
+          <!-- ==================================================
+             CLIENT PREVIEW
+             ================================================== -->
+
+          <aside class="qb-preview-panel">
+            <div class="qb-preview-header">
+              <div>
+                <span> CLIENT PREVIEW </span>
+
+                <h2>Live preview</h2>
+              </div>
+
+              <span class="qb-live"> Live </span>
+            </div>
+
+            <div class="qb-client-card">
+              <div class="qb-client-card__top">
+                <strong> ACME COFFEE </strong>
+
+                <span> Business </span>
+              </div>
+
+              <div class="qb-client-progress">
+                <span>
+                  <i></i>
+                </span>
+
+                <small> Question 1 of 6 </small>
+              </div>
+
+              <h3 id="previewQuestion">What does your business do?</h3>
+
+              <p id="previewDescription">
+                Tell us a little about your business and what you do.
+              </p>
+
+              <!-- short answer -->
+
+              <div
+                class="qb-preview-answer qb-preview-answer--short"
+                id="previewShort"
+              >
+                Your answer
+              </div>
+
+              <!-- options -->
+
+              <div class="qb-preview-options" id="previewOptions">
+                <button type="button">Generate more leads</button>
+
+                <button type="button">Increase sales</button>
+
+                <button type="button">Improve credibility</button>
+              </div>
+
+              <button type="button" class="qb-client-continue">Continue</button>
+            </div>
+
+            <div class="qb-preview-note">
+              <i class="ph ph-info"></i>
+
+              This is approximately what the client will experience when
+              answering the question.
+            </div>
+          </aside>
+        </div>
+      </main>
+    </div>
+
+    <script src="js/question-builder.js"></script>
+  </body>
+</html>

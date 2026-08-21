@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description" content="Qenrec project workspace." />
+
+    <title>Website Redesign - Qenrec</title>
+
+    <!-- FAVICON -->
+
+    <link rel="icon" type="image/png" href="media/favicon/Qenrec fav.png" />
+
+    <!-- FONT -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- BOOTSTRAP -->
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- PHOSPHOR REGULAR -->
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+
+    <!-- PROJECT WORKSPACE CSS -->
+
+    <link rel="stylesheet" href="css/project.css" />
+  </head>
+
+  <body class="qenrec-project-page">
+    <!-- ======================================================
+       BACKGROUND
+       ====================================================== -->
+
+    <div class="project-background">
+      <span class="project-background__orb project-background__orb--one"></span>
+
+      <span class="project-background__orb project-background__orb--two"></span>
+    </div>
+
+    <!-- ======================================================
+       SIDEBAR OVERLAY
+       ====================================================== -->
+
+    <div class="project-overlay" id="projectOverlay"></div>
+
+    <!-- ======================================================
+       SIDEBAR
+       ====================================================== -->
+
+    <aside class="project-sidebar" id="projectSidebar">
+      <div class="project-sidebar__brand">
+        <a href="dashboard.html" aria-label="Qenrec dashboard">
+          <img src="assets/qenrec-logo.png" alt="Qenrec" />
+        </a>
+
+        <button
+          type="button"
+          class="project-sidebar__close"
+          id="projectSidebarClose"
+          aria-label="Close navigation"
+        >
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+
+      <!-- Workspace -->
+
+      <button type="button" class="project-workspace-switcher">
+        <span class="project-workspace-avatar"> AS </span>
+
+        <span class="project-workspace-info">
+          <strong> Acme Studio </strong>
+
+          <small> Agency workspace </small>
+        </span>
+
+        <i class="ph ph-caret-up-down"></i>
+      </button>
+
+      <!-- Main navigation -->
+
+      <nav class="project-navigation" aria-label="Application navigation">
+        <span class="project-navigation__label"> Workspace </span>
+
+        <a href="dashboard.html" class="project-navigation__link">
+          <span>
+            <i class="ph ph-squares-four"></i>
+          </span>
+
+          Dashboard
+        </a>
+
+        <a href="projects.html" class="project-navigation__link is-active">
+          <span>
+            <i class="ph ph-folder-simple"></i>
+          </span>
+
+          Projects
+
+          <em> 18 </em>
+        </a>
+
+        <button type="button" class="project-navigation__link" disabled>
+          <span>
+            <i class="ph ph-users-three"></i>
+          </span>
+
+          Clients
+
+          <small> Soon </small>
+        </button>
+
+        <button type="button" class="project-navigation__link" disabled>
+          <span>
+            <i class="ph ph-stack"></i>
+          </span>
+
+          Templates
+
+          <small> Soon </small>
+        </button>
+
+        <button type="button" class="project-navigation__link" disabled>
+          <span>
+            <i class="ph ph-files"></i>
+          </span>
+
+          Files
+
+          <small> Soon </small>
+        </button>
+
+        <span
+          class="project-navigation__label project-navigation__label--spaced"
+        >
+          Manage
+        </span>
+
+        <button type="button" class="project-navigation__link" disabled>
+          <span>
+            <i class="ph ph-users-four"></i>
+          </span>
+
+          Team
+        </button>
+
+        <button type="button" class="project-navigation__link" disabled>
+          <span>
+            <i class="ph ph-gear-six"></i>
+          </span>
+
+          Settings
+        </button>
+      </nav>
+
+      <!-- Bottom -->
+
+      <div class="project-sidebar__bottom">
+        <a href="#" class="project-help">
+          <span class="project-help__icon">
+            <i class="ph ph-lifebuoy"></i>
+          </span>
+
+          <span>
+            <strong> Need a hand? </strong>
+
+            <small> Visit the help center </small>
+          </span>
+
+          <i class="ph ph-arrow-up-right"></i>
+        </a>
+
+        <button type="button" class="project-user">
+          <span class="project-user__avatar"> DW </span>
+
+          <span class="project-user__info">
+            <strong> Daniel Wright </strong>
+
+            <small> Agency Admin </small>
+          </span>
+
+          <i class="ph ph-dots-three"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ======================================================
+       APPLICATION
+       ====================================================== -->
+
+    <div class="project-app">
+      <!-- ====================================================
+         TOPBAR
+         ==================================================== -->
+
+      <header class="project-topbar">
+        <button
+          type="button"
+          class="project-mobile-menu"
+          id="projectMobileMenu"
+          aria-label="Open navigation"
+        >
+          <i class="ph ph-list"></i>
+        </button>
+
+        <!-- Breadcrumb -->
+
+        <div class="project-breadcrumb">
+          <a href="projects.html"> Projects </a>
+
+          <i class="ph ph-caret-right"></i>
+
+          <span> Acme Coffee </span>
+
+          <i class="ph ph-caret-right"></i>
+
+          <strong> Website Redesign </strong>
+        </div>
+
+        <!-- Actions -->
+
+        <div class="project-topbar__actions">
+          <button
+            type="button"
+            class="project-topbar__icon"
+            aria-label="Notifications"
+          >
+            <i class="ph ph-bell"></i>
+
+            <span></span>
+          </button>
+
+          <button type="button" class="project-topbar__icon" aria-label="Help">
+            <i class="ph ph-question"></i>
+          </button>
+
+          <button type="button" class="project-topbar__profile">
+            <span> DW </span>
+
+            <strong> Daniel Wright </strong>
+
+            <i class="ph ph-caret-down"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- ====================================================
+         MAIN CONTENT
+         ==================================================== -->
+
+      <main class="project-content">
+        <!-- ==================================================
+           PROJECT HEADER
+           ================================================== -->
+
+        <section class="project-header">
+          <div class="project-header__main">
+            <div class="project-title-row">
+              <span class="project-title-icon">
+                <i class="ph ph-browser"></i>
+              </span>
+
+              <div>
+                <span class="project-client-name"> Acme Coffee </span>
+
+                <h1>Website Redesign</h1>
+              </div>
+            </div>
+
+            <p>
+              Give this project a clear starting point before your team moves
+              into execution.
+            </p>
+
+            <div class="project-header__meta">
+              <span class="project-status project-status--progress">
+                <i></i>
+
+                In progress
+              </span>
+
+              <span class="project-meta-divider"></span>
+
+              <span>
+                <i class="ph ph-calendar"></i>
+
+                Due Aug 20, 2026
+              </span>
+
+              <span class="project-meta-divider"></span>
+
+              <span>
+                <i class="ph ph-clock"></i>
+
+                Updated 2h ago
+              </span>
+            </div>
+          </div>
+
+          <div class="project-header__actions">
+            <button type="button" class="project-secondary-button">
+              <i class="ph ph-share-network"></i>
+
+              Share
+            </button>
+
+            <button type="button" class="project-primary-button">
+              Continue brief
+
+              <i class="ph ph-arrow-right"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- ==================================================
+           PROJECT NAVIGATION
+           ================================================== -->
+
+        <nav class="project-tabs" aria-label="Project navigation">
+          <a href="#overview" class="project-tab is-active"> Overview </a>
+
+          <a href="#brief" class="project-tab">
+            Brief
+            <span> Draft </span>
+          </a>
+
+          <a href="#files" class="project-tab">
+            Files
+            <span> 12 </span>
+          </a>
+
+          <a href="#clarifications" class="project-tab">
+            Clarifications
+            <span> 2 </span>
+          </a>
+
+          <a href="#readiness" class="project-tab"> Readiness </a>
+        </nav>
+
+        <!-- ==================================================
+           PROJECT OVERVIEW
+           ================================================== -->
+
+        <section class="project-section" id="overview">
+          <div class="project-section-heading">
+            <div>
+              <span> Overview </span>
+
+              <h2>Project health</h2>
+            </div>
+
+            <span class="project-last-updated"> Last updated 2 hours ago </span>
+          </div>
+
+          <!-- =================================================
+             HEALTH CARDS
+             ================================================= -->
+
+          <div class="project-health-grid">
+            <article class="project-health-card">
+              <div class="project-health-card__top">
+                <span> Project readiness </span>
+
+                <i class="ph ph-chart-line-up"></i>
+              </div>
+
+              <div class="project-health-score">86<span>%</span></div>
+
+              <div class="project-health-bar">
+                <span style="width: 86%"></span>
+              </div>
+
+              <p>Strong foundation. A few items still need attention.</p>
+            </article>
+
+            <article class="project-health-card">
+              <div class="project-health-card__top">
+                <span> Information </span>
+
+                <i class="ph ph-check-circle"></i>
+              </div>
+
+              <strong> Complete </strong>
+
+              <p>Business, brand, audience and project context collected.</p>
+            </article>
+
+            <article class="project-health-card">
+              <div class="project-health-card__top">
+                <span> Requirements </span>
+
+                <i class="ph ph-list-checks"></i>
+              </div>
+
+              <strong> 34 / 39 </strong>
+
+              <p>Five requirements remain incomplete.</p>
+            </article>
+
+            <article class="project-health-card">
+              <div class="project-health-card__top">
+                <span> Files & assets </span>
+
+                <i class="ph ph-paperclip"></i>
+              </div>
+
+              <strong> 12 files </strong>
+
+              <p>Three additional assets are still expected.</p>
+            </article>
+          </div>
+
+          <!-- =================================================
+             MAIN TWO-COLUMN
+             ================================================= -->
+
+          <div class="project-overview-grid">
+            <!-- LEFT -->
+
+            <article class="project-card project-attention-card">
+              <div class="project-card__heading">
+                <div>
+                  <span> Needs attention </span>
+
+                  <h3>Before the project can start</h3>
+                </div>
+
+                <span class="attention-count"> 3 items </span>
+              </div>
+
+              <div class="attention-checklist">
+                <div class="attention-checklist__item">
+                  <span class="attention-checklist__icon">
+                    <i class="ph ph-camera"></i>
+                  </span>
+
+                  <div>
+                    <strong> Final product photography </strong>
+
+                    <small>
+                      Client still needs to provide the approved images.
+                    </small>
+                  </div>
+
+                  <span class="attention-status"> Missing </span>
+                </div>
+
+                <div class="attention-checklist__item">
+                  <span
+                    class="attention-checklist__icon attention-checklist__icon--amber"
+                  >
+                    <i class="ph ph-credit-card"></i>
+                  </span>
+
+                  <div>
+                    <strong> Confirm payment provider </strong>
+
+                    <small>
+                      A decision is still needed before implementation.
+                    </small>
+                  </div>
+
+                  <span class="attention-status attention-status--amber">
+                    Decision
+                  </span>
+                </div>
+
+                <div class="attention-checklist__item">
+                  <span
+                    class="attention-checklist__icon attention-checklist__icon--amber"
+                  >
+                    <i class="ph ph-calendar"></i>
+                  </span>
+
+                  <div>
+                    <strong> Approve launch date </strong>
+
+                    <small>
+                      The client has not confirmed the final date.
+                    </small>
+                  </div>
+
+                  <span class="attention-status attention-status--amber">
+                    Pending
+                  </span>
+                </div>
+              </div>
+
+              <a href="#clarifications" class="project-card-link">
+                Review outstanding items
+
+                <i class="ph ph-arrow-right"></i>
+              </a>
+            </article>
+
+            <!-- RIGHT -->
+
+            <article class="project-card project-summary-card" id="readiness">
+              <div class="project-card__heading">
+                <div>
+                  <span> Readiness </span>
+
+                  <h3>Can the team start?</h3>
+                </div>
+
+                <span class="project-ready-badge"> Almost ready </span>
+              </div>
+
+              <div class="project-readiness-large">
+                <strong> 86% </strong>
+
+                <span> project-ready </span>
+              </div>
+
+              <div class="project-readiness-bar">
+                <span style="width: 86%"></span>
+              </div>
+
+              <div class="project-readiness-list">
+                <div>
+                  <span>
+                    <i class="ph ph-check"></i>
+                  </span>
+
+                  Information
+
+                  <strong> Complete </strong>
+                </div>
+
+                <div>
+                  <span>
+                    <i class="ph ph-check"></i>
+                  </span>
+
+                  Requirements
+
+                  <strong> Complete </strong>
+                </div>
+
+                <div>
+                  <span class="is-warning">
+                    <i class="ph ph-warning"></i>
+                  </span>
+
+                  Assets
+
+                  <strong class="is-warning"> Needs attention </strong>
+                </div>
+
+                <div>
+                  <span class="is-missing">
+                    <i class="ph ph-minus"></i>
+                  </span>
+
+                  Launch date
+
+                  <strong class="is-missing"> Missing </strong>
+                </div>
+              </div>
+
+              <a href="#readiness" class="project-card-link">
+                View readiness details
+
+                <i class="ph ph-arrow-right"></i>
+              </a>
+            </article>
+          </div>
+
+          <!-- =================================================
+             ACTIVITY
+             ================================================= -->
+
+          <article class="project-card project-activity-card">
+            <div class="project-card__heading">
+              <div>
+                <span> Activity </span>
+
+                <h3>Recent project activity</h3>
+              </div>
+
+              <button type="button" class="project-dots">
+                <i class="ph ph-dots-three"></i>
+              </button>
+            </div>
+
+            <div class="project-activity-list">
+              <div class="project-activity-item">
+                <span class="project-activity-icon project-activity-icon--red">
+                  <i class="ph ph-file-text"></i>
+                </span>
+
+                <div>
+                  <strong> Project brief updated </strong>
+
+                  <small> Daniel Wright added two new requirements. </small>
+                </div>
+
+                <time> 2h ago </time>
+              </div>
+
+              <div class="project-activity-item">
+                <span
+                  class="project-activity-icon project-activity-icon--green"
+                >
+                  <i class="ph ph-upload-simple"></i>
+                </span>
+
+                <div>
+                  <strong> 4 files uploaded </strong>
+
+                  <small> Acme Coffee added project assets. </small>
+                </div>
+
+                <time> 5h ago </time>
+              </div>
+
+              <div class="project-activity-item">
+                <span
+                  class="project-activity-icon project-activity-icon--amber"
+                >
+                  <i class="ph ph-chat-centered-text"></i>
+                </span>
+
+                <div>
+                  <strong> Clarification requested </strong>
+
+                  <small> Homepage content requires a client decision. </small>
+                </div>
+
+                <time> 1d ago </time>
+              </div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="js/project.js"></script>
+  </body>
+</html>
