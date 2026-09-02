@@ -14,23 +14,77 @@
   <link rel="stylesheet" href="css/style.css" />
       <!-- favicon -->
   <link rel="icon" type="image/png" href="media/favicon/Qenrec fav.png"/>
+   <link
+  rel="stylesheet"
+  href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"
+/>
 </head>
 <body>
 
-  <div class="utility-bar">
-    <div class="container-xl">
-      <div class="utility-bar__inner">
-        <p class="utility-bar__text mb-0">Built for teams that start projects with clients.</p>
-        <a class="utility-bar__link" href="#how-it-works">See how Qenrec works <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></a>
-      </div>
+  <!-- =========================================================
+     QENREC — INFINITE MARQUEE
+     ========================================================= -->
+
+<div class="qenrec-marquee" aria-label="Qenrec highlights">
+
+  <div class="qenrec-marquee__track">
+
+    <div class="qenrec-marquee__group">
+
+      <span>PROJECT READY</span>
+      <i class="bi bi-dot"></i>
+
+      <span>STRUCTURED BRIEFS</span>
+      <i class="bi bi-dot"></i>
+
+      <span>CLEAR REQUIREMENTS</span>
+      <i class="bi bi-dot"></i>
+
+      <span>CLIENT CLARITY</span>
+      <i class="bi bi-dot"></i>
+
+      <span>BETTER PROJECT STARTS</span>
+      <i class="bi bi-dot"></i>
+
+      <span>ONE STRUCTURED WORKSPACE</span>
+      <i class="bi bi-dot"></i>
+
     </div>
+
+
+    <!-- Exact duplicate for seamless infinite loop -->
+
+    <div class="qenrec-marquee__group" aria-hidden="true">
+
+      <span>PROJECT READY</span>
+      <i class="bi bi-dot"></i>
+
+      <span>STRUCTURED BRIEFS</span>
+      <i class="bi bi-dot"></i>
+
+      <span>CLEAR REQUIREMENTS</span>
+      <i class="bi bi-dot"></i>
+
+      <span>CLIENT CLARITY</span>
+      <i class="bi bi-dot"></i>
+
+      <span>ORGANISED WORKFLOW</span>
+      <i class="bi bi-dot"></i>
+
+      <span>ONE STRUCTURED WORKSPACE</span>
+      <i class="bi bi-dot"></i>
+
+    </div>
+
   </div>
+
+</div>
 
   <header class="site-header">
     <nav class="navbar navbar-expand-lg" aria-label="Primary navigation">
       <div class="container-xl">
         <a class="navbar-brand" href="#" aria-label="Qenrec home">
-          <img src="media/logo/qenrec-logo.png" alt="Qenrec logo" />
+          <img src="assets/qenrec_logo_transparent.png" alt="Qenrec logo" />
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#qenrecNav" aria-controls="qenrecNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,14 +95,41 @@
           <ul class="navbar-nav mx-auto mb-3 mb-lg-0">
             <li class="nav-item"><a class="nav-link is-active" href="#product">Product</a></li>
             <li class="nav-item"><a class="nav-link" href="#how-it-works">How it works</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#solutions" role="button" data-bs-toggle="dropdown" aria-expanded="false">Solutions</a>
-              <ul class="dropdown-menu dropdown-menu--qenrec">
-                <li><a class="dropdown-item" href="#web-agencies"><span class="dropdown-icon"><i class="bi bi-window-stack"></i></span><span><strong>Web agencies</strong><small>Client discovery and project intake</small></span></a></li>
-                <li><a class="dropdown-item" href="#creative-teams"><span class="dropdown-icon"><i class="bi bi-bezier2"></i></span><span><strong>Creative teams</strong><small>Organize what clients send and decide</small></span></a></li>
-                <li><a class="dropdown-item" href="#professional-services"><span class="dropdown-icon"><i class="bi bi-briefcase"></i></span><span><strong>Professional services</strong><small>Turn client input into a clear project start</small></span></a></li>
-              </ul>
-            </li>
+           <li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle d-flex align-items-center gap-1" href="#" id="solutionsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Solutions
+    <i class="ph ph-caret-down"></i>
+  </a>
+  <ul class="dropdown-menu dropdown-menu--qenrec" aria-labelledby="solutionsDropdown">
+    <li>
+      <a class="dropdown-item" href="solutions.html#web-agencies">
+        <span class="dropdown-icon"><i class="bi bi-window-stack"></i></span>
+        <span>
+          <strong>Web agencies</strong>
+          <small>Client discovery and project intake</small>
+        </span>
+      </a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="solutions.html#creative-teams">
+        <span class="dropdown-icon"><i class="bi bi-bezier2"></i></span>
+        <span>
+          <strong>Creative teams</strong>
+          <small>Organize what clients send and decide</small>
+        </span>
+      </a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="solutions.html#professional-services">
+        <span class="dropdown-icon"><i class="bi bi-briefcase"></i></span>
+        <span>
+          <strong>Professional services</strong>
+          <small>Turn client input into a clear project start</small>
+        </span>
+      </a>
+    </li>
+  </ul>
+</li>
             <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
             <li class="nav-item"><a class="nav-link" href="#resources">Resources</a></li>
           </ul>
@@ -63,67 +144,75 @@
   </header>
 
   <main>
+<!-- =========================================================
+     QENREC HERO
+     Full-bleed image hero inspired by the BMW reference
+     ========================================================= -->
+<section class="hero-section" id="product">
 
-  <!-- =========================================================
-       QENREC HERO
-       ========================================================= -->
-  <section class="hero-section" id="product">
-
-    <div class="container-fluid hero-container">
-
-      <div class="container-xl hero-inner">
-
-        <div class="hero-content">
-
-
-          <h1 class="hero-title">
-            Start every project
-            <span>with clarity</span>
-          </h1>
-
-          <p class="hero-copy">
-            Qenrec gives your team one clear place to collect client
-            information, requirements, assets, goals, and decisions
-            before the real work begins.
-          </p>
-
-          <div class="hero-actions">
-
-            <a class="btn hero-primary-btn" href="signup.html">
-              Start a project</a>
-
-            <a class="hero-secondary-link" href="login.html">See how Qenrec works <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></a>
-      </div>
-              </div>
-          </div>
-
-      </div>
-
-
-      <!-- Dashboard sits independently on the far right -->
-      <div class="hero-dashboard" aria-hidden="true">
-
-        <div class="hero-dashboard__glow"></div>
-
-        <div class="hero-dashboard__frame">
-
-          <img
-            src="assets/qenrec-dashboard.png"
+    <!-- Background image -->
+    <div class="hero-background" aria-hidden="true">
+        <img
+            src="assets/hero image.png"
             alt=""
             loading="eager"
             decoding="async"
-          />
-
-        </div>
-
-      </div>
-
+        >
     </div>
 
-  </section>
+    <!-- Overall image treatment -->
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <!-- Subtle bottom fade -->
+    <div class="hero-bottom-fade" aria-hidden="true"></div>
+
+    <div class="container-fluid hero-container">
+        <div class="container-xl hero-inner">
+
+            <div class="hero-content">
+
+                <h1 class="hero-title">
+                    Start every project
+                    <span>with clarity</span>
+                </h1>
+
+                <p class="hero-copy">
+                    Qenrec gives your team one clear place to collect client
+                    information, requirements, assets, goals, and decisions
+                    before the real work begins
+                </p>
+
+                <div class="hero-actions">
+
+                    <a
+                        class="btn hero-primary-btn"
+                        href="signup.html"
+                    >
+                        Start a project
+                    </a>
+
+                    <a
+                        class="hero-secondary-link"
+                        href="login.html"
+                    >
+                        See how Qenrec works
+                        <i
+                            class="bi bi-arrow-right ms-1"
+                            aria-hidden="true"
+                        ></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</section>
 
 
-    <!-- =========================================================
+<!-- =========================================================
          SECTION 2 - THE PROBLEM
          Visual is generated and called as an asset.
          ========================================================= -->
@@ -131,7 +220,7 @@
   <div class="container-xl">
     <figure class="problem-visual">
       <img
-        src="media/hero image/d1.png"
+        src="assets/d1.png"
         alt="The problem Qenrec solves: project information arrives from scattered sources and is organized into a project-ready brief."
         loading="lazy"
         decoding="async"
@@ -141,1037 +230,894 @@
 </section>
 
 
-  <!-- =========================================================
-     SECTION 3 - HOW QENREC WORKS
+<!-- =========================================================
+     QENREC — EVERYTHING YOU NEED, IN ONE PLACE
      ========================================================= -->
-<section class="workflow-section" id="workflow" aria-labelledby="workflow-title">
 
+<section class="qenrec-product-section">
   <div class="container-xl">
 
-    <!-- Section introduction -->
-    <div class="workflow-intro">
+    <div class="row align-items-stretch g-4 g-lg-5">
 
-      <span class="workflow-kicker">
-        How Qenrec works
+      <!-- =====================================================
+           LEFT COLUMN
+           ===================================================== -->
+      <div class="col-lg-5 d-flex">
+
+        <div class="product-content">
+
+          <span class="product-eyebrow">
+            A SMARTER WAY TO START
+          </span>
+
+          <h2 class="product-title">
+            Everything you need,
+            <br>
+            in one place
+          </h2>
+
+          <p class="product-description">
+            Qenrec brings structure to the chaos by helping agencies,
+            brands and service teams gather the right information,
+            assets and decisions before a project begins.
+          </p>
+
+
+          <!-- FEATURE 1 -->
+          <div class="product-feature">
+
+            <div class="feature-icon">
+              <i class="ph ph-clipboard-text"></i>
+            </div>
+
+            <div class="feature-content">
+              <h3>Structured briefs</h3>
+              <p>
+                Get clear, complete and consistent
+                client information.
+              </p>
+            </div>
+
+          </div>
+
+
+          <!-- FEATURE 2 -->
+          <div class="product-feature">
+
+            <div class="feature-icon">
+              <i class="ph ph-users-three"></i>
+            </div>
+
+            <div class="feature-content">
+              <h3>Better collaboration</h3>
+              <p>
+                Keep your team and clients aligned
+                at every stage.
+              </p>
+            </div>
+
+          </div>
+
+
+          <!-- FEATURE 3 -->
+          <div class="product-feature">
+
+            <div class="feature-icon">
+              <i class="ph ph-rocket-launch"></i>
+            </div>
+
+            <div class="feature-content">
+              <h3>Faster project starts</h3>
+              <p>
+                Turn information into action
+                without the guesswork.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================================
+           RIGHT COLUMN — DASHBOARD IMAGE
+           ===================================================== -->
+     <!-- =====================================================
+     RIGHT COLUMN — DASHBOARD VIDEO
+     ===================================================== -->
+<div class="col-lg-7 d-flex">
+
+  <div class="product-image-wrapper">
+    <video class="product-dashboard-video" autoplay loop muted playsinline>
+    <source src="media/hero video/Qenrec-dashboard.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+  </div>
+
+</div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+<!-- =========================================================
+     QENREC — HOW QENREC WORKS
+     ========================================================= -->
+
+<section class="qenrec-how-section">
+  <div class="container-xl">
+
+    <!-- SECTION HEADER -->
+    <div class="how-header text-center">
+
+      <span class="how-eyebrow">
+        HOW QENREC WORKS
       </span>
 
-      <h2 class="workflow-title" id="workflow-title">
-        From client input
-        <span>to project-ready.</span>
+      <h2 class="how-title">
+        A clear path from brief to project ready.
       </h2>
 
-      <p class="workflow-copy">
-        Qenrec gives your team a simple path from collecting what the client
-        knows to understanding what the project actually needs.
+      <p class="how-description">
+        Simple, structured and stress-free.
       </p>
 
     </div>
 
 
-    <!-- =======================================================
-         ROW 01 - COLLECT
-         ======================================================= -->
-    <div class="workflow-row row align-items-center g-5">
+    <!-- =====================================================
+         WORKFLOW
+         ===================================================== -->
 
-      <!-- LEFT -->
-      <div class="col-lg-5">
+    <div class="how-workflow">
 
-        <div class="workflow-step-copy">
+      <!-- =========================
+           STEP 01
+           ========================= -->
+      <div class="how-step">
 
-          <div class="workflow-step-marker">
-            <span class="workflow-number">01</span>
-            <span class="workflow-label">Collect</span>
-          </div>
-
-          <span class="workflow-icon">
-            <i class="bi bi-cloud-arrow-up"></i>
-          </span>
-
-          <h3>
-            Get everything you need.
-          </h3>
-
-          <p>
-            Collect client information, requirements, assets, goals,
-            and decisions in one structured brief.
-          </p>
-
-          <a href="#start" class="workflow-link">
-            Start collecting
-            <i class="bi bi-arrow-right"></i>
-          </a>
-
+        <div class="step-icon">
+          <i class="ph ph-note-pencil"></i>
         </div>
+
+        <div class="step-number">
+          01
+        </div>
+
+        <h3 class="step-title">
+          Create project
+        </h3>
+
+        <p class="step-text">
+          Set up your project and invite
+          your client to share the information
+          you need.
+        </p>
 
       </div>
 
 
-      <!-- RIGHT -->
-      <div class="col-lg-7">
-
-        <div class="workflow-ui-card">
-
-          <div class="ui-card__header">
-
-            <div>
-              <span class="ui-card__eyebrow">
-                Client brief
-              </span>
-
-              <strong>
-                Acme Coffee
-              </strong>
-            </div>
-
-            <span class="ui-status ui-status--progress">
-              <span></span>
-              In progress
-            </span>
-
-          </div>
-
-
-          <div class="ui-brief-list">
-
-            <div class="ui-brief-item">
-
-              <span class="ui-brief-icon">
-                <i class="bi bi-building"></i>
-              </span>
-
-              <div>
-                <strong>Business information</strong>
-                <small>Company details and background</small>
-              </div>
-
-              <i class="bi bi-check2-circle ui-check"></i>
-
-            </div>
-
-
-            <div class="ui-brief-item">
-
-              <span class="ui-brief-icon">
-                <i class="bi bi-palette"></i>
-              </span>
-
-              <div>
-                <strong>Brand &amp; identity</strong>
-                <small>Brand direction and references</small>
-              </div>
-
-              <i class="bi bi-check2-circle ui-check"></i>
-
-            </div>
-
-
-            <div class="ui-brief-item">
-
-              <span class="ui-brief-icon">
-                <i class="bi bi-people"></i>
-              </span>
-
-              <div>
-                <strong>Audience</strong>
-                <small>Who the project is for</small>
-              </div>
-
-              <i class="bi bi-check2-circle ui-check"></i>
-
-            </div>
-
-
-            <div class="ui-brief-item ui-brief-item--active">
-
-              <span class="ui-brief-icon">
-                <i class="bi bi-list-check"></i>
-              </span>
-
-              <div>
-                <strong>Requirements</strong>
-                <small>What the project must do</small>
-              </div>
-
-              <i class="bi bi-arrow-right ui-arrow"></i>
-
-            </div>
-
-
-            <div class="ui-brief-item">
-
-              <span class="ui-brief-icon">
-                <i class="bi bi-calendar3"></i>
-              </span>
-
-              <div>
-                <strong>Goals &amp; timeline</strong>
-                <small>Outcomes and important dates</small>
-              </div>
-
-              <i class="bi bi-arrow-right ui-arrow-muted"></i>
-
-            </div>
-
-
-            <div class="ui-brief-item">
-
-              <span class="ui-brief-icon">
-                <i class="bi bi-paperclip"></i>
-              </span>
-
-              <div>
-                <strong>Files &amp; assets</strong>
-                <small>Documents and project materials</small>
-              </div>
-
-              <i class="bi bi-arrow-right ui-arrow-muted"></i>
-
-            </div>
-
-          </div>
-
-        </div>
-
+      <!-- ARROW -->
+      <div class="workflow-arrow">
+        <i class="ph ph-arrow-right"></i>
       </div>
 
-    </div>
 
+      <!-- =========================
+           STEP 02
+           ========================= -->
+      <div class="how-step">
 
-    <!-- =======================================================
-         ROW 02 - CLARIFY
-         ======================================================= -->
-    <div class="workflow-row row align-items-center g-5">
-
-      <!-- LEFT -->
-      <div class="col-lg-6">
-
-        <div class="workflow-step-copy">
-
-          <div class="workflow-step-marker">
-            <span class="workflow-number">02</span>
-            <span class="workflow-label">Clarify</span>
-          </div>
-
-          <span class="workflow-icon">
-            <i class="bi bi-chat-square-text"></i>
-          </span>
-
-          <h3>
-            Know what is missing.
-          </h3>
-
-          <p>
-            See what is incomplete, unclear, or needs clarification
-            before those gaps become project problems.
-          </p>
-
-          <a href="#start" class="workflow-link">
-            Review a project
-            <i class="bi bi-arrow-right"></i>
-          </a>
-
+        <div class="step-icon">
+          <i class="ph ph-file-text"></i>
         </div>
+
+        <div class="step-number">
+          02
+        </div>
+
+        <h3 class="step-title">
+          Build structured brief
+        </h3>
+
+        <p class="step-text">
+          Add the sections and questions
+          that matter to the project.
+        </p>
 
       </div>
 
 
-      <!-- RIGHT -->
-      <div class="col-lg-6">
-
-        <div class="workflow-ui-card workflow-ui-card--readiness">
-
-          <div class="ui-card__header">
-
-            <div>
-              <span class="ui-card__eyebrow">
-                Project readiness
-              </span>
-
-              <strong>
-                Project foundation
-              </strong>
-            </div>
-
-            <strong class="ui-readiness-score">
-              86%
-            </strong>
-
-          </div>
-
-
-          <div class="ui-progress">
-            <span style="width: 86%;"></span>
-          </div>
-
-
-          <div class="ui-readiness-list">
-
-            <div class="ui-readiness-item">
-
-              <span class="readiness-status readiness-status--done">
-                <i class="bi bi-check2"></i>
-              </span>
-
-              <div>
-                <strong>Business information</strong>
-                <small>Complete</small>
-              </div>
-
-              <span class="readiness-result readiness-result--done">
-                Complete
-              </span>
-
-            </div>
-
-
-            <div class="ui-readiness-item">
-
-              <span class="readiness-status readiness-status--done">
-                <i class="bi bi-check2"></i>
-              </span>
-
-              <div>
-                <strong>Requirements</strong>
-                <small>Confirmed</small>
-              </div>
-
-              <span class="readiness-result readiness-result--done">
-                Complete
-              </span>
-
-            </div>
-
-
-            <div class="ui-readiness-item">
-
-              <span class="readiness-status readiness-status--warning">
-                <i class="bi bi-exclamation-lg"></i>
-              </span>
-
-              <div>
-                <strong>Brand assets</strong>
-                <small>Some files are missing</small>
-              </div>
-
-              <span class="readiness-result readiness-result--warning">
-                Needs attention
-              </span>
-
-            </div>
-
-
-            <div class="ui-readiness-item">
-
-              <span class="readiness-status readiness-status--missing">
-                <i class="bi bi-dash-lg"></i>
-              </span>
-
-              <div>
-                <strong>Launch date</strong>
-                <small>Client decision required</small>
-              </div>
-
-              <span class="readiness-result readiness-result--missing">
-                Missing
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <div class="ui-callout">
-
-            <i class="bi bi-info-circle"></i>
-
-            <span>
-              3 items need attention before the project is ready.
-            </span>
-
-          </div>
-
-        </div>
-
+      <!-- ARROW -->
+      <div class="workflow-arrow">
+        <i class="ph ph-arrow-right"></i>
       </div>
 
-    </div>
 
+      <!-- =========================
+           STEP 03
+           ========================= -->
+      <div class="how-step">
 
-    <!-- =======================================================
-         ROW 03 - START
-         ======================================================= -->
-    <div class="workflow-row row align-items-center g-5">
-
-      <!-- LEFT -->
-      <div class="col-lg-6">
-
-        <div class="workflow-step-copy">
-
-          <div class="workflow-step-marker">
-            <span class="workflow-number">03</span>
-            <span class="workflow-label">Start</span>
-          </div>
-
-          <span class="workflow-icon">
-            <i class="bi bi-rocket-takeoff"></i>
-          </span>
-
-          <h3>
-            Move into execution.
-          </h3>
-
-          <p>
-            Once everything is in place, your team gets a clear project
-            record and can start building with confidence.
-          </p>
-
-          <a href="#start" class="workflow-link">
-            Start a project
-            <i class="bi bi-arrow-right"></i>
-          </a>
-
+        <div class="step-icon">
+          <i class="ph ph-chat-circle-text"></i>
         </div>
+
+        <div class="step-number">
+          03
+        </div>
+
+        <h3 class="step-title">
+          Collect & clarify
+        </h3>
+
+        <p class="step-text">
+          Get the answers, files and feedback
+          together in one place.
+        </p>
 
       </div>
 
 
-      <!-- RIGHT -->
-      <div class="col-lg-6  ">
-
-        <div class="workflow-ui-card workflow-ui-card--ready">
-
-          <div class="ui-card__header">
-
-            <div>
-              <span class="ui-card__eyebrow">
-                Project status
-              </span>
-
-              <strong>
-                Website redesign
-              </strong>
-            </div>
-
-            <span class="ui-status ui-status--ready">
-              <span></span>
-              Ready
-            </span>
-
-          </div>
+      <!-- ARROW -->
+      <div class="workflow-arrow">
+        <i class="ph ph-arrow-right"></i>
+      </div>
 
 
-          <div class="ui-project-body">
+      <!-- =========================
+           STEP 04
+           ========================= -->
+      <div class="how-step">
 
-            <div class="ui-project-icon">
-              <i class="bi bi-folder2-open"></i>
-            </div>
-
-            <div class="ui-project-copy">
-
-              <strong>
-                Everything required is in place.
-              </strong>
-
-              <small>
-                The brief is complete enough for the team to begin execution.
-              </small>
-
-            </div>
-
-          </div>
-
-
-          <div class="ui-project-meta">
-
-            <div>
-              <span>Brief</span>
-              <strong>Complete</strong>
-            </div>
-
-            <div>
-              <span>Files</span>
-              <strong>12</strong>
-            </div>
-
-            <div>
-              <span>Clarifications</span>
-              <strong>0</strong>
-            </div>
-
-          </div>
-
-
-          <div class="ui-ready-bar">
-            <span></span>
-          </div>
-
+        <div class="step-icon">
+          <i class="ph ph-check"></i>
         </div>
+
+        <div class="step-number">
+          04
+        </div>
+
+        <h3 class="step-title">
+          Start with confidence
+        </h3>
+
+        <p class="step-text">
+          Everything your team needs is clear,
+          organized and ready to move forward.
+        </p>
 
       </div>
 
     </div>
 
   </div>
-
 </section>
 
 
 <!-- =========================================================
-     SECTION 4 - THE QENREC EXPERIENCE
-     Insert immediately after Section 3.
+     QENREC — BUILT FOR CREATIVE TEAMS
      ========================================================= -->
-<section class="experience-section" id="experience" aria-labelledby="experience-title">
+
+<section class="qenrec-visibility-section">
   <div class="container-xl">
 
-    <div class="experience-heading">
-      <div>
-        <span class="experience-kicker">The Qenrec experience</span>
+    <div class="row align-items-stretch g-4 g-xl-5">
 
-        <h2 class="experience-title" id="experience-title">
-          Everything your project needs,
-          <span>in one place.</span>
-        </h2>
+
+      <!-- =====================================================
+           LEFT — IMAGE
+           ===================================================== -->
+      <div class="col-lg-6 d-flex">
+
+        <div class="visibility-image-wrapper">
+
+            <img
+            src="assets/imagery 3.png"
+            alt="Qenrec helping creative teams manage project information"
+            class="visibility-image">
+          
+        </div>
+
       </div>
 
-      <p class="experience-intro">
-        From the first client answer to the final project handoff,
-        Qenrec keeps the important details connected and visible.
-      </p>
-    </div>
 
-    <div class="experience-showcase row g-4 g-xl-5 align-items-stretch">
+      <!-- =====================================================
+           RIGHT — CONTENT
+           ===================================================== -->
+      <div class="col-lg-6 d-flex">
 
-    <!-- Client Brief -->
-    <div class="col-lg-6">
-        <div class="experience-panel experience-panel--brief h-100">
+        <div class="visibility-content">
 
-            <div class="experience-panel__top">
-                <div>
-                    <span class="panel-label">CLIENT BRIEF</span>
-                    <h3>Acme Coffee</h3>
+          <!-- Eyebrow -->
+          <span class="visibility-eyebrow">
+            BUILT FOR CREATIVE TEAMS
+          </span>
+
+
+          <!-- Heading -->
+          <h2 class="visibility-title">
+            A better way to
+            <br>
+            manage project information.
+          </h2>
+
+
+          <!-- Description -->
+          <p class="visibility-description">
+            Qenrec gives you the structure and visibility you need to
+            run smoother projects, build stronger client relationships
+            and deliver exceptional work.
+          </p>
+
+
+          <!-- =================================================
+               FEATURES + STAT CARD
+               ================================================= -->
+
+          <div class="visibility-bottom-row">
+
+
+            <!-- FEATURE LIST -->
+            <div class="visibility-features">
+
+
+              <!-- FEATURE 1 -->
+              <div class="visibility-feature">
+
+                <div class="visibility-feature-icon">
+                  <i class="ph ph-folder-simple"></i>
                 </div>
 
-                <span class="panel-status">
-                    <span class="panel-status__dot"></span>
-                    In progress
-                </span>
+                <div class="visibility-feature-copy">
+                  <h3>Organise everything</h3>
+                  <p>
+                    Keep project information, files and
+                    requirements together.
+                  </p>
+                </div>
+
+              </div>
+
+
+              <!-- FEATURE 2 -->
+              <div class="visibility-feature">
+
+                <div class="visibility-feature-icon">
+                  <i class="ph ph-users-three"></i>
+                </div>
+
+                <div class="visibility-feature-copy">
+                  <h3>Keep everyone aligned</h3>
+                  <p>
+                    Give your team and clients a clearer
+                    view of what's needed.
+                  </p>
+                </div>
+
+              </div>
+
+
+              <!-- FEATURE 3 -->
+              <div class="visibility-feature">
+
+                <div class="visibility-feature-icon">
+                  <i class="ph ph-clock"></i>
+                </div>
+
+                <div class="visibility-feature-copy">
+                  <h3>Save time and effort</h3>
+                  <p>
+                    Spend less time chasing information
+                    and more time doing the work.
+                  </p>
+                </div>
+
+              </div>
+
             </div>
 
-            <div class="brief-progress">
-                <div class="brief-progress__meta">
-                    <span>Project information</span>
-                    <strong>86%</strong>
-                </div>
 
-                <div class="brief-progress__track">
-                    <span></span>
-                </div>
-            </div>
+            <!-- =================================================
+                 86% STAT CARD
+                 ================================================= -->
+            <div class="visibility-stat-card">
 
-            <div class="brief-sections">
+              <div class="visibility-stat-number">
+                86%
+              </div>
 
-                <div class="brief-section-row is-complete">
-                    <span class="brief-section-row__icon">
-                        <i class="bi bi-building" aria-hidden="true"></i>
-                    </span>
-
-                    <div>
-                        <strong>Business</strong>
-                        <small>Company information</small>
-                    </div>
-
-                    <i
-                        class="bi bi-check2-circle brief-section-row__check"
-                        aria-hidden="true"
-                    ></i>
-                </div>
-
-                <div class="brief-section-row is-complete">
-                    <span class="brief-section-row__icon">
-                        <i class="bi bi-palette" aria-hidden="true"></i>
-                    </span>
-
-                    <div>
-                        <strong>Brand</strong>
-                        <small>Identity and visual direction</small>
-                    </div>
-
-                    <i
-                        class="bi bi-check2-circle brief-section-row__check"
-                        aria-hidden="true"
-                    ></i>
-                </div>
-
-                <div class="brief-section-row is-complete">
-                    <span class="brief-section-row__icon">
-                        <i class="bi bi-people" aria-hidden="true"></i>
-                    </span>
-
-                    <div>
-                        <strong>Audience</strong>
-                        <small>Who the project is for</small>
-                    </div>
-
-                    <i
-                        class="bi bi-check2-circle brief-section-row__check"
-                        aria-hidden="true"
-                    ></i>
-                </div>
-
-                <div class="brief-section-row is-active">
-                    <span class="brief-section-row__icon">
-                        <i class="bi bi-grid-1x2" aria-hidden="true"></i>
-                    </span>
-
-                    <div>
-                        <strong>Requirements</strong>
-                        <small>What the project must do</small>
-                    </div>
-
-                    <span class="brief-section-row__arrow">
-                        <i class="bi bi-arrow-right" aria-hidden="true"></i>
-                    </span>
-                </div>
+              <p class="visibility-stat-text">
+                of agencies say Qenrec helps them
+                start projects faster and with
+                greater clarity.
+              </p>
 
             </div>
+
+          </div>
+
         </div>
+
+      </div>
+
     </div>
 
+  </div>
+</section>
 
-    <!-- Project Readiness -->
-    <div class="col-lg-6">
-        <div class="experience-panel experience-panel--readiness h-100">
+<!-- =========================================================
+     GIVE EVERY PROJECT A BETTER BEGINNING — CTA
+     ========================================================= -->
 
-            <div class="experience-panel__top">
-                <div>
-                    <span class="panel-label">PROJECT READINESS</span>
-                    <h3>Ready to start</h3>
-                </div>
+<section class="project-beginning-cta">
+    <div class="container-fluid px-0">
+        <div class="row g-0 align-items-stretch">
 
-                <span class="readiness-score">86%</span>
+            <!-- IMAGE COLUMN -->
+            <div class="col-lg-3 project-cta-image">
+                <img
+                    src="assets/section 6 img.png "
+                    alt="Qenrec team working together"
+                    class="project-cta-image-img"
+                >
             </div>
 
-            <div class="readiness-status-card">
-                <span class="readiness-status-card__icon">
-                    <i class="bi bi-check2" aria-hidden="true"></i>
-                </span>
+            <!-- CONTENT COLUMN -->
+            <div class="col-lg-9 project-cta-body">
+                <div class="container-fluid px-0 h-100">
+                    <div class="row h-100 align-items-center">
 
-                <div>
-                    <strong>Strong project foundation</strong>
-                    <small>Most required information is in place.</small>
+                        <!-- TEXT -->
+                        <div class="col-lg-9 project-cta-text">
+                            <h2>Give every project a better beginning.</h2>
+
+                            <p>
+                                Join creative teams who are already using Qenrec
+                                to work smarter, collaborate better and deliver
+                                outstanding results.
+                            </p>
+                        </div>
+
+                        <!-- BUTTON -->
+                        <div class="col-lg-2 project-cta-action">
+                            <a href="#" class="project-cta-btn">
+                                Get Started Free
+                            </a>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
-
-            <div class="readiness-metrics">
-
-                <div class="readiness-metric">
-                    <span>Answers</span>
-                    <strong>34 / 39</strong>
-                </div>
-
-                <div class="readiness-metric">
-                    <span>Files</span>
-                    <strong>12</strong>
-                </div>
-
-                <div class="readiness-metric">
-                    <span>Clarifications</span>
-                    <strong>2</strong>
-                </div>
-
-            </div>
-
-            <div class="readiness-missing">
-
-                <div class="readiness-missing__top">
-                    <span>Still needed</span>
-                    <span>3 items</span>
-                </div>
-
-                <div class="missing-item">
-                    <span class="missing-item__dot"></span>
-                    Final product photography
-                </div>
-
-                <div class="missing-item">
-                    <span class="missing-item__dot"></span>
-                    Confirm payment provider
-                </div>
-
-                <div class="missing-item">
-                    <span class="missing-item__dot"></span>
-                    Approve launch date
-                </div>
-
             </div>
 
         </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     QENREC — FAQ SECTION
+     ========================================================= -->
+
+<section class="faq-section" id="faq" aria-labelledby="faq-title">
+
+    <div class="container-xl">
+
+        <!-- FAQ HEADING -->
+        <div class="faq-heading">
+
+            <span class="faq-kicker">FAQ</span>
+
+            <h2 class="faq-title" id="faq-title">
+                Frequently asked questions
+            </h2>
+
+            <p class="faq-intro">
+                Everything you need to understand Qenrec and how it helps teams
+                start every project with clarity.
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+             FAQ ROW 1
+             ===================================================== -->
+
+        <div class="row g-4 faq-row">
+
+            <!-- FAQ 1 -->
+            <div class="col-lg-6">
+
+    <div class="faq-item">
+        <button
+            class="faq-question"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#faq-answer-1"
+            aria-expanded="false"
+            aria-controls="faq-answer-1"
+        >
+            <span>What is Qenrec?</span>
+
+            <span class="faq-arrow">
+                <i class="bi bi-chevron-down"></i>
+            </span>
+        </button>
+
+
+        <div
+            class="collapse"
+            id="faq-answer-1"
+        >
+
+            <div class="faq-answer">
+
+                <p>
+                    Qenrec is a project briefing and client intake platform that helps
+                    teams collect, organize, and clarify the information needed before
+                    a project begins.
+                </p>
+
+            </div>
+
+        </div>
+
     </div>
 
 </div>
 
-    <div class="experience-footer">
-      <span class="experience-footer__eyebrow">Built around the project</span>
+            <!-- FAQ 2 -->
+            <div class="col-lg-6">
 
-      <div class="experience-footer__items">
-        <span><i class="bi bi-ui-checks-grid" aria-hidden="true"></i> Structured brief</span>
-        <span><i class="bi bi-folder2-open" aria-hidden="true"></i> Project files</span>
-        <span><i class="bi bi-chat-left-text" aria-hidden="true"></i> Clarifications</span>
-        <span><i class="bi bi-check2-square" aria-hidden="true"></i> Project readiness</span>
-      </div>
+                <div class="faq-item">
+
+                    <button
+                        class="faq-question"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#faq-answer-2"
+                        aria-expanded="false"
+                        aria-controls="faq-answer-2"
+                    >
+                        <span>Who is Qenrec built for?</span>
+
+                        <span class="faq-arrow">
+                            <i class="bi bi-chevron-down"></i>
+                        </span>
+                    </button>
+
+
+                    <div
+                        class="collapse"
+                        id="faq-answer-2"
+                    >
+
+                        <div class="faq-answer">
+
+                            <p>
+                                Qenrec is designed for agencies, studios, professional-service
+                                teams, and other organizations that regularly start projects with
+                                clients and need structured information before execution.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             FAQ ROW 2
+             ===================================================== -->
+
+        <div class="row g-4 faq-row">
+
+            <!-- FAQ 3 -->
+            <div class="col-lg-6">
+
+                <div class="faq-item">
+
+                    <button
+                        class="faq-question"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#faq-answer-3"
+                        aria-expanded="false"
+                        aria-controls="faq-answer-3"
+                    >
+                        <span>How does Qenrec work?</span>
+
+                        <span class="faq-arrow">
+                            <i class="bi bi-chevron-down"></i>
+                        </span>
+                    </button>
+
+
+                    <div
+                        class="collapse"
+                        id="faq-answer-3"
+                    >
+
+                        <div class="faq-answer">
+
+                            <p>
+                                You create or select a project brief, send it to your client,
+                                collect their information and files, review what is complete or
+                                missing, clarify unanswered questions, and move the project toward
+                                ready-to-start.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FAQ 4 -->
+            <div class="col-lg-6">
+
+                <div class="faq-item">
+
+                    <button
+                        class="faq-question"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#faq-answer-4"
+                        aria-expanded="false"
+                        aria-controls="faq-answer-4"
+                    >
+                        <span>
+                            Can we create our own questions and project templates?
+                        </span>
+
+                        <span class="faq-arrow">
+                            <i class="bi bi-chevron-down"></i>
+                        </span>
+                    </button>
+
+
+                    <div
+                        class="collapse"
+                        id="faq-answer-4"
+                    >
+
+                        <div class="faq-answer">
+
+                            <p>
+                                Yes. Qenrec is designed around reusable templates and customizable
+                                questions so teams can build workflows for different project types.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             FAQ ROW 3
+             ===================================================== -->
+
+        <div class="row g-4 faq-row">
+
+            <!-- FAQ 5 -->
+            <div class="col-lg-6">
+
+                <div class="faq-item">
+
+                    <button
+                        class="faq-question"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#faq-answer-5"
+                        aria-expanded="false"
+                        aria-controls="faq-answer-5"
+                    >
+                        <span>
+                            Do clients need a Qenrec account to complete a brief?
+                        </span>
+
+                        <span class="faq-arrow">
+                            <i class="bi bi-chevron-down"></i>
+                        </span>
+                    </button>
+
+
+                    <div
+                        class="collapse"
+                        id="faq-answer-5"
+                    >
+
+                        <div class="faq-answer">
+
+                            <p>
+                                The intended experience is a client-facing brief accessed through
+                                a secure project link, allowing the client to complete the required
+                                information without entering the agency workspace.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FAQ 6 -->
+            <div class="col-lg-6">
+
+                <div class="faq-item">
+
+                    <button
+                        class="faq-question"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#faq-answer-6"
+                        aria-expanded="false"
+                        aria-controls="faq-answer-6"
+                    >
+                        <span>
+                            What happens after a client submits a brief?
+                        </span>
+
+                        <span class="faq-arrow">
+                            <i class="bi bi-chevron-down"></i>
+                        </span>
+                    </button>
+
+
+                    <div
+                        class="collapse"
+                        id="faq-answer-6"
+                    >
+
+                        <div class="faq-answer">
+
+                            <p>
+                                The agency receives the completed project information, can review
+                                the submission, identify missing details, request clarifications,
+                                and determine whether the project is ready to move into execution.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             FAQ ROW 4
+             ===================================================== -->
+
+        <div class="row g-4 faq-row">
+
+            <!-- FAQ 7 -->
+            <div class="col-lg-6">
+
+                <div class="faq-item">
+
+                    <button
+                        class="faq-question"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#faq-answer-7"
+                        aria-expanded="false"
+                        aria-controls="faq-answer-7"
+                    >
+                        <span>
+                            How does Qenrec handle project files and sensitive information?
+                        </span>
+
+                        <span class="faq-arrow">
+                            <i class="bi bi-chevron-down"></i>
+                        </span>
+                    </button>
+
+
+                    <div
+                        class="collapse"
+                        id="faq-answer-7"
+                    >
+
+                        <div class="faq-answer">
+
+                            <p>
+                                Qenrec is designed to keep project information, requirements,
+                                decisions, and client-provided files organized within the project
+                                instead of scattered across different tools. Security, permissions,
+                                and privacy controls are part of the product architecture.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FAQ 8 — NEW -->
+            <div class="col-lg-6">
+
+                <div class="faq-item">
+
+                    <button
+                        class="faq-question"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#faq-answer-8"
+                        aria-expanded="false"
+                        aria-controls="faq-answer-8"
+                    >
+                        <span>
+                            Can Qenrec help make sure a project is ready before work begins?
+                        </span>
+
+                        <span class="faq-arrow">
+                            <i class="bi bi-chevron-down"></i>
+                        </span>
+                    </button>
+
+
+                    <div
+                        class="collapse"
+                        id="faq-answer-8"
+                    >
+
+                        <div class="faq-answer">
+
+                            <p>
+                                Yes. Qenrec helps teams collect the required information,
+                                identify missing details, resolve unanswered questions, and
+                                confirm that the project has the clarity needed before work begins.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 
-  </div>
 </section>
-
-
-
-<!-- SECTION 5 - CORE CAPABILITIES -->
-<section class="capabilities-section" id="capabilities" aria-labelledby="capabilities-title">
-  <div class="container-xl">
-
-    <div class="capabilities-heading">
-
-        <p class="capabilities-intro">
-        Qenrec gives teams the structure they need to collect, organize,
-        clarify, and prepare client projects without adding unnecessary process.
-      </p>
-
-      <div>
-        <span class="capabilities-kicker">Core capabilities</span>
-        <h2 class="capabilities-title" id="capabilities-title">
-          Built around the work
-          <span>before the work.</span>
-        </h2>
-      </div>
-
-    </div>
-
-    <div class="capabilities-grid">
-
-      <article class="capability-card capability-card--featured">
-        <div class="capability-card__top">
-          <span class="capability-index">01</span>
-          <span class="capability-icon"><i class="bi bi-ui-checks-grid"></i></span>
-        </div>
-
-        <div class="capability-card__body">
-          <span class="capability-label">Structured briefs</span>
-          <h3>Ask the right questions, in the right order.</h3>
-          <p>
-            Create guided project briefs that lead clients through the information
-            your team actually needs instead of another long static form.
-          </p>
-
-          <div class="capability-preview">
-            <div class="preview-header">
-              <span>Website project</span>
-              <span>04 / 09</span>
-            </div>
-            <div class="preview-question">
-              <span class="preview-label">
-                What should the new website help your business achieve?
-              </span>
-              <div class="preview-options">
-                <span class="preview-option is-selected">Generate more leads</span>
-                <span class="preview-option">Increase sales</span>
-                <span class="preview-option">Improve credibility</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="capability-card">
-        <div class="capability-card__top">
-          <span class="capability-index">02</span>
-          <span class="capability-icon"><i class="bi bi-layout-text-window-reverse"></i></span>
-        </div>
-
-        <div class="capability-card__body">
-          <span class="capability-label">Templates</span>
-          <h3>Start from a proven workflow.</h3>
-          <p>Reuse project structures and adapt them to the way your team works.</p>
-
-          <div class="mini-list">
-            <div class="mini-list__row">
-              <span class="mini-list__icon"><i class="bi bi-window-stack"></i></span>
-              <div><strong>Website discovery</strong><small>10 sections</small></div>
-              <i class="bi bi-arrow-up-right"></i>
-            </div>
-            <div class="mini-list__row">
-              <span class="mini-list__icon"><i class="bi bi-palette"></i></span>
-              <div><strong>Brand project</strong><small>8 sections</small></div>
-              <i class="bi bi-arrow-up-right"></i>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="capability-card">
-        <div class="capability-card__top">
-          <span class="capability-index">03</span>
-          <span class="capability-icon"><i class="bi bi-folder2-open"></i></span>
-        </div>
-
-        <div class="capability-card__body">
-          <span class="capability-label">Files &amp; assets</span>
-          <h3>Keep project materials together.</h3>
-          <p>
-            Give every asset a clear home instead of chasing files across inboxes,
-            chats, and cloud folders.
-          </p>
-
-          <div class="mini-list">
-            <div class="mini-list__row">
-              <span class="mini-list__icon"><i class="bi bi-file-earmark-image"></i></span>
-              <div><strong>Logo.svg</strong><small>Brand · 246 KB</small></div>
-            </div>
-            <div class="mini-list__row">
-              <span class="mini-list__icon"><i class="bi bi-file-earmark-pdf"></i></span>
-              <div><strong>Brand-guide.pdf</strong><small>Brand · 3.2 MB</small></div>
-            </div>
-            <div class="mini-list__row">
-              <span class="mini-list__icon"><i class="bi bi-file-earmark-text"></i></span>
-              <div><strong>Website-copy.docx</strong><small>Content · 812 KB</small></div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="capability-card">
-        <div class="capability-card__top">
-          <span class="capability-index">04</span>
-          <span class="capability-icon"><i class="bi bi-chat-left-text"></i></span>
-        </div>
-
-        <div class="capability-card__body">
-          <span class="capability-label">Clarifications</span>
-          <h3>Keep questions attached to the project.</h3>
-          <p>
-            Ask for clarification without starting another email thread or losing
-            the answer later.
-          </p>
-
-          <div class="clarification-preview">
-            <span class="clarification-tag">Needs clarification</span>
-            <strong>Should the homepage focus primarily on products or services?</strong>
-            <div class="clarification-answer">
-              <span class="answer-avatar">AC</span>
-              <span>Products should be the primary focus.</span>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="capability-card">
-        <div class="capability-card__top">
-          <span class="capability-index">05</span>
-          <span class="capability-icon"><i class="bi bi-check2-square"></i></span>
-        </div>
-
-        <div class="capability-card__body">
-          <span class="capability-label">Review &amp; approvals</span>
-          <h3>Know what has been confirmed.</h3>
-          <p>
-            Keep important decisions visible so everyone knows what the project
-            is actually moving forward with.
-          </p>
-
-          <div class="approval-preview">
-            <div class="approval-row">
-              <span class="approval-icon approved"><i class="bi bi-check2"></i></span>
-              <div><strong>Project scope</strong><small>Approved by client</small></div>
-              <span class="approval-state">Approved</span>
-            </div>
-            <div class="approval-row">
-              <span class="approval-icon pending"><i class="bi bi-clock"></i></span>
-              <div><strong>Launch date</strong><small>Waiting for confirmation</small></div>
-              <span class="approval-state pending-state">Pending</span>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="capability-card capability-card--accent">
-        <div class="capability-card__top">
-          <span class="capability-index">06</span>
-          <span class="capability-icon"><i class="bi bi-clipboard2-check"></i></span>
-        </div>
-
-        <div class="capability-card__body">
-          <span class="capability-label">Project readiness</span>
-          <h3>Know when it is safe to start.</h3>
-          <p>
-            See what is complete, what is missing, and what still needs a decision
-            before execution begins.
-          </p>
-
-          <div class="readiness-preview">
-            <div class="readiness-preview__head">
-              <span>Project readiness</span>
-              <strong>86%</strong>
-            </div>
-            <div class="readiness-preview__bar"><span></span></div>
-            <div class="readiness-pills">
-              <span><i class="bi bi-check2"></i> Information</span>
-              <span><i class="bi bi-check2"></i> Requirements</span>
-              <span class="pending-pill"><i class="bi bi-exclamation"></i> Assets</span>
-            </div>
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-  <!-- FAQ SECTION-->
-<section class="faq-section" id="faq" aria-labelledby="faq-title">
-  <div class="container-xl">
-
-    <div class="faq-heading">
-      <span class="faq-kicker">FAQ</span>
-      <h2 class="faq-title" id="faq-title">Frequently asked questions</h2>
-      <p class="faq-intro">
-        Everything you need to understand Qenrec and how it helps teams start
-        every project with clarity.
-      </p>
-    </div>
-
-    <div class="faq-list" id="qenrecFaq">
-
-      <div class="faq-item is-open">
-        <button class="faq-question" type="button" aria-expanded="true"
-                aria-controls="faq-answer-1" id="faq-question-1">
-          <span>What is Qenrec?</span>
-          <span class="faq-arrow" aria-hidden="true">
-            <i class="bi bi-chevron-down"></i>
-          </span>
-        </button>
-        <div class="faq-answer" id="faq-answer-1" role="region"
-             aria-labelledby="faq-question-1">
-          <p>
-            Qenrec is a project briefing and client intake platform that helps
-            teams collect, organize, and clarify the information needed before
-            a project begins.
-          </p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" type="button" aria-expanded="false"
-                aria-controls="faq-answer-2" id="faq-question-2">
-          <span>Who is Qenrec built for?</span>
-          <span class="faq-arrow" aria-hidden="true">
-            <i class="bi bi-chevron-down"></i>
-          </span>
-        </button>
-        <div class="faq-answer" id="faq-answer-2" role="region"
-             aria-labelledby="faq-question-2" hidden>
-          <p>
-            Qenrec is designed for agencies, studios, professional-service
-            teams, and other organizations that regularly start projects with
-            clients and need structured information before execution.
-          </p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" type="button" aria-expanded="false"
-                aria-controls="faq-answer-3" id="faq-question-3">
-          <span>How does Qenrec work?</span>
-          <span class="faq-arrow" aria-hidden="true">
-            <i class="bi bi-chevron-down"></i>
-          </span>
-        </button>
-        <div class="faq-answer" id="faq-answer-3" role="region"
-             aria-labelledby="faq-question-3" hidden>
-          <p>
-            You create or select a project brief, send it to your client,
-            collect their information and files, review what is complete or
-            missing, clarify unanswered questions, and move the project toward
-            ready-to-start.
-          </p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" type="button" aria-expanded="false"
-                aria-controls="faq-answer-4" id="faq-question-4">
-          <span>Can we create our own questions and project templates?</span>
-          <span class="faq-arrow" aria-hidden="true">
-            <i class="bi bi-chevron-down"></i>
-          </span>
-        </button>
-        <div class="faq-answer" id="faq-answer-4" role="region"
-             aria-labelledby="faq-question-4" hidden>
-          <p>
-            Yes. Qenrec is designed around reusable templates and customizable
-            questions so teams can build workflows for different project types.
-          </p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" type="button" aria-expanded="false"
-                aria-controls="faq-answer-5" id="faq-question-5">
-          <span>Do clients need a Qenrec account to complete a brief?</span>
-          <span class="faq-arrow" aria-hidden="true">
-            <i class="bi bi-chevron-down"></i>
-          </span>
-        </button>
-        <div class="faq-answer" id="faq-answer-5" role="region"
-             aria-labelledby="faq-question-5" hidden>
-          <p>
-            The intended experience is a client-facing brief accessed through
-            a secure project link, allowing the client to complete the required
-            information without entering the agency workspace.
-          </p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" type="button" aria-expanded="false"
-                aria-controls="faq-answer-6" id="faq-question-6">
-          <span>What happens after a client submits a brief?</span>
-          <span class="faq-arrow" aria-hidden="true">
-            <i class="bi bi-chevron-down"></i>
-          </span>
-        </button>
-        <div class="faq-answer" id="faq-answer-6" role="region"
-             aria-labelledby="faq-question-6" hidden>
-          <p>
-            The agency receives the completed project information, can review
-            the submission, identify missing details, request clarifications,
-            and determine whether the project is ready to move into execution.
-          </p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" type="button" aria-expanded="false"
-                aria-controls="faq-answer-7" id="faq-question-7">
-          <span>How does Qenrec handle project files and sensitive information?</span>
-          <span class="faq-arrow" aria-hidden="true">
-            <i class="bi bi-chevron-down"></i>
-          </span>
-        </button>
-        <div class="faq-answer" id="faq-answer-7" role="region"
-             aria-labelledby="faq-question-7" hidden>
-          <p>
-            Qenrec is designed to keep project information, requirements,
-            decisions, and client-provided files organized within the project
-            instead of scattered across different tools. Security, permissions,
-            and privacy controls are part of the product architecture.
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
 
 
 <!-- SPECTACULAR FOOTER -->
@@ -1182,7 +1128,7 @@
 
   <div class="container-xl">
     <div class="footer-cta">
-      <img class="footer-brand-mark" src="assets/qenrec-logo.png" alt="Qenrec">
+      <img class="footer-brand-mark" src="assets/qenrec_logo_transparent.png " alt="Qenrec">
       <h2 class="footer-cta__title">
         Start every project <span>with clarity</span>
       </h2>
@@ -1275,11 +1221,6 @@
 </footer>
 
 
-
-
-
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/faq.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

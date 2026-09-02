@@ -37,40 +37,186 @@ a {
   max-width: var(--qenrec-container);
 }
 
-/* =========================
-   UTILITY BAR
-========================= */
 
-.utility-bar {
-  border-bottom: 1px solid var(--qenrec-border);
-  background: rgba(250, 249, 247, 0.92);
+/* ============================================================
+   QENREC — INFINITE MARQUEE
+   ============================================================ */
+
+.qenrec-marquee {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  border-bottom:
+    1px solid var(--qenrec-border);
+
+  background:
+    rgba(250, 249, 247, 0.96);
 }
 
-.utility-bar__inner {
-  min-height: 38px;
+
+/* Soft edge fade */
+
+.qenrec-marquee::before,
+.qenrec-marquee::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  width: 70px;
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+
+.qenrec-marquee::before {
+  left: 0;
+
+  background:
+    linear-gradient(
+      to right,
+      #FAF9F7,
+      transparent
+    );
+}
+
+
+.qenrec-marquee::after {
+  right: 0;
+
+  background:
+    linear-gradient(
+      to left,
+      #FAF9F7,
+      transparent
+    );
+}
+
+
+/* Moving track */
+
+.qenrec-marquee__track {
   display: flex;
+
+  width: max-content;
+
+  animation:
+    qenrecMarquee 42s linear infinite;
+
+  will-change: transform;
+}
+
+
+/* Repeated group */
+
+.qenrec-marquee__group {
+  display: flex;
+
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+
+  flex-shrink: 0;
+
+  gap: 0.75rem;
+
+  padding:
+    0.72rem 0.85rem;
+
+  white-space: nowrap;
 }
 
-.utility-bar__text,
-.utility-bar__link {
-  font-size: 0.78rem;
-  font-weight: 500;
+
+/* Text */
+
+.qenrec-marquee__group span {
+ color: #120f0d;
+   
+
+  font-size:
+    0.68rem;
+
+  font-weight:
+    600;
+
+  letter-spacing:
+    0.12em;
+
+  text-transform:
+    uppercase;
 }
 
-.utility-bar__text {
-  color: var(--qenrec-text-soft);
+
+/* Accent keyword */
+
+.qenrec-marquee__group span:first-child {
+  color:
+    var(--qenrec-primary);
 }
 
-.utility-bar__link {
-  color: var(--qenrec-primary);
-  transition: color 0.18s ease;
+
+/* Separators */
+
+.qenrec-marquee__group i {
+    color: rgb(168, 29, 7);
+
+
+  font-size:
+    0.8rem;
 }
 
-.utility-bar__link:hover {
-  color: var(--qenrec-primary-dark);
+
+/* ============================================================
+   INFINITE MOTION
+   ============================================================ */
+
+@keyframes qenrecMarquee {
+
+  from {
+    transform:
+      translateX(0);
+  }
+
+  to {
+    transform:
+      translateX(-50%);
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 575.98px) {
+
+  .qenrec-marquee__group {
+    gap:
+      0.6rem;
+
+    padding:
+      0.62rem 0.7rem;
+  }
+
+  .qenrec-marquee__group span {
+    font-size:
+      0.6rem;
+
+    letter-spacing:
+      0.1em;
+  }
+
+  .qenrec-marquee__group i {
+    font-size:
+      0.7rem;
+  }
+
 }
 
 /* =========================
@@ -143,42 +289,31 @@ a {
   transform: scaleX(1);
 }
 
-/* =========================
-   DROPDOWN
-========================= */
-
-.nav-link.dropdown-toggle::after {
-  display: none;
-}
-
+/* Remove default Bootstrap caret and pseudo-elements */
+.dropdown-toggle::after,
 .dropdown-toggle::before {
-  content: "";
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  margin-left: 0.35rem;
-  margin-bottom: 3px;
-  border-right: 1.5px solid currentColor;
-  border-bottom: 1.5px solid currentColor;
-  transform: rotate(45deg);
+  display: none !important;
+  content: none !important;
 }
 
+/* Dropdown Menu styling */
 .dropdown-menu--qenrec {
-  min-width: 330px;
+  min-width: 360px;
   margin-top: 0.7rem;
-  padding: 0.55rem;
+  padding: 0.6rem;
   border: 1px solid var(--qenrec-border);
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 20px 60px rgba(34, 27, 22, 0.1);
+  background: #FFFFFF;
+  box-shadow: 0 20px 60px rgba(34, 27, 22, 0.12);
+  z-index: 1050;
 }
 
 .dropdown-item {
   display: flex;
-  gap: 0.75rem;
-  align-items: flex-start;
-  padding: 0.8rem;
-  border-radius: 11px;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.85rem 0.9rem;
+  border-radius: 12px;
   color: var(--qenrec-text);
   white-space: normal;
 }
@@ -195,27 +330,35 @@ a {
 }
 
 .dropdown-item strong {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--qenrec-text);
+  line-height: 1.2;
 }
 
 .dropdown-item small {
-  margin-top: 0.18rem;
-  color: var(--qenrec-text-soft);
-  font-size: 0.77rem;
+  margin-top: 0.25rem;
+  color: var(--qenrec-text-muted, #716A63);
+  font-size: 0.82rem;
   line-height: 1.35;
 }
 
 .dropdown-icon {
-  width: 34px;
-  height: 34px;
-  flex: 0 0 34px;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
   display: grid;
   place-items: center;
-  border-radius: 10px;
-  color: var(--qenrec-primary);
-  background: var(--qenrec-primary-soft);
+  border-radius: 12px;
+  color: #FFFFFF;
+  background: var(--qenrec-primary, #A81C07);
+  font-size: 1.15rem;
 }
+
+.dropdown-item:hover .dropdown-icon {
+  background: var(--qenrec-dark, #7E1607);
+}
+
 
 /* =========================
    NAV ACTIONS
@@ -260,570 +403,481 @@ a {
   transform: translateY(-1px);
 }
 
-/* ============================================================
+/* =========================================================
    QENREC HERO
-   Full-screen / full-bleed
-   Reference structure:
-   text = independent left layer
-   dashboard = independent right layer
-   ============================================================ */
+========================================================= */
 
 .hero-section {
   position: relative;
-  min-height: 100vh;
-
+  min-height: calc(100vh - 118px);
+  width: 100%;
   overflow: hidden;
-
   display: flex;
   align-items: center;
+  isolation: isolate;
+  background: #140403;
+}
 
+/* =========================
+   HERO BACKGROUND IMAGE
+========================= */
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: -4;
+  overflow: hidden;
+}
+
+.hero-background img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transform: scale(1.025);
+}
+
+/* =========================
+   HERO OVERLAY
+========================= */
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
   background:
-    radial-gradient(
-      720px 620px at 82% 50%,
-      rgba(232, 107, 79, 0.17) 0%,
-      rgba(232, 107, 79, 0.06) 40%,
-      transparent 72%
+    linear-gradient(
+      90deg,
+      rgba(5, 2, 2, 0.98) 0%,
+      rgba(9, 3, 2, 0.96) 18%,
+      rgba(25, 7, 4, 0.88) 34%,
+      rgba(82, 15, 7, 0.60) 52%,
+      rgba(111, 18, 7, 0.28) 69%,
+      rgba(111, 18, 7, 0.04) 86%,
+      rgba(0, 0, 0, 0.03) 100%
     ),
     linear-gradient(
-      108deg,
-      #4b0d04 0%,
-      #681108 25%,
-      #8b1909 52%,
-      #a81c07 76%,
-      #b32a13 100%
+      180deg,
+      rgba(0, 0, 0, 0.15) 0%,
+      rgba(0, 0, 0, 0.02) 45%,
+      rgba(0, 0, 0, 0.36) 100%
     );
 }
 
-/* ============================================================
-   GLOBAL HERO DEPTH
-   ============================================================ */
+/* =========================
+   HERO LIGHT EFFECT
+========================= */
 
 .hero-section::before {
   content: "";
-
   position: absolute;
   inset: 0;
-
-  background: linear-gradient(
-    90deg,
-    rgba(24, 3, 1, 0.16) 0%,
-    rgba(24, 3, 1, 0.04) 45%,
-    rgba(255, 165, 140, 0.035) 100%
-  );
-
+  z-index: -2;
   pointer-events: none;
+  background:
+    radial-gradient(
+      650px 500px at 74% 48%,
+      rgba(214, 64, 31, 0.18) 0%,
+      rgba(168, 28, 7, 0.10) 36%,
+      transparent 72%
+    );
 }
 
-/* ============================================================
+/* =========================
+   HERO BOTTOM FADE
+========================= */
+
+.hero-bottom-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 170px;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to top,
+      rgba(7, 6, 6, 0.72) 0%,
+      rgba(7, 6, 6, 0.32) 35%,
+      transparent 100%
+    );
+}
+
+/* =========================
    HERO CONTAINER
-   ============================================================ */
+========================= */
 
 .hero-container {
   position: relative;
-
+  z-index: 5;
   width: 100%;
-  min-height: 100vh;
-
+  min-height: inherit;
   margin: 0;
   padding: 0;
 }
 
-/* ============================================================
-   CONTENT WRAPPER
-   ============================================================ */
-
 .hero-inner {
   position: relative;
-  z-index: 5;
-
-  min-height: 100vh;
-
+  min-height: inherit;
   display: flex;
   align-items: center;
-
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
-/* ============================================================
+/* =========================
    HERO CONTENT
-   IMPORTANT:
-   This has a fixed maximum width so the dashboard can NEVER
-   push the headline into narrow stacked lines.
-   ============================================================ */
+========================= */
 
 .hero-content {
   position: relative;
   z-index: 10;
-
-  width: 100%;
-  max-width: 760px;
-
-  padding: 3rem 0;
+  width: min(100%, 700px);
+  padding: 2rem 0;
+  color: #ffffff;
 }
 
-/* ============================================================
-   KICKER
-   ============================================================ */
-
-.hero-kicker {
-  display: block;
-
-  margin-bottom: 1.05rem;
-
-  color: rgba(255, 255, 255, 0.68);
-
-  font-size: 0.72rem;
-  font-weight: 600;
-
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-/* ============================================================
+/* =========================
    HERO TITLE
-   ============================================================ */
+========================= */
 
 .hero-title {
-  max-width: 760px;
-
   margin: 0;
-
+  max-width: 690px;
   color: #ffffff;
-
-  font-size: clamp(4rem, 6.25vw, 6.6rem);
-
+  font-size: clamp(3.7rem, 6.1vw, 6.7rem);
   font-weight: 600;
-
   line-height: 0.94;
-
-  letter-spacing: -0.06em;
+  letter-spacing: -0.065em;
+  text-wrap: balance;
 }
 
 .hero-title span {
   display: block;
-
+  margin-top: 0.04em;
   color: #f4ccc2;
 }
 
-/* ============================================================
-   HERO PARAGRAPH
-   ============================================================ */
+/* =========================
+   HERO COPY
+========================= */
 
 .hero-copy {
-  max-width: 590px;
-
-  margin: 1.75rem 0 0;
-
-  color: rgba(255, 255, 255, 0.78);
-
-  font-size: clamp(1rem, 1.25vw, 1.1rem);
-
+  max-width: 570px;
+  margin: 2rem 0 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(1rem, 1.15vw, 1.12rem);
+  font-weight: 400;
   line-height: 1.72;
-
-  letter-spacing: -0.01em;
+  letter-spacing: -0.012em;
 }
 
-/* ============================================================
+/* =========================
    HERO ACTIONS
-   ============================================================ */
+========================= */
 
 .hero-actions {
   display: flex;
-
   align-items: center;
-
-  gap: 1rem;
-
-  margin-top: 2rem;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  margin-top: 2.35rem;
 }
 
-/* Primary button */
+/* =========================
+   HERO PRIMARY BUTTON
+========================= */
 
 .hero-primary-btn {
   display: inline-flex;
-
   align-items: center;
   justify-content: center;
-
-  min-height: 48px;
-
-  padding: 0.8rem 1.05rem;
-
+  min-height: 54px;
+  padding: 0.85rem 1.35rem;
   border: 1px solid #ffffff;
   border-radius: 10px;
-
   background: #ffffff;
-
   color: var(--qenrec-primary);
-
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 600;
-
-  box-shadow: 0 8px 22px rgba(35, 4, 1, 0.1);
-
+  letter-spacing: -0.01em;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
   transition:
     transform 180ms ease,
     background 180ms ease,
-    color 180ms ease;
+    color 180ms ease,
+    box-shadow 180ms ease;
 }
 
 .hero-primary-btn:hover,
-.hero-primary-btn:focus {
-  border-color: #ffffff;
-
-  background: #fff7f4;
-
+.hero-primary-btn:focus-visible {
+  border-color: #fff8f5;
+  background: #fff8f5;
   color: var(--qenrec-primary-dark);
-
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.22);
 }
 
-/* Secondary link */
+/* =========================
+   HERO SECONDARY LINK
+========================= */
 
 .hero-secondary-link {
   display: inline-flex;
-
   align-items: center;
-
-  color: rgba(255, 255, 255, 0.88);
-
-  font-size: 0.86rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.92rem;
   font-weight: 500;
-
+  text-decoration: none;
+  letter-spacing: -0.01em;
   transition:
     color 180ms ease,
-    gap 180ms ease;
+    transform 180ms ease;
 }
 
-.hero-secondary-link:hover {
+.hero-secondary-link i {
+  transition: transform 180ms ease;
+}
+
+.hero-secondary-link:hover,
+.hero-secondary-link:focus-visible {
   color: #ffffff;
+  transform: translateX(1px);
 }
 
-/* ============================================================
-   HERO NOTE
-   ============================================================ */
-
-.hero-note {
-  display: flex;
-
-  align-items: center;
-
-  margin-top: 1.55rem;
-
-  color: rgba(255, 255, 255, 0.56);
-
-  font-size: 0.8rem;
-  font-weight: 500;
+.hero-secondary-link:hover i,
+.hero-secondary-link:focus-visible i {
+  transform: translateX(4px);
 }
 
-.hero-note::before {
-  content: "";
+/* =========================================================
+   RESPONSIVE STYLES
+   All media queries are kept together at the bottom.
+========================================================= */
 
-  width: 7px;
-  height: 7px;
+/* Large Desktop */
 
-  margin-right: 0.6rem;
-
-  border-radius: 50%;
-
-  background: #f4ccc2;
-
-  box-shadow: 0 0 0 5px rgba(244, 204, 194, 0.08);
-}
-
-/* ============================================================
-   DASHBOARD
-   THIS IS THE IMPORTANT PART
-   It is ABSOLUTE and pinned to the far right.
-   It does NOT occupy Bootstrap grid space.
-   ============================================================ */
-
-.hero-dashboard {
-  position: absolute;
-
-  z-index: 2;
-
-  top: 0;
-  right: 0;
-  bottom: 0;
-
-  width: 59%;
-
-  overflow: hidden;
-
-  pointer-events: none;
-}
-
-/* ============================================================
-   DASHBOARD GLOW
-   ============================================================ */
-
-.hero-dashboard__glow {
-  position: absolute;
-
-  width: 650px;
-  height: 650px;
-
-  top: 50%;
-  left: 52%;
-
-  transform: translate(-50%, -50%);
-
-  border-radius: 50%;
-
-  background: radial-gradient(
-    circle,
-    rgba(255, 168, 144, 0.15) 0%,
-    rgba(255, 168, 144, 0.05) 43%,
-    transparent 72%
-  );
-}
-
-/* ============================================================
-   DASHBOARD FRAME
-  ============================================================ */
-
-.hero-dashboard__frame {
-  position: absolute;
-  top: 50%;
-
-  /*
-    This is what keeps the dashboard at the far end.
-    Increase this value to push it farther right.
-  */
-  left: 28%;
-
-  width: 920px;
-
-  transform: translateY(-50%) rotate(-1.25deg);
-
-  border: 1px solid rgba(255, 255, 255, 0.13);
-
-  border-radius: 22px;
-
-  overflow: hidden;
-
-  /*
-    Product is visible, but still secondary.
-  */
-  opacity: 0.22;
-
-  filter: saturate(0.48) contrast(0.92) brightness(1.1);
-
-  box-shadow: 0 40px 110px rgba(30, 4, 1, 0.3);
-}
-
-/* ============================================================
-   RUFous VEIL
-   ============================================================ */
-
-.hero-dashboard__frame::after {
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background: linear-gradient(
-    90deg,
-    rgba(72, 12, 5, 0.92) 0%,
-    rgba(72, 12, 5, 0.62) 16%,
-    rgba(72, 12, 5, 0.24) 40%,
-    rgba(72, 12, 5, 0.03) 72%,
-    transparent 100%
-  );
-
-  pointer-events: none;
-}
-
-/* Dashboard image */
-
-.hero-dashboard__frame img {
-  display: block;
-
-  width: 100%;
-  height: auto;
-}
-
-/* ============================================================
-   LARGE DESKTOP
-   ============================================================ */
-
-@media (max-width: 1399.98px) {
-  .hero-dashboard {
-    width: 57%;
-  }
-
-  .hero-dashboard__frame {
-    left: 11%;
-    width: 850px;
-  }
-}
-
-/* ============================================================
-   LAPTOP
-   ============================================================ */
-
-@media (max-width: 1199.98px) {
-  .hero-content {
-    max-width: 690px;
-  }
-
-  .hero-title {
-    font-size: clamp(3.7rem, 6.1vw, 5.8rem);
-  }
-
-  .hero-dashboard {
-    width: 54%;
-  }
-
-  .hero-dashboard__frame {
-    left: 13%;
-    width: 760px;
-  }
-}
-
-/* ============================================================
-   TABLET
-   ============================================================ */
-
-@media (max-width: 991.98px) {
-  .hero-section {
-    min-height: auto;
-
-    display: block;
-  }
-
-  .hero-container {
-    min-height: auto;
-  }
-
-  .hero-inner {
-    min-height: auto;
-
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-  }
-
-  .hero-content {
-    max-width: 720px;
-
-    padding: 2rem 0 1rem;
-  }
-
-  .hero-title {
-    font-size: clamp(3.3rem, 9vw, 5.8rem);
-  }
-
-  /*
-    On tablet, the dashboard becomes a background layer
-    below the readable content rather than taking grid space.
-  */
-  .hero-dashboard {
-    width: 72%;
-
-    top: auto;
-    right: -16%;
-
-    bottom: -35%;
-
-    height: 70%;
-
-    opacity: 0.9;
-  }
-
-  .hero-dashboard__frame {
-    left: 0;
-
-    width: 760px;
-
-    transform: translateY(-50%) rotate(-1deg);
-
-    opacity: 0.17;
-  }
-}
-
-/* ============================================================
-   MOBILE
-   ============================================================ */
-
-@media (max-width: 575.98px) {
+@media (min-width: 1400px) {
   .hero-inner {
     padding-top: 4rem;
     padding-bottom: 4rem;
   }
 
   .hero-content {
-    max-width: 100%;
-
-    padding: 1rem 0;
+    width: min(100%, 735px);
   }
 
-  .hero-kicker {
-    font-size: 0.65rem;
+  .hero-title {
+    font-size: clamp(5rem, 5.9vw, 6.8rem);
+  }
+}
 
-    margin-bottom: 0.85rem;
+/* Laptop */
+
+@media (max-width: 1199.98px) {
+  .hero-section {
+    min-height: calc(100vh - 110px);
+  }
+
+  .hero-inner {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .hero-content {
+    width: min(100%, 620px);
+  }
+
+  .hero-title {
+    font-size: clamp(3.7rem, 6.4vw, 5.6rem);
+  }
+
+  .hero-copy {
+    max-width: 520px;
+  }
+
+  .hero-background img {
+    object-position: 57% center;
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(5, 2, 2, 0.98) 0%,
+        rgba(10, 3, 2, 0.95) 23%,
+        rgba(34, 8, 4, 0.82) 42%,
+        rgba(87, 16, 7, 0.48) 62%,
+        rgba(111, 18, 7, 0.12) 83%,
+        transparent 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.12),
+        rgba(0, 0, 0, 0.34)
+      );
+  }
+}
+
+/* Tablet */
+
+@media (max-width: 991.98px) {
+  .hero-section {
+    min-height: calc(100vh - 96px);
+  }
+
+  .hero-inner {
+    align-items: center;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .hero-content {
+    width: min(100%, 600px);
+  }
+
+  .hero-title {
+    max-width: 620px;
+    font-size: clamp(3.3rem, 8vw, 5rem);
+  }
+
+  .hero-copy {
+    max-width: 500px;
+  }
+
+  .hero-background img {
+    object-position: 62% center;
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(5, 2, 2, 0.99) 0%,
+        rgba(9, 3, 2, 0.96) 28%,
+        rgba(30, 7, 4, 0.82) 48%,
+        rgba(81, 15, 7, 0.56) 67%,
+        rgba(100, 17, 7, 0.25) 84%,
+        rgba(0, 0, 0, 0.04) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.12),
+        rgba(0, 0, 0, 0.38)
+      );
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 767.98px) {
+  .utility-bar__inner {
+    min-height: auto;
+    padding: 0.7rem 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  .hero-section {
+    min-height: calc(100svh - 82px);
+    align-items: stretch;
+  }
+
+  .hero-inner {
+    min-height: calc(100svh - 82px);
+    display: flex;
+    align-items: center;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .hero-content {
+    width: 100%;
+    padding: 1rem 0;
   }
 
   .hero-title {
     max-width: 100%;
-
-    font-size: clamp(2.9rem, 14vw, 4.2rem);
-
+    font-size: clamp(3rem, 12vw, 4rem);
     line-height: 0.96;
+    letter-spacing: -0.055em;
   }
 
   .hero-copy {
-    max-width: 470px;
-
-    margin-top: 1.35rem;
-
-    font-size: 0.95rem;
-
+    max-width: 100%;
+    margin-top: 1.5rem;
+    font-size: 1rem;
     line-height: 1.65;
   }
 
   .hero-actions {
-    flex-wrap: wrap;
-
-    margin-top: 1.65rem;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.15rem;
+    margin-top: 1.9rem;
   }
 
-  .hero-note {
-    margin-top: 1.35rem;
-
-    font-size: 0.75rem;
+  .hero-primary-btn {
+    min-height: 52px;
   }
 
-  /*
-    Keep dashboard almost entirely atmospheric on small screens.
-  */
-  .hero-dashboard {
-    width: 115%;
-
-    right: -52%;
-
-    bottom: -8%;
-
-    height: 48%;
+  .hero-background img {
+    object-position: 69% center;
+    transform: scale(1.08);
   }
 
-  .hero-dashboard__glow {
-    width: 360px;
-    height: 360px;
+  .hero-overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(5, 2, 2, 0.99) 0%,
+        rgba(8, 3, 2, 0.97) 35%,
+        rgba(22, 6, 3, 0.90) 55%,
+        rgba(58, 12, 6, 0.72) 74%,
+        rgba(76, 14, 6, 0.35) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.12),
+        rgba(0, 0, 0, 0.50)
+      );
   }
 
-  .hero-dashboard__frame {
-    left: 0;
-
-    width: 560px;
-
-    border-radius: 16px;
-
-    opacity: 0.13;
+  .hero-bottom-fade {
+    height: 130px;
   }
 }
+
+/* Small Mobile */
+
+@media (max-width: 480px) {
+  .hero-inner {
+    padding-top: 2.75rem;
+    padding-bottom: 2.75rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.75rem, 13vw, 3.45rem);
+  }
+
+  .hero-copy {
+    font-size: 0.96rem;
+  }
+
+  .hero-primary-btn {
+    width: auto;
+    padding-inline: 1.2rem;
+  }
+}
+
+
+
 
 /* ============================================================
 SECTION 2 - THE PROBLEM
@@ -932,1640 +986,1728 @@ SECTION 2 - THE PROBLEM
   font-size: 0.72rem;
 }
 
-/* ============================================================
-   QENREC - SECTION 3
-   ============================================================ */
 
-.workflow-section {
-  padding: 7.5rem 0 7rem;
-  background: var(--qenrec-bg);
-  border-top: 1px solid var(--qenrec-border);
+/* =========================================================
+   QENREC — EVERYTHING YOU NEED, IN ONE PLACE
+   ========================================================= */
+
+.qenrec-product-section {
+  padding-top: 3.25rem;
+  padding-bottom: 4.5rem;
+
+  background: #F8FAF8;
 }
 
-/* =========================
-SECTION INTRO
-========================= */
 
-.workflow-intro {
-  max-width: 880px;
-  margin: 0 auto 4.5rem;
-  text-align: center;
+/* =========================================================
+   MAIN ROW
+   ========================================================= */
+
+.qenrec-product-section .row {
+  align-items: stretch;
 }
 
-.workflow-kicker {
-  color: var(--qenrec-primary);
+
+/* =========================================================
+   LEFT CONTENT
+   ========================================================= */
+
+.product-content {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.product-eyebrow {
+  display: block;
+
+  margin-bottom: 0.7rem;
+
+  font-family: "IBM Plex Sans", sans-serif;
   font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.13em;
+  font-weight: 700;
+  line-height: 1.2;
+
+  letter-spacing: 0.18em;
   text-transform: uppercase;
+
+  color: #A81C07;
 }
 
-.workflow-title {
-  max-width: 850px;
-  margin: 0.9rem auto 1rem;
-  color: var(--qenrec-text);
-  font-size: clamp(2.7rem, 5vw, 4.7rem);
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.product-title {
+  margin: 0 0 0.8rem;
+
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: clamp(2.35rem, 3.4vw, 3.15rem);
   font-weight: 600;
-  line-height: 1;
-  letter-spacing: -0.055em;
+  line-height: 1.04;
+
+  letter-spacing: -0.045em;
+
+  color: #17211D;
 }
 
-.workflow-title span {
-  color: var(--qenrec-primary);
-}
 
-.workflow-copy {
-  max-width: 690px;
-  margin: 0 auto;
-  color: var(--qenrec-text-muted);
-  font-size: 1.06rem;
-  line-height: 1.7;
-}
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
 
-/* =========================
-WORKFLOW ROWS
-========================= */
+.product-description {
+  max-width: 590px;
 
-.workflow-row {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 2rem 0;
-}
+  margin: 0 0 1.55rem;
 
-.workflow-row + .workflow-row {
-  margin-top: 2rem;
-  padding-top: 5rem;
-  border-top: 1px solid var(--qenrec-border);
-}
-
-/* =========================
-LEFT SIDE
-========================= */
-
-.workflow-step-copy {
-  max-width: 430px;
-}
-
-.workflow-step-marker {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.2rem;
-}
-
-.workflow-number {
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(168, 28, 7, 0.2);
-  border-radius: 50%;
-  color: var(--qenrec-primary);
-  background: #fff8f5;
-  font-size: 0.84rem;
-  font-weight: 600;
-}
-
-.workflow-label {
-  color: var(--qenrec-primary);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.workflow-icon {
-  width: 45px;
-  height: 45px;
-  display: grid;
-  place-items: center;
-  margin-bottom: 1rem;
-  border-radius: 12px;
-  color: var(--qenrec-primary);
-  background: var(--qenrec-primary-soft);
+  font-family: "IBM Plex Sans", sans-serif;
   font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+
+  color: #423A36;
 }
 
-.workflow-step-copy h3 {
-  margin: 0 0 0.7rem;
-  color: var(--qenrec-text);
-  font-size: clamp(1.65rem, 2.5vw, 2.2rem);
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.product-feature {
+  display: flex;
+  align-items: center;
+
+  gap: 0.9rem;
+
+  margin-bottom: 0.9rem;
+}
+
+.product-feature:last-child {
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   ICON TILE
+   ========================================================= */
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+
+  flex: 0 0 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  /*
+   * Qenrec Primary Rufous
+   */
+  background: #A81C07;
+
+  color: #FFFFFF;
+
+  font-size: 1.28rem;
+  line-height: 1;
+}
+
+
+/* =========================================================
+   FEATURE CONTENT
+   ========================================================= */
+
+.feature-content {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+/* Feature heading */
+
+.feature-content h3 {
+  margin: 0 0 0.15rem;
+
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+
+  color: #17211D;
+}
+
+
+/* Feature supporting text */
+
+.feature-content p {
+  margin: 0;
+
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 400;
+  line-height: 1.35;
+
+  color: #403833;
+}
+
+
+/* =========================================================
+   RIGHT IMAGE AREA
+   ========================================================= */
+
+.product-image-wrapper {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  border-radius: 16px;
+}
+
+/* =========================================================
+   DASHBOARD VIDEO
+   ========================================================= */
+
+.product-dashboard-video {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  /*
+   * CONTAIN keeps the complete video visible without cropping.
+   */
+  object-fit: contain;
+  object-position: center center;
+
+  border: 0;
+  outline: 0;
+
+  border-radius: 16px;
+}
+
+/* Ensure no visual artifacts render behind the video */
+.product-image-wrapper video {
+  background: transparent;
+  box-shadow: none;
+}
+
+
+/* =========================================================
+   TABLET MEDIA QUERY UPDATE
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+
+  .product-dashboard-video {
+    width: 100%;
+    height: 100%;
+    min-height: 380px;
+
+    object-fit: contain;
+    object-position: center center;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE MEDIA QUERY UPDATE
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+
+  .product-dashboard-video {
+    width: 100%;
+    min-height: 260px;
+
+    object-fit: contain;
+    object-position: center center;
+
+    border-radius: 14px;
+  }
+
+}
+
+/* =========================================================
+   QENREC — HOW QENREC WORKS
+   ========================================================= */
+
+.qenrec-how-section {
+  /*
+   * Creates the visual demarcation from the previous section.
+   * This is intentionally more than a tiny margin.
+   */
+  margin-top: 1.25rem;
+
+  padding-top: 4.5rem;
+  padding-bottom: 4.75rem;
+
+  background: #FFFFFF;
+
+  border-top: 1px solid rgba(117, 18, 6, 0.06);
+}
+
+
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
+
+.how-header {
+  max-width: 760px;
+  margin: 0 auto 3rem;
+}
+
+
+/* Eyebrow */
+
+.how-eyebrow {
+  display: block;
+
+  margin-bottom: 0.65rem;
+
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.2;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  color: #A81C07;
+}
+
+
+/* Heading */
+
+.how-title {
+  margin: 0;
+
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: clamp(2rem, 3vw, 2.85rem);
   font-weight: 600;
   line-height: 1.08;
-  letter-spacing: -0.045em;
-}
 
-.workflow-step-copy p {
-  max-width: 420px;
-  margin: 0;
-  color: var(--qenrec-text-muted);
-  font-size: 0.98rem;
-  line-height: 1.7;
-}
-
-.workflow-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  margin-top: 1.25rem;
-  color: var(--qenrec-primary);
-  font-size: 0.84rem;
-  font-weight: 600;
-  transition: gap 180ms ease;
-}
-
-.workflow-link:hover {
-  color: var(--qenrec-primary-dark);
-  gap: 0.7rem;
-}
-
-/* =========================
-RIGHT SIDE UI
-========================= */
-
-.workflow-ui-card {
-  min-height: 420px;
-  padding: 1.35rem;
-  border: 1px solid var(--qenrec-border);
-  border-radius: 22px;
-  background: #ffffff;
-  box-shadow: var(--qenrec-shadow-sm);
-}
-
-.workflow-ui-card--readiness {
-  border-color: rgba(168, 28, 7, 0.15);
-  background: #fffcfb;
-}
-
-.workflow-ui-card--ready {
-  border-color: rgba(46, 111, 74, 0.16);
-}
-
-/* =========================
-CARD HEADER
-========================= */
-
-.ui-card__header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--qenrec-border);
-}
-
-.ui-card__eyebrow {
-  display: block;
-  color: var(--qenrec-text-soft);
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-}
-
-.ui-card__header strong {
-  display: block;
-  margin-top: 0.3rem;
-  color: var(--qenrec-text);
-  font-size: 1.05rem;
-  font-weight: 600;
-}
-
-/* =========================
-STATUS
-========================= */
-
-.ui-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.33rem 0.52rem;
-  border-radius: 999px;
-  font-size: 0.62rem;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.ui-status span {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-}
-
-.ui-status--progress {
-  color: var(--qenrec-primary);
-  background: var(--qenrec-primary-soft);
-}
-
-.ui-status--progress span {
-  background: var(--qenrec-primary);
-}
-
-.ui-status--ready {
-  color: #2e6f4a;
-  background: #e8f1ec;
-}
-
-.ui-status--ready span {
-  background: #2e6f4a;
-}
-
-/* =========================
-ROW 1 - CLIENT BRIEF
-========================= */
-
-.ui-brief-list {
-  display: grid;
-  gap: 0.52rem;
-  margin-top: 1rem;
-}
-
-.ui-brief-item {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  padding: 0.76rem;
-  border: 1px solid transparent;
-  border-radius: 13px;
-}
-
-.ui-brief-item--active {
-  border-color: rgba(168, 28, 7, 0.18);
-  background: var(--qenrec-primary-soft);
-}
-
-.ui-brief-icon {
-  width: 36px;
-  height: 36px;
-  display: grid;
-  place-items: center;
-  flex: 0 0 36px;
-  border-radius: 10px;
-  color: var(--qenrec-primary);
-  background: #f7eeeb;
-  font-size: 0.78rem;
-}
-
-.ui-brief-item div {
-  flex: 1;
-  min-width: 0;
-}
-
-.ui-brief-item strong,
-.ui-brief-item small {
-  display: block;
-}
-
-.ui-brief-item strong {
-  color: var(--qenrec-text);
-  font-size: 0.76rem;
-  font-weight: 600;
-}
-
-.ui-brief-item small {
-  margin-top: 0.12rem;
-  color: var(--qenrec-text-soft);
-  font-size: 0.62rem;
-}
-
-.ui-check {
-  color: #2e6f4a;
-}
-
-.ui-arrow {
-  color: var(--qenrec-primary);
-}
-
-.ui-arrow-muted {
-  color: #b4aea6;
-}
-
-/* =========================
-ROW 2 - READINESS
-========================= */
-
-.ui-readiness-score {
-  color: var(--qenrec-primary) !important;
-  font-size: 1.2rem !important;
-}
-
-.ui-progress {
-  height: 7px;
-  margin-top: 1rem;
-  overflow: hidden;
-  border-radius: 999px;
-  background: #e9e4de;
-}
-
-.ui-progress span {
-  display: block;
-  height: 100%;
-  border-radius: inherit;
-  background: var(--qenrec-primary);
-}
-
-.ui-readiness-list {
-  display: grid;
-  gap: 0.55rem;
-  margin-top: 1rem;
-}
-
-.ui-readiness-item {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  padding: 0.7rem;
-  border: 1px solid var(--qenrec-border);
-  border-radius: 12px;
-  background: #ffffff;
-}
-
-.readiness-status {
-  width: 29px;
-  height: 29px;
-  display: grid;
-  place-items: center;
-  flex: 0 0 29px;
-  border-radius: 9px;
-}
-
-.readiness-status--done {
-  color: #2e6f4a;
-  background: #e8f1ec;
-}
-
-.readiness-status--warning {
-  color: #b66a00;
-  background: #fff2d9;
-}
-
-.readiness-status--missing {
-  color: #a84a3c;
-  background: #f9e7e4;
-}
-
-.ui-readiness-item div {
-  flex: 1;
-}
-
-.ui-readiness-item strong,
-.ui-readiness-item small {
-  display: block;
-}
-
-.ui-readiness-item strong {
-  color: var(--qenrec-text);
-  font-size: 0.73rem;
-  font-weight: 600;
-}
-
-.ui-readiness-item small {
-  margin-top: 0.1rem;
-  color: var(--qenrec-text-soft);
-  font-size: 0.61rem;
-}
-
-.readiness-result {
-  font-size: 0.61rem;
-  font-weight: 600;
-}
-
-.readiness-result--done {
-  color: #2e6f4a;
-}
-
-.readiness-result--warning {
-  color: #b66a00;
-}
-
-.readiness-result--missing {
-  color: #a84a3c;
-}
-
-.ui-callout {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  margin-top: 0.85rem;
-  padding: 0.72rem;
-  border-radius: 11px;
-  color: var(--qenrec-primary);
-  background: #fff5f2;
-  font-size: 0.65rem;
-}
-
-/* =========================
-ROW 3 - PROJECT READY
-========================= */
-
-.ui-project-body {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  margin-top: 1.35rem;
-  padding: 1rem;
-  border: 1px solid var(--qenrec-border);
-  border-radius: 14px;
-  background: #fcfbfa;
-}
-
-.ui-project-icon {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  flex: 0 0 42px;
-  border-radius: 11px;
-  color: var(--qenrec-primary);
-  background: var(--qenrec-primary-soft);
-}
-
-.ui-project-copy strong,
-.ui-project-copy small {
-  display: block;
-}
-
-.ui-project-copy strong {
-  color: var(--qenrec-text);
-  font-size: 0.8rem;
-}
-
-.ui-project-copy small {
-  margin-top: 0.2rem;
-  color: var(--qenrec-text-soft);
-  font-size: 0.63rem;
-  line-height: 1.4;
-}
-
-.ui-project-meta {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.55rem;
-  margin-top: 0.75rem;
-}
-
-.ui-project-meta div {
-  padding: 0.8rem;
-  border: 1px solid var(--qenrec-border);
-  border-radius: 12px;
-  background: #ffffff;
-}
-
-.ui-project-meta span,
-.ui-project-meta strong {
-  display: block;
-}
-
-.ui-project-meta span {
-  color: var(--qenrec-text-soft);
-  font-size: 0.6rem;
-}
-
-.ui-project-meta strong {
-  margin-top: 0.28rem;
-  color: var(--qenrec-text);
-  font-size: 0.79rem;
-}
-
-.ui-ready-bar {
-  height: 7px;
-  margin-top: 1rem;
-  overflow: hidden;
-  border-radius: 999px;
-  background: #e5eae6;
-}
-
-.ui-ready-bar span {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border-radius: inherit;
-  background: #2e6f4a;
-}
-
-/* ============================================================
-   QENREC - SECTION 4
-   The Qenrec Experience
-   ============================================================ */
-
-.experience-section {
-  padding: 7.5rem 0 7rem;
-  background: #ffffff;
-  border-top: 1px solid var(--qenrec-border);
-  overflow: hidden;
-}
-
-.experience-heading {
-  display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
-  align-items: end;
-  gap: 3rem;
-  max-width: 1160px;
-  margin: 0 auto;
-}
-
-.experience-kicker {
-  color: var(--qenrec-primary);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-}
-
-.experience-title {
-  max-width: 840px;
-  margin: 0.9rem 0 0;
-  color: var(--qenrec-text);
-  font-size: clamp(2.7rem, 5vw, 4.65rem);
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: -0.055em;
-}
-
-.experience-title span {
-  color: var(--qenrec-primary);
-}
-
-.experience-intro {
-  max-width: 390px;
-  margin: 0 0 0.25rem auto;
-  color: var(--qenrec-text-muted);
-  font-size: 1rem;
-  line-height: 1.7;
-}
-
-.experience-showcase {
-  max-width: 1160px;
-  margin: 4rem auto 0;
-}
-
-.experience-panel {
-  min-height: 425px;
-  padding: 1.2rem;
-  border: 1px solid var(--qenrec-border);
-  border-radius: 24px;
-  background: #ffffff;
-  box-shadow: var(--qenrec-shadow-sm);
-}
-
-.experience-panel--brief {
-  background: #fcfbfa;
-}
-
-.experience-panel--readiness {
-  border-color: rgba(168, 28, 7, 0.16);
-  box-shadow: 0 18px 55px rgba(168, 28, 7, 0.07);
-}
-
-.experience-panel__top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.panel-label {
-  display: block;
-  color: var(--qenrec-text-soft);
-  font-size: 0.64rem;
-  font-weight: 600;
-  letter-spacing: 0.11em;
-}
-
-.experience-panel h3 {
-  margin: 0.38rem 0 0;
-  color: var(--qenrec-text);
-  font-size: 1.35rem;
-  font-weight: 600;
-  letter-spacing: -0.035em;
-}
-
-.panel-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.38rem;
-  padding: 0.32rem 0.5rem;
-  border-radius: 999px;
-  color: #2e6f4a;
-  background: #e8f1ec;
-  font-size: 0.63rem;
-  font-weight: 600;
-}
-
-.panel-status__dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #2e6f4a;
-}
-
-.brief-progress {
-  margin-top: 1.55rem;
-  padding: 0.85rem;
-  border: 1px solid var(--qenrec-border);
-  border-radius: 14px;
-  background: #ffffff;
-}
-
-.brief-progress__meta {
-  display: flex;
-  justify-content: space-between;
-  color: var(--qenrec-text-soft);
-  font-size: 0.68rem;
-}
-
-.brief-progress__meta strong {
-  color: var(--qenrec-primary);
-  font-weight: 600;
-}
-
-.brief-progress__track {
-  height: 6px;
-  margin-top: 0.62rem;
-  border-radius: 999px;
-  overflow: hidden;
-  background: #ece8e2;
-}
-
-.brief-progress__track span {
-  display: block;
-  width: 86%;
-  height: 100%;
-  border-radius: inherit;
-  background: var(--qenrec-primary);
-}
-
-.brief-sections {
-  display: grid;
-  gap: 0.5rem;
-  margin-top: 0.9rem;
-}
-
-.brief-section-row {
-  display: flex;
-  align-items: center;
-  gap: 0.72rem;
-  padding: 0.72rem;
-  border: 1px solid transparent;
-  border-radius: 13px;
-}
-
-.brief-section-row.is-complete {
-  background: #ffffff;
-}
-
-.brief-section-row.is-active {
-  border-color: rgba(168, 28, 7, 0.18);
-  background: var(--qenrec-primary-soft);
-}
-
-.brief-section-row__icon {
-  width: 34px;
-  height: 34px;
-  flex: 0 0 34px;
-  display: grid;
-  place-items: center;
-  border-radius: 10px;
-  color: var(--qenrec-primary);
-  background: #f5edea;
-  font-size: 0.77rem;
-}
-
-.brief-section-row.is-active .brief-section-row__icon {
-  background: rgba(168, 28, 7, 0.13);
-}
-
-.brief-section-row div {
-  flex: 1;
-  min-width: 0;
-}
-
-.brief-section-row strong,
-.brief-section-row small {
-  display: block;
-}
-
-.brief-section-row strong {
-  color: var(--qenrec-text);
-  font-size: 0.75rem;
-  font-weight: 600;
-}
-
-.brief-section-row small {
-  margin-top: 0.12rem;
-  color: var(--qenrec-text-soft);
-  font-size: 0.62rem;
-}
-
-.brief-section-row__check {
-  color: #2e6f4a;
-  font-size: 0.8rem;
-}
-
-.brief-section-row__arrow {
-  color: var(--qenrec-primary);
-  font-size: 0.8rem;
-}
-
-.readiness-score {
-  color: var(--qenrec-primary);
-  font-size: 1.15rem;
-  font-weight: 600;
-}
-
-.readiness-status-card {
-  display: flex;
-  align-items: center;
-  gap: 0.72rem;
-  margin-top: 1.55rem;
-  padding: 0.88rem;
-  border: 1px solid rgba(46, 111, 74, 0.15);
-  border-radius: 14px;
-  background: #f5f9f6;
-}
-
-.readiness-status-card__icon {
-  width: 34px;
-  height: 34px;
-  display: grid;
-  place-items: center;
-  flex: 0 0 34px;
-  border-radius: 10px;
-  color: #2e6f4a;
-  background: #e5f0e9;
-}
-
-.readiness-status-card strong,
-.readiness-status-card small {
-  display: block;
-}
-
-.readiness-status-card strong {
-  color: var(--qenrec-text);
-  font-size: 0.75rem;
-  font-weight: 600;
-}
-
-.readiness-status-card small {
-  margin-top: 0.13rem;
-  color: var(--qenrec-text-soft);
-  font-size: 0.62rem;
-}
-
-.readiness-metrics {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
-  margin-top: 0.8rem;
-}
-
-.readiness-metric {
-  padding: 0.75rem;
-  border: 1px solid var(--qenrec-border);
-  border-radius: 12px;
-  background: #ffffff;
-}
-
-.readiness-metric span,
-.readiness-metric strong {
-  display: block;
-}
-
-.readiness-metric span {
-  color: var(--qenrec-text-soft);
-  font-size: 0.6rem;
-}
-
-.readiness-metric strong {
-  margin-top: 0.3rem;
-  color: var(--qenrec-text);
-  font-size: 0.83rem;
-  font-weight: 600;
-}
-
-.readiness-missing {
-  margin-top: 0.8rem;
-  padding: 0.82rem;
-  border: 1px solid var(--qenrec-border);
-  border-radius: 14px;
-  background: #ffffff;
-}
-
-.readiness-missing__top {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.55rem;
-  color: var(--qenrec-text-soft);
-  font-size: 0.62rem;
-  font-weight: 500;
-}
-
-.readiness-missing__top span:last-child {
-  color: var(--qenrec-primary);
-  font-weight: 600;
-}
-
-.missing-item {
-  display: flex;
-  align-items: center;
-  gap: 0.48rem;
-  margin-top: 0.45rem;
-  color: var(--qenrec-text-muted);
-  font-size: 0.66rem;
-}
-
-.missing-item__dot {
-  width: 6px;
-  height: 6px;
-  flex: 0 0 6px;
-  border-radius: 50%;
-  background: var(--qenrec-primary);
-}
-
-.experience-footer {
-  max-width: 1160px;
-  margin: 2.1rem auto 0;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--qenrec-border);
-}
-
-.experience-footer__eyebrow {
-  display: block;
-  margin-bottom: 0.75rem;
-  color: var(--qenrec-text-soft);
-  font-size: 0.67rem;
-  font-weight: 600;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-}
-
-.experience-footer__items {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-}
-
-.experience-footer__items span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.42rem;
-  padding: 0.48rem 0.65rem;
-  border: 1px solid var(--qenrec-border);
-  border-radius: 999px;
-  color: var(--qenrec-text-muted);
-  background: #fcfbfa;
-  font-size: 0.69rem;
-}
-
-.experience-footer__items i {
-  color: var(--qenrec-primary);
-}
-
-/* ============================================================
-   QENREC - SECTION 5 : CORE CAPABILITIES
-   ============================================================ */
-
-.capabilities-section {
-  padding: 7.5rem 0 7rem;
-  background: var(--qenrec-bg);
-  border-top: 1px solid var(--qenrec-border);
-}
-
-.capabilities-heading {
-  display: grid;
-  grid-template-columns: minmax(280px, 0.7fr) minmax(0, 1.15fr);
-  gap: 3rem;
-  align-items: start;
-  max-width: 1160px;
-  margin: 0 auto;
-}
-
-.capabilities-kicker,
-.capability-label {
-  color: var(--qenrec-primary);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.capabilities-title {
-  max-width: 780px;
-  margin: 0.9rem 0 0;
-  color: var(--qenrec-text);
-  font-size: clamp(2.7rem, 5vw, 4.6rem);
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: -0.055em;
-}
-
-.capabilities-title span {
-  color: var(--qenrec-primary);
-}
-
-.capabilities-intro {
-  max-width: 390px;
-  margin: 3.5rem 0 0;
-  color: var(--qenrec-text-muted);
-  font-size: 1rem;
-  line-height: 1.7;
-}
-
-.capabilities-grid {
-  max-width: 1160px;
-  margin: 4rem auto 0;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.capability-card {
-  padding: 1.25rem;
-  border: 1px solid var(--qenrec-border);
-  border-radius: 22px;
-  background: #fff;
-  box-shadow: var(--qenrec-shadow-sm);
-}
-
-.capability-card--featured,
-.capability-card--accent {
-  grid-column: span 2;
-}
-
-.capability-card--featured {
-  background: #fcfbfa;
-}
-
-.capability-card--accent {
-  border-color: rgba(168, 28, 7, 0.17);
-  background: #fffcfb;
-}
-
-.capability-card__top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.capability-index {
-  color: var(--qenrec-text-soft);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-}
-
-.capability-icon {
-  width: 36px;
-  height: 36px;
-  display: grid;
-  place-items: center;
-  border-radius: 10px;
-  color: var(--qenrec-primary);
-  background: var(--qenrec-primary-soft);
-  font-size: 0.8rem;
-}
-
-.capability-card__body {
-  margin-top: 1.35rem;
-}
-
-.capability-card h3 {
-  max-width: 650px;
-  margin: 0.45rem 0 0.55rem;
-  color: var(--qenrec-text);
-  font-size: clamp(1.35rem, 2.1vw, 1.8rem);
-  font-weight: 600;
-  line-height: 1.12;
   letter-spacing: -0.04em;
+
+  color: #17211D;
 }
 
-.capability-card p {
-  max-width: 650px;
-  margin: 0;
-  color: var(--qenrec-text-muted);
-  font-size: 0.87rem;
-  line-height: 1.65;
-}
 
-.capability-preview,
-.mini-list,
-.clarification-preview,
-.approval-preview,
-.readiness-preview {
-  margin-top: 1.35rem;
-  border: 1px solid var(--qenrec-border);
-  border-radius: 15px;
-  background: #fff;
-}
+/* Supporting line */
 
-.capability-preview {
-  max-width: 760px;
-  padding: 1rem;
-}
+.how-description {
+  margin: 0.65rem 0 0;
 
-.preview-header,
-.readiness-preview__head {
-  display: flex;
-  justify-content: space-between;
-  color: var(--qenrec-text-soft);
-  font-size: 0.62rem;
-}
-
-.preview-question {
-  margin-top: 0.85rem;
-}
-
-.preview-label {
-  display: block;
-  max-width: 520px;
-  color: var(--qenrec-text);
-  font-size: 0.76rem;
-  font-weight: 600;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
   line-height: 1.45;
+
+  color: #4A403B;
 }
 
-.preview-options,
-.readiness-pills {
+
+/* =========================================================
+   WORKFLOW
+   ========================================================= */
+
+.how-workflow {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-  margin-top: 0.8rem;
+  align-items: flex-start;
+
+  width: 100%;
 }
 
-.preview-option,
-.readiness-pills span {
-  padding: 0.44rem 0.6rem;
-  border: 1px solid var(--qenrec-border);
-  border-radius: 999px;
-  color: var(--qenrec-text-muted);
-  font-size: 0.6rem;
-}
 
-.preview-option.is-selected {
-  color: var(--qenrec-primary);
-  border-color: rgba(168, 28, 7, 0.2);
-  background: var(--qenrec-primary-soft);
-}
+/* =========================================================
+   EACH STEP
+   ========================================================= */
 
-.mini-list,
-.approval-preview {
-  padding: 0.35rem;
-}
+.how-step {
+  flex: 1 1 0;
 
-.mini-list__row,
-.approval-row {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  padding: 0.65rem;
-}
+  min-width: 0;
 
-.mini-list__row + .mini-list__row,
-.approval-row + .approval-row {
-  border-top: 1px solid var(--qenrec-border);
-}
-
-.mini-list__icon,
-.approval-icon {
-  width: 32px;
-  height: 32px;
-  flex: 0 0 32px;
-  display: grid;
-  place-items: center;
-  border-radius: 9px;
-  color: var(--qenrec-primary);
-  background: var(--qenrec-primary-soft);
-  font-size: 0.7rem;
-}
-
-.mini-list__row div,
-.approval-row div {
-  flex: 1;
-}
-
-.mini-list__row strong,
-.mini-list__row small,
-.approval-row strong,
-.approval-row small {
-  display: block;
-}
-
-.mini-list__row strong,
-.approval-row strong {
-  color: var(--qenrec-text);
-  font-size: 0.69rem;
-  font-weight: 600;
-}
-
-.mini-list__row small,
-.approval-row small {
-  margin-top: 0.08rem;
-  color: var(--qenrec-text-soft);
-  font-size: 0.58rem;
-}
-
-.mini-list__row > i {
-  color: #b1aaa2;
-  font-size: 0.68rem;
-}
-
-.clarification-preview {
-  padding: 0.9rem;
-}
-
-.clarification-tag {
-  display: inline-flex;
-  padding: 0.3rem 0.48rem;
-  border-radius: 999px;
-  color: var(--qenrec-primary);
-  background: var(--qenrec-primary-soft);
-  font-size: 0.58rem;
-  font-weight: 600;
-}
-
-.clarification-preview > strong {
-  display: block;
-  margin-top: 0.7rem;
-  max-width: 500px;
-  color: var(--qenrec-text);
-  font-size: 0.73rem;
-  line-height: 1.5;
-}
-
-.clarification-answer {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.85rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--qenrec-border);
-  color: var(--qenrec-text-muted);
-  font-size: 0.62rem;
-}
-
-.answer-avatar {
-  width: 25px;
-  height: 25px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  color: #fff;
-  background: var(--qenrec-primary);
-  font-size: 0.52rem;
-  font-weight: 600;
-}
-
-.approval-icon.approved {
-  color: #2e6f4a;
-  background: #e8f1ec;
-}
-
-.approval-icon.pending {
-  color: #a66a00;
-  background: #fff1d8;
-}
-
-.approval-state {
-  color: #2e6f4a;
-  font-size: 0.58rem;
-  font-weight: 600;
-}
-
-.pending-state {
-  color: #a66a00;
-}
-
-.readiness-preview {
-  padding: 0.9rem;
-}
-
-.readiness-preview__head strong {
-  color: var(--qenrec-primary);
-  font-size: 0.9rem;
-}
-
-.readiness-preview__bar {
-  height: 6px;
-  margin-top: 0.65rem;
-  overflow: hidden;
-  border-radius: 999px;
-  background: #e9e4de;
-}
-
-.readiness-preview__bar span {
-  display: block;
-  width: 86%;
-  height: 100%;
-  border-radius: inherit;
-  background: var(--qenrec-primary);
-}
-
-.readiness-pills span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  color: #2e6f4a;
-  background: #e8f1ec;
-  border: 0;
-}
-
-.readiness-pills .pending-pill {
-  color: #a66a00;
-  background: #fff1d8;
-}
-
-/* QENREC FAQ */
-.faq-section {
-  padding: 7rem 0 7.5rem;
-  background: var(--qenrec-bg);
-  border-top: 1px solid var(--qenrec-border);
-}
-
-.faq-heading {
-  max-width: 850px;
-  margin: 0 auto 3.5rem;
   text-align: center;
 }
 
-.faq-kicker {
-  color: var(--qenrec-primary);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-}
 
-.faq-title {
-  margin: 0.85rem 0 0.9rem;
-  color: var(--qenrec-text);
-  font-size: clamp(2.75rem, 5vw, 4.7rem);
-  font-weight: 600;
-  line-height: 0.98;
-  letter-spacing: -0.055em;
-}
+/* =========================================================
+   ICON
+   ========================================================= */
 
-.faq-intro {
-  max-width: 700px;
-  margin: 0 auto;
-  color: var(--qenrec-text-muted);
-  font-size: 1.03rem;
-  line-height: 1.7;
-}
+.step-icon {
+  width: 52px;
+  height: 52px;
 
-.faq-list {
-  max-width: 1000px;
-  margin: 0 auto;
-  display: grid;
-  gap: 0.65rem;
-}
+  margin: 0 auto 0.85rem;
 
-.faq-item {
-  border: 1px solid var(--qenrec-border);
-  border-radius: 15px;
-  background: #fff;
-  overflow: hidden;
-  transition:
-    border-color 180ms ease,
-    background 180ms ease,
-    box-shadow 180ms ease;
-}
-
-.faq-item:hover {
-  border-color: #ddd5cc;
-}
-
-.faq-item.is-open {
-  border-color: rgba(168, 28, 7, 0.14);
-  background: #fffdfc;
-  box-shadow: 0 10px 30px rgba(34, 27, 22, 0.045);
-}
-
-.faq-question {
-  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1.25rem;
-  padding: 1.2rem 1.25rem;
-  border: 0;
-  background: transparent;
-  color: var(--qenrec-text);
-  font: inherit;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  /* Qenrec Primary Rufous */
+  background: #A81C07;
+
+  /* Warm white icon */
+  color: #F8F0E9;
+
+  font-size: 1.2rem;
+  line-height: 1;
+
+  box-shadow: 0 8px 20px rgba(168, 28, 7, 0.14);
+}
+
+/* =========================================================
+   NUMBER
+   ========================================================= */
+
+.step-number {
+  margin-bottom: 0.3rem;
+
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
+
+  letter-spacing: 0.08em;
+
+  color: #A81C07;
+}
+
+
+/* =========================================================
+   STEP TITLE
+   ========================================================= */
+
+.step-title {
+  margin: 0 0 0.35rem;
+
+  font-family: "IBM Plex Sans", sans-serif;
   font-size: 0.98rem;
   font-weight: 600;
+  line-height: 1.25;
+
+  color: #17211D;
+}
+
+
+/* =========================================================
+   STEP DESCRIPTION
+   ========================================================= */
+
+.step-text {
+  max-width: 235px;
+
+  margin: 0 auto;
+
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 400;
   line-height: 1.4;
-  text-align: left;
-  cursor: pointer;
+
+  /*
+   * Stronger than the old pale gray.
+   */
+  color: #403833;
 }
 
-.faq-question > span:first-child {
-  flex: 1;
+
+/* =========================================================
+   ARROWS
+   ========================================================= */
+
+.workflow-arrow {
+  flex: 0 0 70px;
+
+  display: flex;
+  justify-content: center;
+
+  padding-top: 25px;
+
+  color: #A81C07;
+
+  font-size: 1.25rem;
 }
 
-.faq-arrow {
-  width: 34px;
-  height: 34px;
-  display: grid;
-  place-items: center;
-  flex: 0 0 34px;
-  border-radius: 50%;
-  color: var(--qenrec-primary);
-  background: var(--qenrec-primary-soft);
-  font-size: 0.72rem;
-  transition:
-    transform 180ms ease,
-    background 180ms ease;
-}
 
-.faq-item.is-open .faq-arrow {
-  transform: rotate(180deg);
-  background: #f3ddd8;
-}
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
 
-.faq-answer {
-  padding: 0 1.25rem 1.35rem;
-}
+@media (min-width: 1200px) {
 
-.faq-answer p {
-  max-width: 820px;
-  margin: 0;
-  color: var(--qenrec-text-muted);
-  font-size: 0.9rem;
-  line-height: 1.75;
-}
+  .qenrec-how-section {
+    margin-top: 1.5rem;
 
-.faq-question:focus-visible {
-  outline: 2px solid var(--qenrec-primary);
-  outline-offset: -3px;
-}
-
-@media (max-width: 767.98px) {
-  .faq-section {
-    padding: 5.5rem 0 6rem;
+    padding-top: 5rem;
+    padding-bottom: 5.25rem;
   }
 
-  .faq-heading {
-    margin-bottom: 2.5rem;
+  .how-header {
+    margin-bottom: 3.25rem;
   }
 
-  .faq-title {
-    font-size: clamp(2.4rem, 11vw, 3.5rem);
+  .step-icon {
+    width: 54px;
+    height: 54px;
   }
 
-  .faq-intro {
-    font-size: 0.96rem;
+  .step-title {
+    font-size: 1rem;
   }
 
-  .faq-question {
-    padding: 1rem;
-    font-size: 0.9rem;
-  }
-
-  .faq-answer {
-    padding: 0 1rem 1.1rem;
-  }
-
-  .faq-answer p {
+  .step-text {
+    max-width: 250px;
     font-size: 0.84rem;
   }
 
-  .faq-arrow {
-    width: 31px;
-    height: 31px;
-    flex-basis: 31px;
+  .workflow-arrow {
+    flex-basis: 85px;
+    padding-top: 26px;
   }
 }
 
-/* ============================================================
-   QENREC - FINAL CTA / REFINED v2
-   ============================================================ */
 
-.final-cta-section {
-  padding: 6.5rem 0;
-  background: var(--qenrec-bg);
-  border-top: 1px solid var(--qenrec-border);
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+
+  .qenrec-how-section {
+    margin-top: 1rem;
+
+    padding-top: 3.75rem;
+    padding-bottom: 4rem;
+  }
+
+  .how-workflow {
+    flex-wrap: wrap;
+
+    row-gap: 2.5rem;
+  }
+
+  .how-step {
+    flex: 0 0 calc(50% - 25px);
+  }
+
+  .workflow-arrow {
+    display: none;
+  }
 }
 
-/* ============================================================
-   CTA SHELL
-   ============================================================ */
 
-.final-cta {
-  position: relative;
-  min-height: 530px;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  padding: 4.55rem 5.1rem;
-  border-radius: 30px;
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+
+  .qenrec-how-section {
+    margin-top: 0.75rem;
+
+    padding-top: 3rem;
+    padding-bottom: 3.25rem;
+  }
+
+  .how-header {
+    margin-bottom: 2.25rem;
+  }
+
+  .how-title {
+    font-size: 2rem;
+  }
+
+  .how-description {
+    font-size: 0.9rem;
+  }
+
+  .how-workflow {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .how-step {
+    flex: none;
+    width: 100%;
+  }
+
+  .step-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .step-text {
+    max-width: 300px;
+  }
+}
+
+
+/* =========================================================
+   QENREC — BUILT FOR CREATIVE TEAMS
+   ========================================================= */
+
+.qenrec-visibility-section {
+  /*
+   * Large separation from the previous workflow section.
+   */
+  margin-top: 5.5rem;
+
+  padding-top: 4.5rem;
+  padding-bottom: 5rem;
 
   /*
-    Deeper Rufous on the left.
-    Lighter Rufous toward the dashboard.
-  */
+   * Very subtle surface treatment.
+   * It gives the section some life without becoming obvious.
+   */
   background:
     radial-gradient(
-      560px 460px at 82% 52%,
-      rgba(232, 107, 79, 0.16) 0%,
-      rgba(232, 107, 79, 0.055) 42%,
-      transparent 72%
+      circle at 20% 50%,
+      rgba(168, 28, 7, 0.025),
+      transparent 40%
     ),
-    linear-gradient(
-      108deg,
-      #4b0d04 0%,
-      #681108 25%,
-      #8b1909 51%,
-      #a81c07 76%,
-      #b32a13 100%
+    #F8FAF8;
+}
+
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+.visibility-image-wrapper {
+  width: 100%;
+  height: 100%;
+
+  min-height: 520px;
+
+  overflow: hidden;
+
+  border-radius: 18px;
+}
+
+
+.visibility-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center center;
+
+  border: 0;
+}
+
+
+/* =========================================================
+   RIGHT CONTENT
+   ========================================================= */
+
+.visibility-content {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding-left: 1rem;
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.visibility-eyebrow {
+  display: block;
+
+  margin-bottom: 0.7rem;
+
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.2;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  color: #A81C07;
+}
+
+
+/* =========================================================
+   MAIN TITLE
+   ========================================================= */
+
+.visibility-title {
+  margin: 0 0 0.8rem;
+
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: clamp(2.2rem, 3vw, 3rem);
+  font-weight: 600;
+  line-height: 1.06;
+
+  letter-spacing: -0.04em;
+
+  color: #17211D;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.visibility-description {
+  max-width: 570px;
+
+  margin: 0 0 1.8rem;
+
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 0.98rem;
+  font-weight: 400;
+  line-height: 1.5;
+
+  /*
+   * Darker and more readable than the previous muted tone.
+   */
+  color: #403833;
+}
+
+
+/* =========================================================
+   LOWER CONTENT AREA
+   ========================================================= */
+
+.visibility-bottom-row {
+  display: grid;
+
+  grid-template-columns: minmax(0, 1fr) minmax(190px, 0.72fr);
+
+  gap: 1.5rem;
+
+  align-items: stretch;
+}
+
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.visibility-features {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1rem;
+}
+
+
+/* Single feature */
+
+.visibility-feature {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 0.75rem;
+}
+
+
+/* =========================================================
+   ICONS
+   ========================================================= */
+
+.visibility-feature-icon {
+  width: 42px;
+  height: 42px;
+
+  flex: 0 0 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  /*
+   * Primary Qenrec Rufous.
+   */
+  background: #A81C07;
+
+  /*
+   * White icon for maximum clarity.
+   */
+  color: #FFFFFF;
+
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+
+/* =========================================================
+   FEATURE COPY
+   ========================================================= */
+
+.visibility-feature-copy {
+  padding-top: 0.05rem;
+}
+
+
+.visibility-feature-copy h3 {
+  margin: 0 0 0.15rem;
+
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.25;
+
+  color: #17211D;
+}
+
+
+.visibility-feature-copy p {
+  margin: 0;
+
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.35;
+
+  color: #403833;
+}
+
+
+/* =========================================================
+   86% STAT CARD
+   ========================================================= */
+
+.visibility-stat-card {
+  min-height: 205px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 1.65rem;
+
+  border-radius: 18px;
+
+  /*
+   * Requested gradient:
+   * DEEP RUFOUS at the top
+   * PRIMARY RUFOUS toward the bottom
+   */
+  background: linear-gradient(
+    to bottom,
+    #751206 0%,
+    #8E1608 48%,
+    #A81C07 100%
+  );
+
+  box-shadow: 0 12px 30px rgba(117, 18, 6, 0.12);
+}
+
+
+/* 86% */
+
+.visibility-stat-number {
+  margin-bottom: 0.55rem;
+
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: clamp(2.45rem, 4vw, 3.35rem);
+  font-weight: 600;
+  line-height: 1;
+
+  letter-spacing: -0.04em;
+
+  /*
+   * Warm cream instead of pure white.
+   */
+  color: #F8F0E9;
+}
+
+
+/* Supporting stat copy */
+
+.visibility-stat-text {
+  max-width: 180px;
+
+  margin: 0;
+
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.4;
+
+  color: #FFFFFF;
+}
+
+
+
+
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1200px) {
+
+  .qenrec-visibility-section {
+    margin-top: 6.5rem;
+
+    padding-top: 5rem;
+    padding-bottom: 5.5rem;
+  }
+
+  .visibility-content {
+    padding-left: 1.5rem;
+  }
+
+  .visibility-image-wrapper {
+    min-height: 550px;
+  }
+
+  .visibility-description {
+    max-width: 590px;
+    font-size: 1rem;
+  }
+
+  .visibility-feature-icon {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+  }
+
+  .visibility-feature-copy h3 {
+    font-size: 0.95rem;
+  }
+
+  .visibility-feature-copy p {
+    font-size: 0.8rem;
+  }
+
+  .visibility-stat-card {
+    min-height: 220px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+
+  .qenrec-visibility-section {
+    margin-top: 4rem;
+
+    padding-top: 3.75rem;
+    padding-bottom: 4rem;
+  }
+
+  .visibility-image-wrapper {
+    min-height: 420px;
+  }
+
+  .visibility-content {
+    height: auto;
+    padding-left: 0;
+  }
+
+  .visibility-bottom-row {
+    grid-template-columns: 1fr 0.75fr;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+
+  .qenrec-visibility-section {
+    margin-top: 3rem;
+
+    padding-top: 3rem;
+    padding-bottom: 3.25rem;
+  }
+
+  .visibility-image-wrapper {
+    min-height: 280px;
+
+    border-radius: 14px;
+  }
+
+  .visibility-title {
+    font-size: 2.1rem;
+  }
+
+  .visibility-description {
+    font-size: 0.92rem;
+  }
+
+  .visibility-bottom-row {
+    grid-template-columns: 1fr;
+
+    gap: 1.75rem;
+  }
+
+  .visibility-stat-card {
+    min-height: 180px;
+  }
+
+  .visibility-stat-text {
+    max-width: 240px;
+  }
+}
+
+/* =========================================================
+   QENREC — CTA SECTION
+   ========================================================= */
+
+.project-beginning-cta {
+    width: 100%;
+    margin-top: 5rem;
+    margin-bottom: 0;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   MAIN CTA
+   ========================================================= */
+
+.project-beginning-cta > .container-fluid {
+    width: 100%;
+}
+
+
+/* =========================================================
+   IMAGE COLUMN
+   ========================================================= */
+
+.project-cta-image {
+    position: relative;
+    height: 270px;
+    overflow: hidden;
+    background: #A81C07;
+}
+
+
+.project-cta-image-img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    /*
+     * Move the image upward so the person's
+     * face remains visible.
+     */
+    object-position: center 18%;
+}
+
+
+/* =========================================================
+   IMAGE → CTA TRANSITION
+   ========================================================= */
+
+.project-cta-image::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    right: -1px;
+
+    width: 45px;
+    height: 100%;
+
+    background: #A81C07;
+
+    clip-path: polygon(
+        35% 0,
+        100% 0,
+        100% 100%,
+        0 100%
     );
 }
 
-.final-cta::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(24, 3, 1, 0.16) 0%,
-    transparent 56%,
-    rgba(255, 165, 140, 0.035) 100%
-  );
-  pointer-events: none;
+
+/* =========================================================
+   CTA BODY
+   ========================================================= */
+
+.project-cta-body {
+    min-height: 270px;
+
+    display: flex;
+    align-items: center;
+
+    background: linear-gradient(
+        90deg,
+        #A81C07 0%,
+        #961806 40%,
+        #841406 72%,
+        #751206 100%
+    );
+
+    padding: 2rem 4rem;
 }
 
-/* ============================================================
-   CONTENT HIERARCHY
-   ============================================================ */
 
-.final-cta__content {
-  position: relative;
-  z-index: 5;
-  width: min(59%, 730px);
+/* =========================================================
+   TEXT
+   ========================================================= */
+
+.project-cta-text {
+    padding-right: 3rem;
 }
 
-.final-cta__logo {
-  display: block;
-  width: 82px;
-  height: auto;
-  margin-bottom: 2.05rem;
 
-  /* Convert the supplied dark logo to a subtle white mark. */
-  filter: brightness(0) invert(1);
-  opacity: 0.9;
+.project-cta-text h2 {
+    margin: 0 0 0.55rem;
+
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: clamp(1.75rem, 2.5vw, 2.35rem);
+    font-weight: 600;
+    line-height: 1.08;
+
+    letter-spacing: -0.035em;
+
+    color: #FFFFFF;
 }
 
-.final-cta__kicker {
-  display: block;
-  margin-bottom: 0.78rem;
-  color: rgba(255, 255, 255, 0.64);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+
+.project-cta-text p {
+    max-width: 680px;
+
+    margin: 0;
+
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.5;
+
+    color: rgba(255, 255, 255, 0.92);
 }
 
-.final-cta__title {
-  max-width: 720px;
-  margin: 0;
-  color: #ffffff;
-  font-size: clamp(3.25rem, 6vw, 5.85rem);
-  font-weight: 600;
-  line-height: 0.95;
-  letter-spacing: -0.06em;
+
+/* =========================================================
+   BUTTON COLUMN
+   ========================================================= */
+
+.project-cta-action {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
-.final-cta__title span {
-  color: #f4ccc2;
+
+.project-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 150px;
+    height: 48px;
+
+    padding: 0 1.5rem;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #FFFFFF;
+
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+
+    line-height: 1;
+    text-decoration: none;
+
+    color: #751206;
+
+    white-space: nowrap;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
 }
 
-.final-cta__copy {
-  max-width: 540px;
-  margin: 1.45rem 0 0;
-  color: rgba(255, 255, 255, 0.77);
-  font-size: 1rem;
-  line-height: 1.68;
+
+.project-cta-btn:hover {
+    background: #F8F0E9;
+    color: #751206;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.16);
 }
 
-.final-cta__actions {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.95rem;
-  margin-top: 1.95rem;
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1200px) {
+
+    .project-cta-image {
+        height: 285px;
+    }
+
+    .project-cta-body {
+        min-height: 285px;
+
+        padding-left: 3.75rem;
+        padding-right: 5rem;
+    }
+
+    .project-cta-text {
+        padding-right: 4rem;
+    }
+
+    .project-cta-text h2 {
+        font-size: 2.35rem;
+    }
+
+    .project-cta-text p {
+        font-size: 0.9rem;
+    }
 }
 
-.btn-final-cta {
-  border: 1px solid #ffffff;
-  border-radius: 10px;
-  padding: 0.82rem 1.02rem;
-  background: #ffffff;
-  color: var(--qenrec-primary);
-  font-size: 0.87rem;
-  font-weight: 600;
-  box-shadow: 0 8px 20px rgba(30, 4, 1, 0.08);
-  transition:
-    transform 180ms ease,
-    background 180ms ease,
-    color 180ms ease;
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+
+    .project-beginning-cta {
+        margin-top: 4rem;
+    }
+
+    .project-cta-image {
+        height: 230px;
+    }
+
+    .project-cta-image::after {
+        display: none;
+    }
+
+    .project-cta-body {
+        min-height: auto;
+
+        padding: 2.5rem 2.75rem;
+    }
+
+    .project-cta-text {
+        padding-right: 0;
+
+        margin-bottom: 1.5rem;
+    }
+
+    .project-cta-text h2 {
+        font-size: 1.9rem;
+    }
+
+    .project-cta-text p {
+        font-size: 0.85rem;
+    }
+
+    .project-cta-action {
+        justify-content: flex-start;
+    }
 }
 
-.btn-final-cta:hover,
-.btn-final-cta:focus {
-  border-color: #ffffff;
-  background: #fff8f5;
-  color: var(--qenrec-primary-dark);
-  transform: translateY(-1px);
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+
+    .project-beginning-cta {
+        margin-top: 3rem;
+    }
+
+    .project-cta-image {
+        height: 200px;
+    }
+
+    .project-cta-image-img {
+        object-position: center 15%;
+    }
+
+    .project-cta-body {
+        padding: 2.25rem 1.5rem 2.5rem;
+    }
+
+    .project-cta-text {
+        margin-bottom: 1.4rem;
+    }
+
+    .project-cta-text h2 {
+        font-size: 1.75rem;
+    }
+
+    .project-cta-text p {
+        font-size: 0.84rem;
+    }
+
+    .project-cta-action {
+        justify-content: flex-start;
+    }
+
+    .project-cta-btn {
+        width: auto;
+        min-width: 145px;
+    }
 }
 
-.final-cta__secondary {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 0.84rem;
-  font-weight: 500;
-  transition: opacity 180ms ease;
+
+/* =========================================================
+   QENREC — FAQ SECTION
+   ========================================================= */
+
+.faq-section {
+    width: 100%;
+    padding: 7rem 0;
+    /* UPDATE: Subtle off-white background to provide depth against white cards */
+    background: #F8FAFC; 
 }
 
-.final-cta__secondary:hover {
-  color: #ffffff;
-  opacity: 0.7;
+
+/* =========================================================
+   FAQ HEADING
+   ========================================================= */
+
+.faq-heading {
+    max-width: 760px;
+    margin-bottom: 3.5rem;
 }
 
-/* ============================================================
-   DASHBOARD - SUBTLE, CLIPPED, SUPPORTING
-   ============================================================ */
 
-.final-cta__dashboard {
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  right: -8%;
-  width: 57%;
-  height: 100%;
-  pointer-events: none;
+.faq-kicker {
+    display: block;
+
+    margin-bottom: 0.7rem;
+
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+
+    line-height: 1;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    color: #A81C07;
 }
 
-.final-cta__dashboard-glow {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  top: 53%;
-  left: 45%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
 
-  background: radial-gradient(
-    circle,
-    rgba(255, 168, 144, 0.14) 0%,
-    rgba(255, 168, 144, 0.045) 45%,
-    transparent 70%
-  );
+.faq-title {
+    margin: 0 0 0.8rem;
+
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 600;
+
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+
+    color: #171513;
 }
 
-.final-cta__dashboard-frame {
-  position: absolute;
-  top: 50%;
-  left: 18%;
-  width: 770px;
-  transform: translateY(-50%) rotate(-1.5deg);
 
-  transform-origin: center;
+.faq-intro {
+    max-width: 650px;
 
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 20px;
-  overflow: hidden;
-  opacity: 0.15;
+    margin: 0;
 
-  filter: saturate(0.5) contrast(0.9) brightness(1.12);
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
 
-  box-shadow: 0 38px 95px rgba(30, 4, 1, 0.26);
+    line-height: 1.6;
+
+    color: #716A63;
 }
 
-.final-cta__dashboard-frame::after {
-  content: "";
-  position: absolute;
-  inset: 0;
 
-  /*
-    Rufous veil:
-    the dashboard remains visible but belongs to the
-    same visual field as the CTA.
-  */
-  background: linear-gradient(
-    90deg,
-    rgba(72, 12, 5, 0.98) 0%,
-    rgba(72, 12, 5, 0.72) 17%,
-    rgba(72, 12, 5, 0.28) 38%,
-    rgba(72, 12, 5, 0.04) 68%,
-    transparent 100%
-  );
+/* =========================================================
+   FAQ ROWS
+   ========================================================= */
 
-  pointer-events: none;
+.faq-row {
+    margin-bottom: 1.4rem;
 }
 
-.final-cta__dashboard-frame img {
-  display: block;
-  width: 100%;
-  height: auto;
+.faq-row:last-child {
+    margin-bottom: 0;
 }
+
+
+/* =========================================================
+   FAQ CARD
+   ========================================================= */
+
+.faq-item {
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    /* UPDATE: Slightly softer border color for neutral cards */
+    border: 1px solid #E5E7EB; 
+    border-radius: 16px;
+
+    background: #FFFFFF;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* =========================================================
+   SMALL RUFOUS LEFT ACCENT
+   ========================================================= */
+
+.faq-item::before {
+    content: "";
+
+    position: absolute;
+
+    /* UPDATE: Extended top/bottom to touch the border radius edge */
+    top: 4px;
+    bottom: 4px;
+    left: 0;
+
+    width: 3px;
+
+    border-radius: 0 3px 3px 0;
+
+    background: #A81C07;
+
+    /* UPDATE: Full opacity makes the accent pop against the subtle border */
+    opacity: 1.0;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   CARD HOVER
+   ========================================================= */
+
+.faq-item:hover {
+    border-color: #D5C8BE;
+
+    box-shadow: 0 8px 24px rgba(23, 21, 19, 0.05);
+}
+
+
+/* =========================================================
+   OPEN CARD
+   ========================================================= */
+
+.faq-item:has(.collapse.show) {
+    border-color: #DDB9AF;
+
+    box-shadow: 0 10px 28px rgba(168, 28, 7, 0.07);
+}
+
+
+/* =========================================================
+   QUESTION
+   ========================================================= */
+
+.faq-question {
+    position: relative;
+
+    width: 100%;
+    min-height: 78px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 1.5rem;
+
+    padding: 1.15rem 1.25rem 1.15rem 1.5rem;
+
+    border: 0;
+
+    background: transparent;
+
+    font-family: "IBM Plex Sans", sans-serif;
+
+    font-size: 0.98rem;
+    font-weight: 600;
+
+    line-height: 1.4;
+
+    text-align: left;
+
+    color: #171513;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   QUESTION FOCUS
+   ========================================================= */
+
+.faq-question:focus {
+    outline: none;
+}
+
+.faq-question:focus-visible {
+    outline: 2px solid #A81C07;
+    outline-offset: -2px;
+}
+
+
+/* =========================================================
+   ARROW CIRCLE
+   ========================================================= */
+
+.faq-arrow {
+    flex: 0 0 38px;
+
+    width: 38px;
+    height: 38px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    /* UPDATE: Replaced bright solid red with a soft neutral gray */
+    background: #F3F4F6;
+
+    /* UPDATE: Gray icon color */
+    color: #4b5563; 
+
+    transition:
+        transform 0.25s ease,
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.faq-arrow i {
+    font-size: 0.72rem;
+
+    /* UPDATE: Chevron inherits color from parent .faq-arrow */
+    color: inherit; 
+
+    transition: transform 0.25s ease;
+}
+
+
+/* =========================================================
+   OPEN ARROW
+   ========================================================= */
+
+.faq-question[aria-expanded="true"] .faq-arrow {
+    /* UPDATE: When open, the circle fill turns brand red */
+    background: #A81C07; 
+    /* UPDATE: Chevron icon turns white for contrast */
+    color: #FFFFFF; 
+}
+
+
+.faq-question[aria-expanded="true"] .faq-arrow i {
+    transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   ANSWER
+   ========================================================= */
+
+.faq-answer {
+    padding: 0 1.35rem 1.45rem 1.5rem;
+}
+
+
+.faq-answer p {
+    max-width: 92%;
+
+    margin: 0;
+
+    font-family: "IBM Plex Sans", sans-serif;
+
+    font-size: 0.92rem;
+    font-weight: 400;
+
+    line-height: 1.65;
+
+    /*
+     * Darker than the previous version.
+     * Gives the answer more presence without
+     * competing with the question.
+     */
+    color: #514B45;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1200px) {
+
+    .faq-section {
+        padding: 8rem 0;
+    }
+
+    .faq-heading {
+        margin-bottom: 4rem;
+    }
+
+    .faq-row {
+        margin-bottom: 1.5rem;
+    }
+
+    .faq-question {
+        min-height: 82px;
+
+        padding-left: 1.6rem;
+        padding-right: 1.3rem;
+    }
+
+    .faq-answer {
+        padding-left: 1.6rem;
+        padding-right: 1.5rem;
+        padding-bottom: 1.55rem;
+    }
+
+    .faq-answer p {
+        font-size: 0.93rem;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+
+    .faq-section {
+        padding: 5.5rem 0;
+    }
+
+    .faq-heading {
+        margin-bottom: 3rem;
+    }
+
+    .faq-row {
+        margin-bottom: 1.1rem;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+
+    .faq-section {
+        padding: 4.5rem 0;
+    }
+
+    .faq-heading {
+        margin-bottom: 2.5rem;
+    }
+
+    .faq-title {
+        font-size: 2.2rem;
+    }
+
+    .faq-intro {
+        font-size: 0.9rem;
+    }
+
+    .faq-row {
+        margin-bottom: 0.9rem;
+    }
+
+    .faq-item::before {
+        /* UPDATE: Matched mobile radius offset */
+        top: 2px;
+        bottom: 2px;
+
+        width: 3px;
+    }
+
+    .faq-question {
+        min-height: 72px;
+
+        padding: 1rem 1rem 1rem 1.3rem;
+
+        font-size: 0.92rem;
+    }
+
+    .faq-arrow {
+        flex-basis: 34px;
+
+        width: 34px;
+        height: 34px;
+    }
+
+    .faq-answer {
+        padding: 0 1.1rem 1.25rem 1.3rem;
+    }
+
+    .faq-answer p {
+        max-width: 100%;
+
+        font-size: 0.86rem;
+    }
+
+}
+
+
+
 
 /* QENREC FOOTER */
 .qenrec-footer {
@@ -2945,470 +3087,5 @@ ROW 3 - PROJECT READY
   .footer-bottom__links {
     flex-wrap: wrap;
     gap: 0.8rem 1.2rem;
-  }
-}
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-
-@media (max-width: 1199.98px) {
-  .final-cta {
-    min-height: 510px;
-    padding: 4.25rem 4.4rem;
-  }
-
-  .final-cta__content {
-    width: min(63%, 690px);
-  }
-
-  .final-cta__title {
-    font-size: clamp(3.05rem, 5.9vw, 5.2rem);
-  }
-
-  .final-cta__dashboard {
-    right: -15%;
-    width: 60%;
-  }
-
-  .final-cta__dashboard-frame {
-    width: 680px;
-  }
-}
-
-@media (max-width: 991.98px) {
-  .final-cta-section {
-    padding: 6rem 0;
-  }
-
-  .final-cta {
-    min-height: 720px;
-    display: block;
-    padding: 4rem 3.5rem 3.5rem;
-  }
-
-  .final-cta__content {
-    width: 100%;
-    max-width: 720px;
-  }
-
-  .final-cta__dashboard {
-    right: -13%;
-    bottom: -145px;
-    top: auto;
-    width: 82%;
-    height: 405px;
-  }
-
-  .final-cta__dashboard-frame {
-    top: 0;
-    left: 5%;
-    width: 700px;
-  }
-}
-
-@media (max-width: 575.98px) {
-  .final-cta-section {
-    padding: 5rem 0;
-  }
-
-  .final-cta {
-    min-height: 650px;
-    padding: 2.35rem 1.3rem 1.8rem;
-    border-radius: 22px;
-  }
-
-  .final-cta__logo {
-    width: 72px;
-    margin-bottom: 1.65rem;
-  }
-
-  .final-cta__title {
-    font-size: clamp(2.8rem, 14vw, 4rem);
-    line-height: 0.96;
-  }
-
-  .final-cta__copy {
-    max-width: 470px;
-    font-size: 0.94rem;
-  }
-
-  .final-cta__actions {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .btn-final-cta {
-    width: 100%;
-    text-align: center;
-  }
-
-  .final-cta__secondary {
-    text-align: center;
-  }
-
-  .final-cta__dashboard {
-    right: -40%;
-    bottom: -78px;
-    width: 112%;
-    height: 285px;
-  }
-
-  .final-cta__dashboard-glow {
-    width: 330px;
-    height: 330px;
-  }
-
-  .final-cta__dashboard-frame {
-    left: 0;
-    width: 540px;
-    border-radius: 16px;
-  }
-}
-
-@media (max-width: 991.98px) {
-  .workflow-section {
-    padding: 6rem 0;
-  }
-
-  .workflow-intro {
-    margin-bottom: 3.5rem;
-  }
-
-  .workflow-row {
-    padding: 1rem 0;
-  }
-
-  .workflow-row + .workflow-row {
-    margin-top: 2rem;
-    padding-top: 4rem;
-  }
-
-  .workflow-step-copy {
-    max-width: 650px;
-  }
-
-  .workflow-step-copy p {
-    max-width: 620px;
-  }
-
-  .workflow-ui-card {
-    min-height: auto;
-  }
-}
-
-@media (max-width: 575.98px) {
-  .workflow-section {
-    padding: 5rem 0;
-  }
-
-  .workflow-title {
-    font-size: clamp(2.45rem, 13vw, 3.6rem);
-  }
-
-  .workflow-copy {
-    font-size: 0.98rem;
-  }
-
-  .workflow-ui-card {
-    padding: 1rem;
-    border-radius: 18px;
-  }
-
-  .ui-project-meta {
-    grid-template-columns: 1fr;
-  }
-
-  .readiness-result {
-    display: none;
-  }
-}
-
-@media (max-width: 991.98px) {
-  .experience-section {
-    padding: 6rem 0;
-  }
-
-  .experience-heading {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-  }
-
-  .experience-intro {
-    max-width: 650px;
-    margin: 0;
-  }
-
-  .experience-showcase {
-    max-width: 1160px;
-    margin: 4rem auto 0;
-  }
-}
-
-@media (max-width: 575.98px) {
-  .experience-section {
-    padding: 5rem 0;
-  }
-
-  .experience-title {
-    font-size: clamp(2.45rem, 13vw, 3.6rem);
-  }
-
-  .experience-intro {
-    font-size: 0.98rem;
-  }
-
-  .experience-panel {
-    min-height: auto;
-    padding: 0.9rem;
-    border-radius: 19px;
-  }
-
-  .readiness-metrics {
-    grid-template-columns: 1fr;
-  }
-
-  .experience-footer__items {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .experience-footer__items span {
-    justify-content: flex-start;
-  }
-}
-
-@media (max-width: 1199.98px) {
-  .hero-section {
-    padding-top: 5.6rem;
-  }
-
-  .navbar-brand {
-    margin-right: 1rem;
-  }
-
-  .nav-actions {
-    margin-left: 0.3rem;
-  }
-}
-
-@media (max-width: 991.98px) {
-  .capabilities-section {
-    padding: 6rem 0;
-  }
-
-  .capabilities-heading {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-  }
-
-  .capabilities-intro {
-    max-width: 680px;
-    margin: 0;
-  }
-
-  .capabilities-grid {
-    grid-template-columns: 1fr;
-    max-width: 700px;
-  }
-
-  .capability-card--featured {
-    grid-column: auto;
-  }
-}
-
-@media (max-width: 575.98px) {
-  .capabilities-section {
-    padding: 5rem 0;
-  }
-
-  .capabilities-title {
-    font-size: clamp(2.45rem, 13vw, 3.6rem);
-  }
-
-  .capabilities-grid {
-    margin-top: 2.75rem;
-  }
-
-  .capability-card {
-    padding: 1rem;
-    border-radius: 18px;
-  }
-
-  .preview-options,
-  .readiness-pills {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .preview-option {
-    border-radius: 10px;
-  }
-}
-
-@media (max-width: 991.98px) {
-  .final-cta {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    padding: 3.5rem;
-  }
-
-  .final-cta__content {
-    max-width: 700px;
-  }
-
-  .final-cta__visual {
-    min-height: 340px;
-  }
-}
-
-@media (max-width: 575.98px) {
-  .final-cta-section {
-    padding: 5rem 0;
-  }
-
-  .final-cta {
-    min-height: auto;
-    padding: 2.25rem 1.25rem;
-    border-radius: 22px;
-  }
-
-  .final-cta__title {
-    font-size: clamp(2.45rem, 13vw, 3.6rem);
-  }
-
-  .final-cta__copy {
-    font-size: 0.96rem;
-  }
-
-  .final-cta__actions {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .btn-final-cta {
-    width: 100%;
-    text-align: center;
-  }
-
-  .final-cta__secondary {
-    text-align: center;
-  }
-
-  .final-cta__visual {
-    min-height: 290px;
-  }
-
-  .final-cta__orb {
-    width: 300px;
-    height: 300px;
-  }
-
-  .cta-card--front {
-    top: 65px;
-  }
-}
-
-@media (max-width: 991.98px) {
-  .utility-bar__inner {
-    min-height: 36px;
-  }
-
-  .utility-bar__text {
-    max-width: 70%;
-  }
-
-  .navbar {
-    min-height: 70px;
-  }
-
-  .navbar-collapse {
-    padding: 1rem 0 0.35rem;
-  }
-
-  .navbar-nav {
-    gap: 0.1rem;
-  }
-
-  .nav-link {
-    padding: 0.78rem 0 !important;
-  }
-
-  .nav-link::after {
-    left: 0;
-    right: auto;
-    width: 26px;
-    bottom: 0.4rem;
-  }
-
-  .dropdown-menu--qenrec {
-    min-width: 100%;
-    margin-top: 0;
-    border: 0;
-    border-radius: 12px;
-    box-shadow: none;
-    background: #f6f4f1;
-  }
-
-  .nav-actions {
-    margin-top: 0.65rem;
-    margin-left: 0;
-    padding-top: 0.9rem;
-    border-top: 1px solid var(--qenrec-border);
-  }
-
-  .hero-section {
-    padding: 5rem 0 6rem;
-  }
-}
-
-@media (max-width: 575.98px) {
-  .utility-bar__inner {
-    min-height: 42px;
-  }
-
-  .utility-bar__text,
-  .utility-bar__link {
-    font-size: 0.72rem;
-  }
-
-  .utility-bar__link i {
-    display: none;
-  }
-
-  .navbar {
-    padding: 0.65rem 0;
-  }
-
-  .navbar-brand img {
-    max-width: 130px;
-  }
-
-  .hero-section {
-    padding: 4.1rem 0 4.5rem;
-  }
-
-  .hero-title {
-    font-size: clamp(2.8rem, 14vw, 4.1rem);
-  }
-
-  .hero-copy {
-    font-size: 1rem;
-    line-height: 1.65;
-  }
-
-  .hero-actions {
-    align-items: stretch;
-    flex-direction: column;
-    gap: 0.9rem;
-    width: 100%;
-  }
-
-  .hero-actions .btn-qenrec {
-    width: 100%;
-  }
-
-  .hero-secondary-link {
-    text-align: center;
   }
 }
