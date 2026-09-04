@@ -999,238 +999,435 @@ SECTION 2 - THE PROBLEM
    ========================================================= */
 
 
-
-
-/* =========================================================
-   MOBILE MEDIA QUERY UPDATE
-   ========================================================= */
-
-
-
-/* =========================================================
+/* ============================================================
    QENREC — HOW QENREC WORKS
-   ========================================================= */
+   COMPACT PREMIUM CARD DESIGN
+   ============================================================ */
 
-.qenrec-how-section {
-  /*
-   * Creates the visual demarcation from the previous section.
-   * This is intentionally more than a tiny margin.
-   */
-  margin-top: 1.25rem;
-
-  padding-top: 4.5rem;
-  padding-bottom: 4.75rem;
-
-  background: #FFFFFF;
-
-  border-top: 1px solid rgba(117, 18, 6, 0.06);
-}
-
-
-/* =========================================================
-   SECTION HEADER
-   ========================================================= */
-
-.how-header {
-  max-width: 760px;
-  margin: 0 auto 3rem;
-}
-
-
-/* Eyebrow */
-
-.how-eyebrow {
-  display: block;
-
-  margin-bottom: 0.65rem;
-
-  font-family: "IBM Plex Sans", sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
-  line-height: 1.2;
-
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-
-  color: #A81C07;
-}
-
-
-/* Heading */
-
-.how-title {
-  margin: 0;
-
-  font-family: "IBM Plex Sans", sans-serif;
-  font-size: clamp(2rem, 3vw, 2.85rem);
-  font-weight: 600;
-  line-height: 1.08;
-
-  letter-spacing: -0.04em;
-
-  color: #17211D;
-}
-
-
-/* Supporting line */
-
-.how-description {
-  margin: 0.65rem 0 0;
-
-  font-family: "IBM Plex Sans", sans-serif;
-  font-size: 0.95rem;
-  font-weight: 400;
-  line-height: 1.45;
-
-  color: #4A403B;
-}
-
-
-/* =========================================================
-   WORKFLOW
-   ========================================================= */
-
-.how-workflow {
-  display: flex;
-  align-items: flex-start;
-
+.qenrec-workflow-cards {
   width: 100%;
+  padding: 6rem 1.25rem 6rem;
+  background: #faf9f7;
+  overflow: hidden;
+}
+
+.qenrec-workflow-cards__container {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
 }
 
 
-/* =========================================================
-   EACH STEP
-   ========================================================= */
+/* ============================================================
+   SECTION INTRO
+   ============================================================ */
 
-.how-step {
-  flex: 1 1 0;
-
-  min-width: 0;
-
+.qenrec-workflow-cards__intro {
+  max-width: 920px;
+  margin: 0 auto 3.8rem;
   text-align: center;
 }
 
+.qenrec-workflow-cards__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
 
-/* =========================================================
-   ICON
-   ========================================================= */
+  color: #a81c07;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 1;
+  text-transform: uppercase;
+}
 
-.step-icon {
-  width: 52px;
-  height: 52px;
+.qenrec-workflow-cards__eyebrow::before,
+.qenrec-workflow-cards__eyebrow::after {
+  content: "";
 
-  margin: 0 auto 0.85rem;
+  width: 24px;
+  height: 1px;
+
+  background: #a81c07;
+  opacity: 0.38;
+}
+
+.qenrec-workflow-cards__title {
+  max-width: 980px;
+  margin: 1rem auto 0.8rem;
+
+  color: #171513;
+  font-size: clamp(2.7rem, 5vw, 4.5rem);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.qenrec-workflow-cards__subtitle {
+  margin: 0;
+
+  color: #5f5853;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+
+/* ============================================================
+   CARD GRID
+   ============================================================ */
+
+.qenrec-workflow-cards__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+
+/* ============================================================
+   CARD
+   ============================================================ */
+
+.qenrec-workflow-card {
+  position: relative;
+
+  min-height: 330px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(168, 28, 7, 0.2);
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      150deg,
+      #24201e 0%,
+      #201c1a 52%,
+      #171513 100%
+    );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 16px 40px rgba(23, 21, 19, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
+}
+
+.qenrec-workflow-card:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(168, 28, 7, 0.42);
+
+  box-shadow:
+    0 22px 50px rgba(23, 21, 19, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+
+/* ============================================================
+   CARD TOP
+   ============================================================ */
+
+.qenrec-workflow-card__top {
+  position: relative;
+  z-index: 3;
+
+  padding: 1.4rem 1.4rem 0;
+}
+
+.qenrec-workflow-card__number {
+  color: rgba(255, 255, 255, 0.34);
+
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1;
+}
+
+.qenrec-workflow-card__title {
+  margin: 0.8rem 0 0.65rem;
+
+  color: #ffffff;
+
+  font-size: 1.55rem;
+  font-weight: 600;
+  line-height: 1.03;
+  letter-spacing: -0.035em;
+}
+
+.qenrec-workflow-card__description {
+  max-width: 280px;
+
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.68);
+
+  font-size: 0.84rem;
+  font-weight: 400;
+  line-height: 1.58;
+}
+
+
+/* ============================================================
+   CARD VISUAL AREA
+   ============================================================ */
+
+.qenrec-workflow-card__visual {
+  position: relative;
+
+  flex: 1;
+
+  min-height: 90px;
+
+  overflow: hidden;
+
+  margin-top: 0.4rem;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(168, 28, 7, 0.06) 35%,
+      rgba(168, 28, 7, 0.23) 100%
+    );
+}
+
+
+/* ============================================================
+   LARGE MUTED NUMBER
+   ============================================================ */
+
+.qenrec-workflow-card__watermark {
+  position: absolute;
+
+  right: 1rem;
+  bottom: -0.55rem;
+
+  color: rgba(255, 255, 255, 0.055);
+
+  font-size: clamp(5rem, 7vw, 7rem);
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: -0.08em;
+
+  user-select: none;
+
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   DECORATIVE LINES
+   ============================================================ */
+
+.qenrec-workflow-card__visual::before {
+  content: "";
+
+  position: absolute;
+
+  left: -5%;
+  bottom: 28px;
+
+  width: 110%;
+  height: 1px;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  transform: rotate(-7deg);
+}
+
+.qenrec-workflow-card__visual::after {
+  content: "";
+
+  position: absolute;
+
+  left: -8%;
+  bottom: 48px;
+
+  width: 116%;
+  height: 1px;
+
+  background: rgba(168, 28, 7, 0.32);
+
+  transform: rotate(6deg);
+}
+
+
+/* ============================================================
+   BOTTOM BUTTON AREA
+   ============================================================ */
+
+.qenrec-workflow-card__bottom {
+  position: relative;
+  z-index: 5;
+
+  padding: 0.8rem;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(168, 28, 7, 0.72) 0%,
+      #7e1607 100%
+    );
+}
+
+
+/* ============================================================
+   GLASS BUTTON
+   ============================================================ */
+
+.qenrec-workflow-card__button {
+  width: 100%;
+  min-height: 48px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border-radius: 50%;
+  padding: 0.75rem 1rem;
 
-  /* Qenrec Primary Rufous */
-  background: #A81C07;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 14px;
 
-  /* Warm white icon */
-  color: #F8F0E9;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.95),
+      rgba(255, 255, 255, 0.72)
+    );
 
-  font-size: 1.2rem;
-  line-height: 1;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
-  box-shadow: 0 8px 20px rgba(168, 28, 7, 0.14);
-}
+  color: #5f1609;
 
-/* =========================================================
-   NUMBER
-   ========================================================= */
-
-.step-number {
-  margin-bottom: 0.3rem;
-
-  font-family: "IBM Plex Sans", sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
-  line-height: 1;
-
-  letter-spacing: 0.08em;
-
-  color: #A81C07;
-}
-
-
-/* =========================================================
-   STEP TITLE
-   ========================================================= */
-
-.step-title {
-  margin: 0 0 0.35rem;
-
-  font-family: "IBM Plex Sans", sans-serif;
-  font-size: 0.98rem;
-  font-weight: 600;
-  line-height: 1.25;
-
-  color: #17211D;
-}
-
-
-/* =========================================================
-   STEP DESCRIPTION
-   ========================================================= */
-
-.step-text {
-  max-width: 235px;
-
-  margin: 0 auto;
-
-  font-family: "IBM Plex Sans", sans-serif;
   font-size: 0.82rem;
-  font-weight: 400;
-  line-height: 1.4;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
 
-  /*
-   * Stronger than the old pale gray.
-   */
-  color: #403833;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 5px 16px rgba(0, 0, 0, 0.1);
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.qenrec-workflow-card__button:hover {
+  border-color: rgba(255, 255, 255, 0.78);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0.88)
+    );
+
+  color: #7e1607;
+
+  transform: translateY(-1px);
 }
 
 
-/* =========================================================
-   ARROWS
-   ========================================================= */
-
-.workflow-arrow {
-  flex: 0 0 70px;
-
-  display: flex;
-  justify-content: center;
-
-  padding-top: 25px;
-
-  color: #A81C07;
-
-  font-size: 1.25rem;
-}
-
-
-/* =========================================================
-   LARGE DESKTOP
-   ========================================================= */
-
-
-
-
-/* =========================================================
+/* ============================================================
    TABLET
-   ========================================================= */
+   ============================================================ */
+
+@media (max-width: 1100px) {
+
+  .qenrec-workflow-cards__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
 
 
-
-
-/* =========================================================
+/* ============================================================
    MOBILE
-   ========================================================= */
+   ============================================================ */
+
+@media (max-width: 767.98px) {
+
+  .qenrec-workflow-cards {
+    padding: 4.5rem 1rem 5rem;
+  }
+
+  .qenrec-workflow-cards__intro {
+    margin-bottom: 3rem;
+  }
+
+  .qenrec-workflow-cards__title {
+    font-size: clamp(2.35rem, 10vw, 3.15rem);
+  }
+
+  .qenrec-workflow-cards__subtitle {
+    font-size: 0.96rem;
+  }
+
+  .qenrec-workflow-cards__grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .qenrec-workflow-card {
+    min-height: 300px;
+    border-radius: 22px;
+  }
+
+  .qenrec-workflow-card__top {
+    padding: 1.35rem 1.35rem 0;
+  }
+
+  .qenrec-workflow-card__title {
+    font-size: 1.6rem;
+  }
+
+  .qenrec-workflow-card__description {
+    max-width: 100%;
+    font-size: 0.84rem;
+  }
+
+}
 
 
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+  .qenrec-workflow-cards {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+
+  .qenrec-workflow-card {
+    min-height: 290px;
+  }
+
+  .qenrec-workflow-card__watermark {
+    font-size: 5.5rem;
+  }
+
+  .qenrec-workflow-card__button {
+    min-height: 46px;
+    font-size: 0.8rem;
+  }
+
+}
 
 
 /* =========================================================
